@@ -1,4 +1,3 @@
-/*! UIkit 2.27.4 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 /* ========================================================================
    Component: Nestable
  ========================================================================== */
@@ -63,7 +62,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  border: 1px dashed #ddd;
+  border: 1px dashed #dddddd;
   opacity: 1;
 }
 /* Empty List
