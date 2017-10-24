@@ -348,7 +348,7 @@
 
 
 </div>
-<div class="tm-content-wrap"><!-- .tm-content-wrap Start -->
+<div class="tm-content-wrap"><!-- Pics Start -->
 
         <div id="pics" class="tm-content-full">
             <h1 class="uk-text-center">Посмотреть в интерьере</h1>
@@ -360,7 +360,78 @@
                 </div>
             </div>
         </div>
-</div>
+</div><!-- Pics End -->
+
+<div class="tm-content-wrap"><!-- Working Start -->
+
+        <div id="working" class="tm-content-full">
+            <h1 class="uk-text-center">Как мы работаем</h1>
+            <div class="tm-working-wrap">
+                <div class="uk-flex uk-flex-space-around">
+                    <div class="uk-card uk-card-default uk-card-body tm-working-item">
+                        <div class="tm-working-pic">
+                            <img src="images/working/choose.png" alt="choose">
+                        </div>
+                        <div class="tm-working-text">Выбор картинки <i class="uk-icon-chevron-down"></i></div>
+                        <div class="tm-working-overlay uk-animation-slide-bottom uk-hidden"> <!-- uk-hidden -->
+                            <div class="tm-working-overlay-top">Выбор картинки <i class="uk-icon-chevron-down"></i></div>
+                            <div class="tm-working-overlay-bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, nihil!</div>
+                        </div>
+                    </div>
+                    <div class="uk-card uk-card-default uk-card-body tm-working-item">
+                        <div class="tm-working-pic">
+                            <img src="images/working/order.png" alt="order">
+                        </div>
+                        <div class="tm-working-text">Оформление заказа <i class="uk-icon-chevron-down"></i></div>
+                        <div class="tm-working-overlay uk-animation-slide-bottom uk-hidden"> <!-- uk-hidden -->
+                            <div class="tm-working-overlay-top">Оформление заказа <i class="uk-icon-chevron-down"></i></div>
+                            <div class="tm-working-overlay-bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, nihil!</div>
+                        </div>
+                    </div>
+                    <div class="uk-card uk-card-default uk-card-body tm-working-item">
+                        <div class="tm-working-pic">
+                            <img src="images/working/sign.png" alt="sign">
+                        </div>
+                        <div class="tm-working-text">Подписание договора <i class="uk-icon-chevron-down"></i></div>
+                        <div class="tm-working-overlay uk-animation-slide-bottom uk-hidden"> <!-- uk-hidden -->
+                            <div class="tm-working-overlay-top">Подписание договора <i class="uk-icon-chevron-down"></i></div>
+                            <div class="tm-working-overlay-bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, nihil!</div>
+                        </div>
+                    </div>
+                    <div class="uk-card uk-card-default uk-card-body tm-working-item">
+                        <div class="tm-working-pic">
+                            <img src="images/working/create.png" alt="create">
+                        </div>
+                        <div class="tm-working-text">Изготовление картины <i class="uk-icon-chevron-down"></i></div>
+                        <div class="tm-working-overlay uk-animation-slide-bottom uk-hidden"> <!-- uk-hidden -->
+                            <div class="tm-working-overlay-top">Изготовление картины <i class="uk-icon-chevron-down"></i></div>
+                            <div class="tm-working-overlay-bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, nihil!</div>
+                        </div>
+                    </div>
+                    <div class="uk-card uk-card-default uk-card-body tm-working-item">
+                        <div class="tm-working-pic">
+                            <img src="images/working/delivery.png" alt="delivery">
+                        </div>
+                        <div class="tm-working-text">Доставка заказа <i class="uk-icon-chevron-down"></i></div>
+                        <div class="tm-working-overlay uk-animation-slide-bottom uk-hidden"> <!-- uk-hidden -->
+                            <div class="tm-working-overlay-top">Доставка заказа <i class="uk-icon-chevron-down"></i></div>
+                            <div class="tm-working-overlay-bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, nihil!</div>
+                        </div>
+                    </div>
+                    <div class="uk-card uk-card-default uk-card-body tm-working-item">
+                        <div class="tm-working-pic">
+                            <img src="images/working/set.png" alt="set">
+                        </div>
+                        <div class="tm-working-text">Установка картины <i class="uk-icon-chevron-down"></i></div>
+                        <div class="tm-working-overlay uk-animation-slide-bottom uk-hidden"> <!-- uk-hidden -->
+                            <div class="tm-working-overlay-top">Установка картины <i class="uk-icon-chevron-down"></i></div>
+                            <div class="tm-working-overlay-bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, nihil!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div><!-- Working End -->
 
     <!-- Script for range input Start -->
     <script src="range-slider.js"></script>
@@ -423,6 +494,20 @@
         })();
     </script>
     <!-- Script for range input End -->
-
+    <!-- Script for working block Start -->
+    <script>
+        $(function () {
+             $('.tm-working-item').click(function(){
+                 var arr = document.getElementsByClassName('tm-working-overlay');
+                  $( arr ).each(function() {
+                     if(!$(this).hasClass('uk-hidden')) {
+                         $(this).addClass('uk-hidden');
+                     }
+                 }); 
+                $(this).find( '.tm-working-overlay' ).toggleClass('uk-hidden');
+            }); 
+        });
+    </script>
+    <!-- Script for working block End -->
 </body>
 </html>
