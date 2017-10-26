@@ -10287,6 +10287,100 @@ h6 {
   background: #0098ff;
 }
 /* tpls End */
+/* GetInTouch Start */
+#git {
+  padding-top: 1px;
+  background: #344055;
+}
+#git h1 {
+  font-size: 48px;
+  color: #ffffff;
+  margin: 1.5em 0;
+}
+#git .tm-git-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#git .tm-git-wrap .tm-git-text {
+  width: 100%;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.4em;
+}
+#git .tm-git-wrap .tm-git-form {
+  margin-top: 50px;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input {
+  width: 400px;
+  padding: 20px;
+  margin: 0 auto;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input input:not([type="checkbox"]) {
+  width: 400px;
+  border-radius: 5px;
+  border: 1px solid  #89959d;
+  background: #58667a;
+  font-size: 16px;
+  padding: 20px 10px;
+  color: #b2bccd;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #b2bccd;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #b2bccd;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input input:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #b2bccd;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #b2bccd;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input input#phone-checkbox {
+  margin-right: 0;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input .jq-checkbox {
+  width: 25px;
+  height: 25px;
+  margin: 0 20px 0 0;
+  box-shadow: none;
+  background: #58667a;
+  border: 1px solid  #89959d;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input .jq-checkbox.checked .jq-checkbox__div {
+  width: 17px;
+  height: 10px;
+  border-bottom: 2px solid #89959d;
+  border-left: 2px solid #89959d;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input label {
+  cursor: pointer;
+  color: #b2bccd;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input button {
+  width: 400px;
+  height: 60px;
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+  background: #ea3d07;
+  border-radius: 5px;
+  font-size: 28px;
+  font-family: 'RobotoLight', sans-serif;
+  cursor: pointer;
+  outline: none;
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input button:hover {
+  background: rgba(234, 61, 7, 0.8);
+}
+#git .tm-git-wrap .tm-git-form .tm-git-form-input button:active {
+  background: rgba(234, 61, 7, 0.5);
+}
+/* GetInTouch End */
 /* Home Page End */
 /* Modal Start */
 .tm-modal {
