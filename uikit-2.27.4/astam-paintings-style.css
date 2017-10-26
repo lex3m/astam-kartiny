@@ -3467,7 +3467,7 @@ select.uk-form-width-mini {
   display: inline-block;
   box-sizing: border-box;
   padding: 0 12px;
-  background: #eaeaea;
+  background: #426ec7;
   vertical-align: middle;
   /* 8 */
   line-height: 30px;
@@ -9578,6 +9578,7 @@ html[dir="rtl"] .uk-slider > * {
   font-style: normal;
   font-weight: normal;
 }
+/* @button-background: #eaeaea; */
 /* KotFont Start */
 @font-face {
   font-family: 'kotfont';
@@ -10266,6 +10267,24 @@ h6 {
 }
 #tpls .tm-tpls-wrap img {
   width: 100%;
+}
+#tpls .tm-tpls-wrap .tm-tpls-button {
+  margin-top: 100px;
+}
+#tpls .tm-tpls-wrap .tm-tpls-button a {
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 10px;
+  background: #426ec7;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 18px;
+}
+#tpls .tm-tpls-wrap .tm-tpls-button a:hover {
+  background: #0081d9;
+}
+#tpls .tm-tpls-wrap .tm-tpls-button a:active {
+  background: #0098ff;
 }
 /* tpls End */
 /* Home Page End */

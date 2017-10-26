@@ -101,7 +101,8 @@
 // Button
 //
 
-@button-background: #eaeaea;
+@button-background: #426ec7;
+/* @button-background: #eaeaea; */
 @button-hover-background: #ced2d7;
 @button-active-background: #aeb5be;
 @button-font-size: 1.2rem;
@@ -1108,6 +1109,24 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
   .tm-tpls-wrap {
     img {
       width: 100%;
+    }
+    .tm-tpls-button {
+      margin-top: 100px;
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 10px;
+        background: @button-background;
+        border-radius: 5px;
+        color: @text-light-color;
+        font-size: 18px;
+        &:hover {
+          background: @button-primary-active-background;
+        }
+        &:active {
+          background: @button-primary-hover-background;
+        }
+      }
     }
   }
 }
