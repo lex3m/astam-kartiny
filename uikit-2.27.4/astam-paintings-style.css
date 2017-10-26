@@ -10238,7 +10238,7 @@ h6 {
   /* position: absolute;
           top: 0;
           left: 0; */
-  width: 60%;
+  width: 500px;
   font-size: 17px;
 }
 /* madein End */
@@ -10253,6 +10253,21 @@ h6 {
   margin: 1.5em 0;
 }
 /* vidblk End */
+/* tpls Start */
+#tpls {
+  padding-top: 1px;
+  padding-bottom: 100px;
+  background: #0098ff;
+}
+#tpls h1 {
+  font-size: 48px;
+  color: #ffffff;
+  margin: 1.5em 0;
+}
+#tpls .tm-tpls-wrap img {
+  width: 100%;
+}
+/* tpls End */
 /* Home Page End */
 /* Modal Start */
 .tm-modal {
