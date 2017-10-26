@@ -9571,6 +9571,13 @@ html[dir="rtl"] .uk-slider > * {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'RobotoLight';
+  src: url("fonts/RobotoLight/RobotoLight.eot");
+  src: url("fonts/RobotoLight/RobotoLight.eot?#iefix") format("embedded-opentype"), url("fonts/RobotoLight/RobotoLight.woff") format("woff"), url("fonts/RobotoLight/RobotoLight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
 /* KotFont Start */
 @font-face {
   font-family: 'kotfont';
@@ -10174,6 +10181,67 @@ h6 {
   text-align: center;
 }
 /* Working End */
+/* madein Start */
+#madein {
+  padding-top: 1px;
+  background: #e3e4e4;
+}
+#madein h1 {
+  font-size: 48px;
+  color: #253c7f;
+  margin: 1.5em 0;
+}
+#madein .madein-list {
+  color: #253c7f;
+  font-size: 20px;
+  font-weight: bold;
+  width: 450px;
+  margin: 0 auto;
+}
+#madein .madein-list ul.madein-list-ul {
+  list-style: none;
+}
+#madein .madein-list ul.madein-list-ul li {
+  font-family: 'RobotoLight', sans-serif;
+  position: relative;
+  margin-bottom: 20px;
+}
+#madein .madein-list ul.madein-list-ul li:before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: -35px;
+  background-image: url(images/madein/elips.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#madein .madein-block-wrap {
+  padding-top: 20px;
+}
+#madein .madein-block-wrap .madein-block {
+  height: 200px;
+  width: 50%;
+  position: relative;
+}
+#madein .madein-block-wrap .madein-block.madein-block-pic img {
+  position: absolute;
+  bottom: 0;
+  transform: translate(60%);
+  width: 55%;
+}
+#madein .madein-block-wrap .madein-block.madein-block-text .madein-block-text-in {
+  padding: 20px;
+  background: #7e8684;
+  color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  font-size: 17px;
+}
+/* madein End */
 /* Home Page End */
 /* Modal Start */
 .tm-modal {
