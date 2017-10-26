@@ -10381,6 +10381,27 @@ h6 {
   background: rgba(234, 61, 7, 0.5);
 }
 /* GetInTouch End */
+/* Contacts End */
+#cont {
+  padding-top: 1px;
+  padding-bottom: 100px;
+  background: #344055;
+}
+#cont h1 {
+  font-size: 48px;
+  color: #ffffff;
+  margin: 1.5em 0;
+}
+#cont .tm-cont-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#cont .tm-cont-wrap .tm-cont-block .tm-cont-block-text {
+  font-family: 'RobotoLight', sans-serif;
+  font-size: 18px;
+  color: #e3e4e4;
+}
+/* Contacts End */
 /* Home Page End */
 /* Modal Start */
 .tm-modal {
