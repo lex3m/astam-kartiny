@@ -10235,13 +10235,24 @@ h6 {
   padding: 20px;
   background: #7e8684;
   color: #ffffff;
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* position: absolute;
+          top: 0;
+          left: 0; */
   width: 60%;
   font-size: 17px;
 }
 /* madein End */
+/* vidblk Start */
+#vidblk {
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+#vidblk h1 {
+  font-size: 48px;
+  color: #253c7f;
+  margin: 1.5em 0;
+}
+/* vidblk End */
 /* Home Page End */
 /* Modal Start */
 .tm-modal {
