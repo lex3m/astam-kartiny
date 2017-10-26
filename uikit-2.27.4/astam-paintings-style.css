@@ -10125,6 +10125,9 @@ h6 {
   padding-top: 1px;
   padding-bottom: 100px;
   background: #0098ff;
+  /* img {
+    width: 100%;
+  } */
 }
 #pics h1 {
   font-size: 48px;
@@ -10143,7 +10146,7 @@ h6 {
   margin: 1.5em 0;
 }
 #working .tm-working-item {
-  width: 16%;
+  /* width: 16%; */
   cursor: pointer;
   position: relative;
 }
@@ -10402,6 +10405,15 @@ h6 {
   color: #e3e4e4;
 }
 /* Contacts End */
+/* Copy Start */
+#copy {
+  color: #cacdce;
+  font-size: 14px;
+  font-family: 'RobotoLight', sans-serif;
+  padding: 30px 0;
+  background: #344055;
+}
+/* Copy End */
 /* Home Page End */
 /* Modal Start */
 .tm-modal {
