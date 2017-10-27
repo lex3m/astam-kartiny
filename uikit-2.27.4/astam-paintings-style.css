@@ -10127,12 +10127,9 @@ h6 {
 .canvas #canvas {
   position: absolute;
   right: 55px;
-  bottom: 80px;
-  height: 75%;
+  top: 65px;
+  height: 79%;
   width: 85%;
-  /* height: 300px;
-    width: 500px; */
-  /* z-index: 3; */
   overflow: hidden;
 }
 .canvas .tm-canv-icon {
