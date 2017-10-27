@@ -1,11 +1,117 @@
 $(function(){
-     var c = 0;
-    function draw_b() {
-        var b_canvas = document.getElementById("canvas");
-        var b_context = b_canvas.getContext("2d");
-        b_context.strokeRect(50 + c, 25 + c, 150, 100);
+    var width = $('#canvas').width();
+    var height = $('#canvas').height();
+    function update(activeAnchor) {
+    var group = activeAnchor.getParent();
+    var topLeft = group.get('.topLeft')[0];
+    var topRight = group.get('.topRight')[0];
+    var bottomRight = group.get('.bottomRight')[0];
+    var bottomLeft = group.get('.bottomLeft')[0];
+    var rect = group.get('Rect')[0];
+    var anchorX = activeAnchor.getX();
+    var anchorY = activeAnchor.getY();
+    // update anchor positions
+    switch (activeAnchor.getName()) {
+        case 'topLeft':
+        topRight.setY(anchorY);
+        bottomLeft.setX(anchorX);
+        break;
+        case 'topRight':
+        topLeft.setY(anchorY);
+        bottomRight.setX(anchorX);
+        break;
+        case 'bottomRight':
+        bottomLeft.setY(anchorY);
+        topRight.setX(anchorX);
+        break;
+        case 'bottomLeft':
+        bottomRight.setY(anchorY);
+        topLeft.setX(anchorX);
+        break;
+                                    }
+    rect.position(topLeft.position());
+    var width = topRight.getX() - topLeft.getX();
+    var height = bottomLeft.getY() - topLeft.getY();
+    if(width && height) {
+        rect.width(width);
+        rect.height(height);
     }
-    $('.draw').click(function(){
+    }
+    function addAnchor(group, x, y, name) {
+    var stage = group.getStage();
+    var layer = group.getLayer();
+    var anchor = new Konva.Circle({
+        x: x,
+        y: y,
+        stroke: '#666',
+        fill: '#ddd',
+        strokeWidth: 2,
+        radius: 8,
+        name: name,
+        draggable: true,
+        dragOnTop: false
+    });
+    anchor.on('dragmove', function() {
+        update(this);
+        layer.draw();
+    });
+    anchor.on('mousedown touchstart', function() {
+        group.setDraggable(false);
+        this.moveToTop();
+    });
+    anchor.on('dragend', function() {
+        group.setDraggable(true);
+        layer.draw();
+    });
+    // add hover styling
+    anchor.on('mouseover', function() {
+        var layer = this.getLayer();
+        document.body.style.cursor = 'pointer';
+        this.setStrokeWidth(4);
+        layer.draw();
+    });
+    anchor.on('mouseout', function() {
+        var layer = this.getLayer();
+        document.body.style.cursor = 'default';
+        this.setStrokeWidth(2);
+        layer.draw();
+    });
+    group.add(anchor);
+    }
+    var stage = new Konva.Stage({
+        container: 'canvas',
+        width: width,
+        height: height
+    });
+    var layer = new Konva.Layer();
+    stage.add(layer);
+    var c = 0;
+
+    $('.tm-draw').click(function(){
+        console.log('work///');
+        var droppableRect = new Konva.Rect({
+            x: 0,
+            y: 0,
+            width: 300,
+            height: 200,
+            /* fill: 'green', */
+            stroke: 'black',
+            strokeWidth: 2
+        });
+        var droppableGroup = new Konva.Group({
+            x: 50,
+            y: 50,
+            draggable: true
+        });
+        layer.add(droppableGroup);
+
+        droppableGroup.add(droppableRect).draw();
+        addAnchor(droppableGroup, 0, 0, 'topLeft');
+        addAnchor(droppableGroup, 300, 0, 'topRight');
+        addAnchor(droppableGroup, 300, 200, 'bottomRight');
+        addAnchor(droppableGroup, 0, 200, 'bottomLeft');
+    });
+    /* $('.draw').click(function(){
         c = c + 5;
         draw_b();
     }); 
@@ -13,162 +119,6 @@ $(function(){
         var b_canvas = document.getElementById("canvas");
         var b_context = b_canvas.getContext("2d");
         b_context.clearRect(55, 30, 150, 100);
-    }); 
-
-/*     $('.draw').click(function(){
-        draw();
-    });
-
-    var canvas = document.getElementById('canvas'),
-    ctx = canvas.getContext('2d'),
-    rect = {
-        x: 150,
-        y: 100,
-        w: 123,
-        h: 58
-    },
-    handlesSize = 8,
-    currentHandle = false,
-    drag = false;
-
-function init() {
-    canvas.addEventListener('mousedown', mouseDown, false);
-    canvas.addEventListener('mouseup', mouseUp, false);
-    canvas.addEventListener('mousemove', mouseMove, false);
-}
-
-function point(x, y) {
-    return {
-        x: x,
-        y: y
-    };
-}
-
-function dist(p1, p2) {
-    return Math.sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
-}
-
-function getHandle(mouse) {
-    if (dist(mouse, point(rect.x, rect.y)) <= handlesSize) return 'topleft';
-    if (dist(mouse, point(rect.x + rect.w, rect.y)) <= handlesSize) return 'topright';
-    if (dist(mouse, point(rect.x, rect.y + rect.h)) <= handlesSize) return 'bottomleft';
-    if (dist(mouse, point(rect.x + rect.w, rect.y + rect.h)) <= handlesSize) return 'bottomright';
-    if (dist(mouse, point(rect.x + rect.w / 2, rect.y)) <= handlesSize) return 'top';
-    if (dist(mouse, point(rect.x, rect.y + rect.h / 2)) <= handlesSize) return 'left';
-    if (dist(mouse, point(rect.x + rect.w / 2, rect.y + rect.h)) <= handlesSize) return 'bottom';
-    if (dist(mouse, point(rect.x + rect.w, rect.y + rect.h / 2)) <= handlesSize) return 'right';
-    return false;
-}
-
-function mouseDown(e) {
-    if (currentHandle) drag = true;
-    draw();
-}
-
-function mouseUp() {
-    drag = false;
-    currentHandle = false;
-    draw();
-}
-
-function mouseMove(e) {
-    var previousHandle = currentHandle;
-    if (!drag) currentHandle = getHandle(point(e.pageX - this.offsetLeft, e.pageY - this.offsetTop));
-    if (currentHandle && drag) {
-        var mousePos = point(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-        switch (currentHandle) {
-            case 'topleft':
-                rect.w += rect.x - mousePos.x;
-                rect.h += rect.y - mousePos.y;
-                rect.x = mousePos.x;
-                rect.y = mousePos.y;
-                break;
-            case 'topright':
-                rect.w = mousePos.x - rect.x;
-                rect.h += rect.y - mousePos.y;
-                rect.y = mousePos.y;
-                break;
-            case 'bottomleft':
-                rect.w += rect.x - mousePos.x;
-                rect.x = mousePos.x;
-                rect.h = mousePos.y - rect.y;
-                break;
-            case 'bottomright':
-                rect.w = mousePos.x - rect.x;
-                rect.h = mousePos.y - rect.y;
-                break;
-
-            case 'top':
-                rect.h += rect.y - mousePos.y;
-                rect.y = mousePos.y;
-                break;
-
-            case 'left':
-                rect.w += rect.x - mousePos.x;
-                rect.x = mousePos.x;
-                break;
-
-            case 'bottom':
-                rect.h = mousePos.y - rect.y;
-                break;
-
-            case 'right':
-                rect.w = mousePos.x - rect.x;
-                break;
-        }
-    }
-    if (drag || currentHandle != previousHandle) draw();
-}
-
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'black';
-    ctx.strokeRect(rect.x, rect.y, rect.w, rect.h);
-    if (currentHandle) {
-        var posHandle = point(0, 0);
-        switch (currentHandle) {
-            case 'topleft':
-                posHandle.x = rect.x;
-                posHandle.y = rect.y;
-                break;
-            case 'topright':
-                posHandle.x = rect.x + rect.w;
-                posHandle.y = rect.y;
-                break;
-            case 'bottomleft':
-                posHandle.x = rect.x;
-                posHandle.y = rect.y + rect.h;
-                break;
-            case 'bottomright':
-                posHandle.x = rect.x + rect.w;
-                posHandle.y = rect.y + rect.h;
-                break;
-            case 'top':
-                posHandle.x = rect.x + rect.w / 2;
-                posHandle.y = rect.y;
-                break;
-            case 'left':
-                posHandle.x = rect.x;
-                posHandle.y = rect.y + rect.h / 2;
-                break;
-            case 'bottom':
-                posHandle.x = rect.x + rect.w / 2;
-                posHandle.y = rect.y + rect.h;
-                break;
-            case 'right':
-                posHandle.x = rect.x + rect.w;
-                posHandle.y = rect.y + rect.h / 2;
-                break;
-        }
-        ctx.globalCompositeOperation = 'xor';
-        ctx.beginPath();
-        ctx.arc(posHandle.x, posHandle.y, handlesSize, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.globalCompositeOperation = 'source-over';
-    }
-}
-
-init(); */
-/* draw(); */
+    }); */
 
 });

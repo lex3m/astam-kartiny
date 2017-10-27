@@ -951,6 +951,58 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
 }
 /* Constructor End */
 
+/* Canvas Start */
+.canvas {
+  position: relative;
+  #canvas {
+    position: absolute; 
+    right: 55px;
+    bottom: 80px;
+     height: 75%;
+    width: 85%; 
+    /* height: 300px;
+    width: 500px; */
+    /* z-index: 3; */
+    overflow: hidden;
+  }
+    .tm-canv-icon {
+      position: absolute;
+      top: 65px;
+      right: 20px;
+      color: #fff;
+      cursor: pointer;
+      &:hover {
+        color: #0cc;
+      }
+      &.tm-del {
+        top: 95px;
+        &:hover {
+          color: #cb3000;
+        }
+      }
+      &.tm-undo {
+        top: 125px;
+        &:hover {
+          color: #253c7f;
+        }
+      }
+      &.tm-redo {
+        top: 155px;
+        &:hover {
+          color: #253c7f;
+        }
+      }
+      &.tm-rem {
+        top: 185px;
+        &:hover {
+          color: #cb3000;
+        }
+      }
+    }
+}
+
+/* Canvas End */
+
 /* Pics Start */
 #pics {
   padding-top: 1px;
@@ -1001,6 +1053,9 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
       position: absolute;
       top: 0;
       left: 0;
+      padding-left: 25px;
+      /* padding-right: 25px; */
+      box-sizing: border-box;
       .tm-working-overlay-top {
         font-size: 24px;
         text-align: center;
@@ -1060,14 +1115,13 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
     padding-top: 20px;
     .madein-block {
       height: 200px;
-      width: 50%;
       position: relative;
       &.madein-block-pic {
         img {
           position: absolute;
           bottom: 0;
-          transform: translate(60%);
-          width: 55%;
+          right: 120px;
+          width: 500px;
         }
       }
       &.madein-block-text {
@@ -1075,9 +1129,7 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
           padding: 20px;
           background: #7e8684;
           color: @text-light-color;
-          /* position: absolute;
-          top: 0;
-          left: 0; */
+          border-radius: 5px;
           width: 500px;
           font-size: 17px;
         }
@@ -1327,3 +1379,46 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
 /* Inner Page End */
 
 
+@media screen and (max-width: 1300px) {
+  #madein .madein-block-wrap .madein-block.madein-block-pic img {
+    right: 50px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  #madein .madein-block-wrap .madein-block {
+    height: auto;
+    &.madein-block-pic img {
+      right: 20px;
+      width: 92%;
+    }
+    &.madein-block-text .madein-block-text-in {
+      width: auto;
+    }
+  }
+  #vidblk {
+    padding-top: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  #cont .tm-cont-wrap .tm-cont-block {
+    padding-left: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  #git .tm-git-wrap .tm-git-form .tm-git-form-input {
+    width: 100%;
+    padding: 20px 0;
+    input:not([type="checkbox"]) {
+      width: 100%;
+    }
+    button {
+      width: 100%;
+      font-size: 22px;
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  #madein .madein-list {
+    width: auto;
+  }
+}
