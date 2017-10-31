@@ -10131,6 +10131,7 @@ h6 {
   height: 79%;
   width: 85%;
   overflow: hidden;
+  /* background-image: url(images/astam-img/top-slide-img-2.jpg); */
 }
 .canvas .tm-canv-icon {
   position: absolute;
@@ -10165,6 +10166,12 @@ h6 {
 }
 .canvas .tm-canv-icon.tm-rem:hover {
   color: #cb3000;
+}
+.canvas .tm-canv-icon.tm-cog {
+  top: 220px;
+}
+.canvas .tm-canv-icon.tm-cog:hover {
+  color: forestgreen;
 }
 /* Canvas End */
 /* Pics Start */

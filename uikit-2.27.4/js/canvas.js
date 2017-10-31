@@ -36,6 +36,7 @@ $(function(){
             rect.width(width);
             rect.height(height);
         }
+        /* console.log(rect); */
     }
 
     function addAnchor(group, x, y, name) {
@@ -85,24 +86,27 @@ $(function(){
         width: width,
         height: height
     });
-    var layer = new Konva.Layer();
+    var layer = new Konva.Layer(); 
+
     stage.add(layer);
 
     $('.tm-draw').click(function(){
+     
         var droppableRect = new Konva.Rect({
             x: 0,
             y: 0,
-            width: 300,
-            height: 200,
-            /* fill: 'green', */
+            width: 30,
+            height: 20,
+            /* fill: 'green',  */
             stroke: 'black',
-            strokeWidth: 2
+            strokeWidth: 2,
+            /* globalCompositeOperation: 'luminosity' */
         });
         /* droppableRect.on('mousedown', function() {
             var layer = this.getLayer();
             layer.draw();
         }); */
-        droppableRect.on('mouseover', function() {
+        droppableRect.on('mouseover', function(e) {
             var layer = this.getLayer();
             document.body.style.cursor = 'move';
             layer.draw();
@@ -114,22 +118,126 @@ $(function(){
         });
         var droppableGroup = new Konva.Group({
             x: 50,
-            y: 50,
+            y: 50, 
             draggable: true
         });
         layer.add(droppableGroup);
-
+        
+        stage.add(layer); 
         droppableGroup.add(droppableRect).draw();
+        /* console.log(droppableGroup); */
         addAnchor(droppableGroup, 0, 0, 'topLeft');
-        addAnchor(droppableGroup, 300, 0, 'topRight');
-        addAnchor(droppableGroup, 300, 200, 'bottomRight');
-        addAnchor(droppableGroup, 0, 200, 'bottomLeft');
+        addAnchor(droppableGroup, 30, 0, 'topRight');
+        addAnchor(droppableGroup, 30, 20, 'bottomRight');
+        addAnchor(droppableGroup, 0, 20, 'bottomLeft');
     });
 
     $('.tm-rem').click(function(){
+         stage.clear();
+        layer.clear();
+        /* stage.destroy(layer); */
+        layer = new Konva.Layer({
+            /* clearBeforeDraw: false */
+        }); 
+        stage = new Konva.Stage({
+            container: 'canvas',
+            width: width,
+            height: height
+        });
+        stage.add(layer);
+        c = 10;
+    });
+
+    function clearStage () {
         stage.clear();
         layer.clear();
+        /* stage.destroy(layer); */
+        layer = new Konva.Layer({
+            /* clearBeforeDraw: false */
+        }); 
+        stage = new Konva.Stage({
+            container: 'canvas',
+            width: width,
+            height: height
+        });
+        stage.add(layer);
+    }
+
+    function downloadURI(uri, name) {
+        var link = document.createElement("a");
+        link.download = name;
+        link.href = uri;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        delete link;
+    }
+
+    $('.tm-redo').click(function(e){
+        var dataURL = stage.toDataURL();
+        /* console.log(dataURL); */
+        downloadURI(dataURL, 'stage.png');
+        e.preventDefault();
     });
+
+        var bg;
+    $('.tm-undo').click(function() {
+        var imageObj = new Image();
+        imageObj.onload = function() {
+            bg = new Konva.Image({
+                x: 0,
+                y: 0,
+                image: imageObj,
+                width: width,
+                height: height,
+                /* globalCompositeOperation: 'luminosity' */
+            }); 
+            console.log('Img loaded');
+            /* clipImg(100, 300, 200, 100); */
+        };
+        
+
+        imageObj.src = 'https://wallpaperstock.net/wallpapers/thumbs1/48733wide.jpg'; 
+        /* imageObj.crossorigin="anonymous"; */
+        /* imageObj.crossOrigin = "Anonymous"; */
+        //  imageObj.src = 'images/astam-img/top-slide-img-2.jpg'; 
+    });
+   function clipImg (x, y, w, h) {
+        var group = new Konva.Group({
+            clip: {
+                x : x,
+                y : y,
+                width : w,
+                height : h
+            }
+        });
+        group.add(bg);
+   
+        layer.add(group);   
+        layer.draw(); 
+    }
+ var c = 20;
+    $('.tm-del').click(function(){
+        
+        clipImg(/* 100 + c*5, 10 + c*5, */0,0, 200, 100);
+        c+=5;
+        /* clipImg(350, 300, 200, 100); */
+    });
+    $('.tm-cog').click(function(){
+        var nodes = stage.find('Group');
+        clearStage();
+        layer.clearBeforeDraw(false);
+        for (var i = 0, len = nodes.length; i < len; i++) {
+            clipImg(nodes[i].attrs.x, nodes[i].attrs.y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
+        }
+        /* console.log('**************************');
+        console.log(Konva.stages[0].children[0].children[0].attrs.x);
+        console.log(Konva.stages[0].children[0].attrs.y);
+        console.log(Konva.stages[0].children[0].children[0].attrs.width);
+        console.log(Konva.stages[0].children[0].children[0].attrs.height);
+         console.log(Konva); */
+    });
+
     /* $('.draw').click(function(){
         c = c + 5;
         draw_b();
