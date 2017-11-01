@@ -222,7 +222,8 @@
                                 <div class="uk-width-small-1-1 uk-width-medium-1-2">
                                     <div class="uk-form-row">
                                         <p class="uk-form-help-block">Или загрузите ваше изображение (jpg, png)</p>
-                                        <input type="file">
+                                        <input type="file" oi-file="options"  id="logo"  accept="image/*,image/jpeg,image/png,image/jpg"> 
+                                         <!-- <img src="" id="imgprvw" alt="">  -->
                                     </div>
                                 </div>
                                 <div class="uk-width-small-1-1 uk-width-medium-1-2">
@@ -309,10 +310,11 @@
                             <img src="images/Canvas1.jpg" alt="canvas">
                             <i class="tm-canv-icon tm-draw uk-icon-pencil-square-o uk-icon-hover"></i>
                             <i class="tm-canv-icon tm-del uk-icon-close uk-icon-hover"></i>
-                            <i class="tm-canv-icon tm-undo uk-icon-mail-reply uk-icon-hover"></i>
-                            <i class="tm-canv-icon tm-redo uk-icon-mail-forward uk-icon-hover"></i>
+                            <i class="tm-canv-icon tm-upload uk-icon-upload uk-icon-hover"></i> 
+                            <i class="tm-canv-icon tm-download uk-icon-download uk-icon-hover"></i> 
+                            <i class="tm-canv-icon tm-save uk-icon-save uk-icon-hover"></i>
                             <i class="tm-canv-icon tm-rem uk-icon-trash-o uk-icon-hover"></i>
-                            <i class="tm-canv-icon tm-cog uk-icon-cog uk-icon-hover"></i>
+                            <i class="tm-canv-icon tm-check uk-icon-check uk-icon-hover"></i>
                         </div>
                     </div>
                 </div>
@@ -570,6 +572,7 @@
     <!-- Script for range input Start -->
     <script src="range-slider.js"></script>
     <script src="js/canvas.js"></script>
+    <script src="js/core/jquery.base64.js"></script>
     <script>
         (function () {
 

@@ -10131,6 +10131,8 @@ h6 {
   height: 79%;
   width: 85%;
   overflow: hidden;
+  background-position: center;
+  background-size: 100% 100%;
   /* background-image: url(images/astam-img/top-slide-img-2.jpg); */
 }
 .canvas .tm-canv-icon {
@@ -10149,16 +10151,22 @@ h6 {
 .canvas .tm-canv-icon.tm-del:hover {
   color: #cb3000;
 }
-.canvas .tm-canv-icon.tm-undo {
-  top: 125px;
+.canvas .tm-canv-icon.tm-upload {
+  top: 220px;
 }
-.canvas .tm-canv-icon.tm-undo:hover {
-  color: #253c7f;
+.canvas .tm-canv-icon.tm-upload:hover {
+  color: lightpink;
 }
-.canvas .tm-canv-icon.tm-redo {
+.canvas .tm-canv-icon.tm-download {
+  top: 250px;
+}
+.canvas .tm-canv-icon.tm-download:hover {
+  color: lightgreen;
+}
+.canvas .tm-canv-icon.tm-save {
   top: 155px;
 }
-.canvas .tm-canv-icon.tm-redo:hover {
+.canvas .tm-canv-icon.tm-save:hover {
   color: #253c7f;
 }
 .canvas .tm-canv-icon.tm-rem {
@@ -10167,10 +10175,11 @@ h6 {
 .canvas .tm-canv-icon.tm-rem:hover {
   color: #cb3000;
 }
-.canvas .tm-canv-icon.tm-cog {
-  top: 220px;
+.canvas .tm-canv-icon.tm-check {
+  top: 125px;
+  /* top: 220px; */
 }
-.canvas .tm-canv-icon.tm-cog:hover {
+.canvas .tm-canv-icon.tm-check:hover {
   color: forestgreen;
 }
 /* Canvas End */
