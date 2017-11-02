@@ -256,7 +256,7 @@ $(function(){
 
         // imageObj.src = 'https://wallpaperstock.net/wallpapers/thumbs1/48733wide.jpg'; 
         /* imageObj.crossorigin="anonymous"; */
-        /* imageObj.crossOrigin = "Anonymous"; */
+        imageObj.crossOrigin = "Anonymous"; 
         /*  imageObj.src = 'images/astam-img/top-slide-img-3.jpg'; */ 
     };
    function clipImg (x, y, w, h) {
@@ -306,7 +306,7 @@ $(function(){
             reader.onload = function(e) {
                 var b = "data:image/jpeg;base64," + $.base64.encode(e.target.result);
                 imageObj.src = b;
-                 $("#imgprvw").attr("src", b);
+                 /* $("#imgprvw").attr("src", b); */
                  $("#canvas").css('backgroundImage', 'url(' + b + ')');
                  loadImg();
                  layer.clearBeforeDraw(true);
@@ -327,6 +327,23 @@ $(function(){
         json = stage.toJSON();
         console.log(json);
     });
+    $('.tm-api').click(function(){
+        console.log('api');
+        $.ajax({
+            type: 'GET',
+            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=yellow+flowers&image_type=photo&pretty=true',
+            success: function(data){
+                console.log('success');
+                var img = data.hits[0].webformatURL;
+                imageObj.src = img; 
+                /* $("#imgprvw").attr("src", img);  */
+                $("#canvas").css('backgroundImage', 'url(' + img + ')');
+                loadImg();
+                layer.clearBeforeDraw(true);
+            }
+        });
+    });
+
     /* $('.draw').click(function(){
         c = c + 5;
         draw_b();
