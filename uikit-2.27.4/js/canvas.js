@@ -1,6 +1,7 @@
 $(function(){
     var width = $('#canvas').width();
     var height = $('#canvas').height();
+    var modal = UIkit.modal("#my-id");
     function update(activeAnchor) {
         var group = activeAnchor.getParent();
         var topLeft = group.get('.topLeft')[0];
@@ -331,7 +332,7 @@ $(function(){
         var imgArr = [];
         $.ajax({
             type: 'GET',
-            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=yellow+flowers&image_type=photo&pretty=true',
+            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=aircraft&image_type=photo&pretty=true',
             success: function(data){
                 console.log('success');
                 imgArr = data.hits;
@@ -341,9 +342,21 @@ $(function(){
                 loadImg();
                 layer.clearBeforeDraw(true); */
                 var cont = $(".tm-modal-pics");
+                    cont.empty();
                 for(var i = 0, len = imgArr.length; i < len; i ++) {
-                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom"><img src="' +  imgArr[i].previewURL + '" alt="work1"><div>');
+                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img src="' +  imgArr[i].previewURL + '" alt="work1"><div>');
                 }
+                $('.tm-preview-cont').click(function(){
+                    var count = $(this).attr('data-count');
+                    var img = imgArr[count].webformatURL;
+                    imageObj.src = img;
+                    $("#canvas").css('backgroundImage', 'url(' + img + ')');
+                    loadImg();
+                    layer.clearBeforeDraw(true);
+                    if ( modal.isActive() ) {
+                        modal.hide();
+                    }
+                });
             }
         });
     });
