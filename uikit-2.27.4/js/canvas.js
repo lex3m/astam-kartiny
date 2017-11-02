@@ -86,6 +86,7 @@ $(function(){
         anchor.on('dragend', function() {
             group.setDraggable(true);
             layer.draw();
+            saveStage();
         });
         // add hover styling
         anchor.on('mouseover', function() {
@@ -112,21 +113,15 @@ $(function(){
 
     stage.add(layer);
     var sel, active;
-    $('.tm-draw').click(function(){
-     
-        var droppableRect = new Konva.Rect({
+    function rectDraw() {
+         var droppableRect = new Konva.Rect({
             x: 0,
             y: 0,
             width: 30,
             height: 20,
             stroke: 'black',
             strokeWidth: 2,
-            /* globalCompositeOperation: 'luminosity' */
         });
-        /* droppableRect.on('mousedown', function() {
-            var layer = this.getLayer();
-            layer.draw();
-        }); */
         droppableRect.on('mouseover', function(e) {
             var layer = this.getLayer();
             document.body.style.cursor = 'move';
@@ -135,7 +130,6 @@ $(function(){
         droppableRect.on('mouseout', function(e) {
             var layer = this.getLayer();
             document.body.style.cursor = 'default';
-            /* e.target.fill(null); */
             layer.draw();
         });
         droppableRect.on('mousedown', function(e) {
@@ -148,6 +142,9 @@ $(function(){
             sel = e.target.parent;
             active = e.target;
             active.fill('rgba(37, 60, 127, .3)');
+        });
+        droppableRect.on('mouseup', function(e) {
+            saveStage();
         });
         var droppableGroup = new Konva.Group({
             x: 50,
@@ -176,39 +173,37 @@ $(function(){
             }
         });
         layer.add(droppableGroup);
-        
         stage.add(layer); 
         droppableGroup.add(droppableRect).draw();
-        /* console.log(droppableGroup); */
+
         addAnchor(droppableGroup, 0, 0, 'topLeft');
         addAnchor(droppableGroup, 30, 0, 'topRight');
         addAnchor(droppableGroup, 30, 20, 'bottomRight');
-        addAnchor(droppableGroup, 0, 20, 'bottomLeft');
+        addAnchor(droppableGroup, 0, 20, 'bottomLeft'); 
+        saveStage();
+    }
+    $('.tm-draw').click(function(){
+        rectDraw();       
     });
-
+    
     $('.tm-rem').click(function(){
-         stage.clear();
+        stage.clear();
         layer.clear();
-        /* stage.destroy(layer); */
-        layer = new Konva.Layer({
-            /* clearBeforeDraw: false */
-        }); 
+        layer = new Konva.Layer(); 
         stage = new Konva.Stage({
             container: 'canvas',
             width: width,
             height: height
         });
         stage.add(layer);
-        c = 10;
+        $("#canvas").css('backgroundImage', 'none');
+        $('#logo').val('');
     });
 
     function clearStage () {
         stage.clear();
         layer.clear();
-        /* stage.destroy(layer); */
-        layer = new Konva.Layer({
-            /* clearBeforeDraw: false */
-        }); 
+        layer = new Konva.Layer(); 
         stage = new Konva.Stage({
             container: 'canvas',
             width: width,
@@ -229,18 +224,14 @@ $(function(){
 
     $('.tm-save').click(function(e){
         var dataURL = stage.toDataURL();
-        /* console.log(dataURL); */
         downloadURI(dataURL, 'stage.png');
         e.preventDefault();
         clearStage();
     });
 
-        var bg, imageObj = new Image();
-    /* $('.tm-image').click(function() {
-        loadImg();
-    }); */
+    var bg, imageObj = new Image();
+
     function loadImg() {
-        // imageObj = new Image();
         imageObj.onload = function() {
             bg = new Konva.Image({
                 x: 0,
@@ -248,17 +239,10 @@ $(function(){
                 image: imageObj,
                 width: width,
                 height: height,
-                /* globalCompositeOperation: 'luminosity' */
             }); 
             console.log('Img loaded');
-            /* clipImg(100, 300, 200, 100); */
-        };
-        
-
-        // imageObj.src = 'https://wallpaperstock.net/wallpapers/thumbs1/48733wide.jpg'; 
-        /* imageObj.crossorigin="anonymous"; */
+        };   
         imageObj.crossOrigin = "Anonymous"; 
-        /*  imageObj.src = 'images/astam-img/top-slide-img-3.jpg'; */ 
     };
    function clipImg (x, y, w, h) {
         var group = new Konva.Group({
@@ -270,7 +254,6 @@ $(function(){
             }
         });
         group.add(bg);
-   
         layer.add(group);   
         layer.draw(); 
     }
@@ -278,18 +261,25 @@ $(function(){
     $('.tm-del').click(function(e){
         if(sel) sel.destroy();
         layer.draw();
+        saveStage();
     });
 
     $('.tm-check').click(function(){
-        var nodes = stage.find('Group');
+        //var nodes = stage.find('Group');
+        /* for (var i = 0, len = nodes.length; i < len; i++) {
+            clipImg(nodes[i].attrs.x, nodes[i].attrs.y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
+        } */
+        var clipStage = JSON.parse(stage.toJSON()).children[0].children;
         clearStage();
         layer.clearBeforeDraw(false);
-        for (var i = 0, len = nodes.length; i < len; i++) {
-            clipImg(nodes[i].attrs.x, nodes[i].attrs.y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
+        for (var i = 0, len = clipStage.length; i < len; i++) {
+            if(clipStage[i].attrs.x && clipStage[i].attrs.y){
+                clipImg(clipStage[i].attrs.x, clipStage[i].attrs.y, clipStage[i].children[0].attrs.width, clipStage[i].children[0].attrs.height);
+            }
         }
         $("#canvas").css('backgroundImage', 'none');
-        $("#imgprvw").attr("src", "");
         $('#logo').val('');
+        /* $("#imgprvw").attr("src", ""); */
         layer.clearBeforeDraw(true);
         imageObj.src = "";
         /* console.log('**************************');
@@ -307,44 +297,99 @@ $(function(){
             reader.onload = function(e) {
                 var b = "data:image/jpeg;base64," + $.base64.encode(e.target.result);
                 imageObj.src = b;
-                 /* $("#imgprvw").attr("src", b); */
                  $("#canvas").css('backgroundImage', 'url(' + b + ')');
                  loadImg();
                  layer.clearBeforeDraw(true);
-                 /* imageObj.src = ""; */
             };
             reader.readAsBinaryString(file.files[0]);
         }
     });
     $('.tm-upload').click(function(){
         console.log('upload');
+        clearStage();
         // var json = '{"attrs":{"width":578,"height":200},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":100,"y":100,"sides":6,"radius":70,"fill":"red","stroke":"black","strokeWidth":4},"className":"RegularPolygon"}]}]}';
     // create node using json string
         stage = Konva.Node.create(json, 'canvas');
+        var arRect = stage.find('Rect');
+        var arCircle = stage.find('Circle');
+        for(var i = 0, len = arCircle.length; i < len; i ++){
+            var group = arCircle[i].parent;
+            arCircle[i].on('dragmove', function() {
+                update(this);
+                layer.draw();
+            });
+            arCircle[i].on('mousedown touchstart', function() {
+                group.setDraggable(false);
+                this.moveToTop();
+            });
+            arCircle[i].on('dragend', function() {
+                group.setDraggable(true);
+                layer.draw();
+                saveStage();
+            });
+            // add hover styling
+            arCircle[i].on('mouseover', function() {
+                var layer = this.getLayer();
+                document.body.style.cursor = 'nesw-resize';
+                this.setStrokeWidth(4);
+                layer.draw();
+            });
+            arCircle[i].on('mouseout', function() {
+                var layer = this.getLayer();
+                document.body.style.cursor = 'default';
+                this.setStrokeWidth(2);
+                layer.draw();
+            });
+        }
+        for(var i = 0, len = arRect.length; i < len; i ++){
+            arRect[i].on('mouseover', function(e) {
+                var layer = this.getLayer();
+                document.body.style.cursor = 'move';
+                layer.draw();
+            });
+            arRect[i].on('mouseout', function(e) {
+                var layer = this.getLayer();
+                document.body.style.cursor = 'default';
+                layer.draw();
+            });
+            arRect[i].on('mousedown', function(e) {
+                var allRect = stage.find('Rect');
+                if(allRect) {
+                    for (var i = 0, len = allRect.length; i < len; i++) {
+                        allRect[i].fill(null);
+                    }
+                }
+                sel = e.target.parent;
+                active = e.target;
+                active.fill('rgba(37, 60, 127, .3)');
+            });
+            arRect[i].on('mouseup', function(e) {
+                saveStage();
+            });
+        }
+        console.log(stage.find('Rect'));
     });
     var json;
-    $('.tm-download').click(function(){
+    function saveStage() {
         console.log('download');
         json = stage.toJSON();
         console.log(json);
+    }
+    $('.tm-download').click(function(){
+        saveStage();
     });
     $('.tm-api').click(function(){
         var imgArr = [];
         $.ajax({
             type: 'GET',
-            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=aircraft&image_type=photo&pretty=true',
+            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=mountain&image_type=photo&pretty=true',
             success: function(data){
                 console.log('success');
                 imgArr = data.hits;
-                /* var img = data.hits[0].webformatURL;
-                imageObj.src = img; 
-                $("#canvas").css('backgroundImage', 'url(' + img + ')');
-                loadImg();
-                layer.clearBeforeDraw(true); */
                 var cont = $(".tm-modal-pics");
                     cont.empty();
                 for(var i = 0, len = imgArr.length; i < len; i ++) {
-                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img src="' +  imgArr[i].previewURL + '" alt="work1"><div>');
+                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img src="' +  imgArr[i].previewURL + '" alt="pic' + i + '"><div>');
                 }
                 $('.tm-preview-cont').click(function(){
                     var count = $(this).attr('data-count');
@@ -360,15 +405,5 @@ $(function(){
             }
         });
     });
-
-    /* $('.draw').click(function(){
-        c = c + 5;
-        draw_b();
-    }); 
-    $('.undraw').click(function(){
-        var b_canvas = document.getElementById("canvas");
-        var b_context = b_canvas.getContext("2d");
-        b_context.clearRect(55, 30, 150, 100);
-    }); */
 
 });
