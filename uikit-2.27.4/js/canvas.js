@@ -328,18 +328,22 @@ $(function(){
         console.log(json);
     });
     $('.tm-api').click(function(){
-        console.log('api');
+        var imgArr = [];
         $.ajax({
             type: 'GET',
             url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=yellow+flowers&image_type=photo&pretty=true',
             success: function(data){
                 console.log('success');
-                var img = data.hits[0].webformatURL;
+                imgArr = data.hits;
+                /* var img = data.hits[0].webformatURL;
                 imageObj.src = img; 
-                /* $("#imgprvw").attr("src", img);  */
                 $("#canvas").css('backgroundImage', 'url(' + img + ')');
                 loadImg();
-                layer.clearBeforeDraw(true);
+                layer.clearBeforeDraw(true); */
+                var cont = $(".tm-modal-pics");
+                for(var i = 0, len = imgArr.length; i < len; i ++) {
+                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom"><img src="' +  imgArr[i].previewURL + '" alt="work1"><div>');
+                }
             }
         });
     });
