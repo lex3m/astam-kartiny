@@ -1,11 +1,11 @@
 $(function(){
     var calculation = {
-        koef: 5
-
+        koef: 4
     }
     var width = $('#canvas').width();
     var height = $('#canvas').height();
     var modal = UIkit.modal("#my-id");
+    var modal2 = UIkit.modal("#see-in");
     function update(activeAnchor) {
         var group = activeAnchor.getParent();
         var topLeft = group.get('.topLeft')[0];
@@ -277,9 +277,18 @@ $(function(){
 
     $('.tm-save').click(function(e){
         var dataURL = stage.toDataURL();
-        downloadURI(dataURL, 'stage.png');
+       /*  console.log(dataURL); */
+        $('.tm-ready').attr('src', dataURL);
+        //downloadURI(dataURL, 'stage.png');
         e.preventDefault();
         clearStage();
+    });
+    $('.js-inter').click(function(e){
+        // if ( modal2.isActive() ) {
+            modal2.show();
+            var curPic = $(this).attr('src');
+            $('.js-bgpic').attr('src', curPic);
+        // }
     });
 
     var bg, imageObj = new Image();

@@ -10198,6 +10198,17 @@ h6 {
   margin: 1.5em 0;
 }
 /* Pics End */
+/* See-in modal Start*/
+#see-in .tm-see-pics {
+  position: relative;
+}
+#see-in .tm-see-pics .tm-ready {
+  position: absolute;
+  top: 50px;
+  left: calc(39%);
+  width: 20%;
+}
+/* See-in modal end */
 /* Working Start */
 #working {
   padding-top: 1px;
