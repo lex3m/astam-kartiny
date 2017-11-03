@@ -1,4 +1,8 @@
 $(function(){
+    var calculation = {
+        koef: 5
+
+    }
     var width = $('#canvas').width();
     var height = $('#canvas').height();
     var modal = UIkit.modal("#my-id");
@@ -119,7 +123,7 @@ $(function(){
         fontSize: 12,
         padding: 5,
         visible: true,
-        fill: "black",
+        fill: "red",
         opacity: 0.75,
         textFill: "white"
     });
@@ -146,7 +150,7 @@ $(function(){
             console.log(e.target.attrs.width);
             console.log(e.target.attrs.height);
         });
-        droppableRect.on('dragmove', function(e) {
+        /* droppableRect.on('dragmove', function(e) {
             // update tooltip
             var mousePos = stage.getPointerPosition();
             tooltip.position({
@@ -156,18 +160,11 @@ $(function(){
             tooltip.text("width: " + e.target.attrs.width + ", height: " + e.target.attrs.height);
             tooltip.show();
             tooltipLayer.draw();
-        });
+        });*/
         droppableRect.on('mousemove', function(e) {
-            // update tooltip
-            var mousePos = stage.getPointerPosition();
-            tooltip.position({
-                x : mousePos.x + 5,
-                y : mousePos.y + 5
-            });
-            tooltip.text("width: " + e.target.attrs.width + ", height: " + e.target.attrs.height);
-            tooltip.show();
+            tooltip.hide();
             tooltipLayer.draw();
-        });
+        }); 
 
         droppableRect.on('mouseout', function(e) {
             var layer = this.getLayer();
@@ -186,11 +183,20 @@ $(function(){
             sel = e.target.parent;
             active = e.target;
             active.fill('rgba(37, 60, 127, .3)');
-            tooltip.hide();
+            // update tooltip
+            var mousePos = stage.getPointerPosition();
+            tooltip.position({
+                x : mousePos.x + 5,
+                y : mousePos.y + 5
+            });
+            tooltip.text("width: " + e.target.attrs.width/calculation.koef + "см, height: " + e.target.attrs.height/calculation.koef + "см");
+            tooltip.show();
             tooltipLayer.draw();
         });
         droppableRect.on('mouseup', function(e) {
             saveStage();
+            tooltip.hide();
+            tooltipLayer.draw();
         });
         var droppableGroup = new Konva.Group({
             x: 50,
@@ -430,12 +436,13 @@ $(function(){
     });
     var json;
     function saveStage() {
-        console.log('download');
+        //console.log('download');
         json = stage.toJSON();
-        console.log(json);
+        //console.log(json);
     }
     $('.tm-download').click(function(){
-        saveStage();
+        //saveStage();
+        getTotal();
     });
     $('.tm-api').click(function(){
         var imgArr = [];
@@ -464,5 +471,18 @@ $(function(){
             }
         });
     });
+
+    var sum = 0;
+    function getTotal() {
+        sum = 0;
+        var getStage = JSON.parse(stage.toJSON()).children[0].children;
+        for (var i = 0, len = getStage.length; i < len; i++) {
+            if(getStage[i].attrs.x && getStage[i].attrs.y){
+                sum += Math.abs(getStage[i].children[0].attrs.width)/calculation.koef * Math.abs(getStage[i].children[0].attrs.height)/calculation.koef;
+            }
+        }
+        //console.log(sum);
+        $('.js-total').text(sum);
+    }
 
 });
