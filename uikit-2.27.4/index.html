@@ -312,8 +312,46 @@
                     <div class="uk-width-small-1-1 uk-width-medium-6-10">
                         <!-- <button class="undraw">Del</button>  -->
                         <div class="canvas">
-                            <div id="canvas" style="border: 1px solid grey"></div>
-                            <img src="images/Canvas1.jpg" alt="canvas">
+                            <div class="canvas-wrap">
+                                <div class="tm-rul-wrap js-ruler-gor uk-grid uk-grid-collapse">
+                                    <div class="tm-ruler rul1"><span>5</span></div>
+                                    <div class="tm-ruler rul2"><span>10</span></div>
+                                    <div class="tm-ruler rul3"><span>15</span></div>
+                                    <div class="tm-ruler rul4"><span>20</span></div>
+                                    <div class="tm-ruler rul5"><span>25</span></div>
+                                    <div class="tm-ruler rul6"><span>30</span></div>
+                                    <div class="tm-ruler rul7"><span>35</span></div>
+                                    <div class="tm-ruler rul8"><span>40</span></div>
+                                    <div class="tm-ruler rul9"><span>45</span></div>
+                                    <div class="tm-ruler rul10"><span>50</span></div>
+                                    <div class="tm-ruler rul11"><span>55</span></div>
+                                    <div class="tm-ruler rul12"><span>60</span></div>
+                                    <div class="tm-ruler rul13"><span>65</span></div>
+                                    <div class="tm-ruler rul14"><span>70</span></div>
+                                    <div class="tm-ruler rul15"><span>75</span></div>
+                                    <div class="tm-ruler rul16"><span>80</span></div>
+                                    <div class="tm-ruler rul17"><span>85</span></div>
+                                    <div class="tm-ruler rul18"><span>90</span></div>
+                                    <div class="tm-ruler rul19"><span>95</span></div>
+                                    <div class="tm-ruler rul20"><span>100</span></div>
+                                </div>
+                                <div class="tm-canv-wrap uk-grid uk-grid-collapse">
+                                    <div class="tm-rulv-wrap js-ruler-ver">
+                                        <div class="tm-ruler rul1"><span>5</span></div>
+                                        <div class="tm-ruler rul2"><span>10</span></div>
+                                        <div class="tm-ruler rul3"><span>15</span></div>
+                                        <div class="tm-ruler rul4"><span>20</span></div>
+                                        <div class="tm-ruler rul5"><span>25</span></div>
+                                        <div class="tm-ruler rul6"><span>30</span></div>
+                                        <div class="tm-ruler rul7"><span>35</span></div>
+                                        <div class="tm-ruler rul8"><span>40</span></div>
+                                        <div class="tm-ruler rul9"><span>45</span></div>
+                                        <div class="tm-ruler rul10"><span>50</span></div>
+                                    </div>
+                                    <div id="canvas" style="border: 1px solid grey"></div>
+                                </div>
+                            </div>
+                            <!-- <img src="images/Canvas1.jpg" alt="canvas"> -->
                             <i class="tm-canv-icon tm-draw uk-icon-pencil-square-o uk-icon-hover"></i>
                             <i class="tm-canv-icon tm-del uk-icon-close uk-icon-hover"></i>
                             <i class="tm-canv-icon tm-upload uk-icon-upload uk-icon-hover"></i> 
@@ -593,64 +631,7 @@
     <script src="range-slider.js"></script>
     <script src="js/canvas.js"></script>
     <script src="js/core/jquery.base64.js"></script>
-    <script>
-        (function () {
-
-            var selector = '[data-rangeSlider]',
-                elements = document.querySelectorAll(selector);
-
-            // Example functionality to demonstrate a value feedback
-            function valueOutput(element) {
-                var value = element.value,
-                    output = element.parentNode.getElementsByTagName('output')[0];
-                output.innerHTML = value;
-            }
-
-            for (var i = elements.length - 1; i >= 0; i--) {
-                valueOutput(elements[i]);
-            }
-
-            Array.prototype.slice.call(document.querySelectorAll('input[type="range"]')).forEach(function (el) {
-                el.addEventListener('input', function (e) {
-                    valueOutput(e.target);
-                }, false);
-            });
-
-
-
-
-
-
-
-
-
-            // Basic rangeSlider initialization
-            rangeSlider.create(elements, {
-
-                // Callback function
-                onInit: function () {
-                },
-
-                // Callback function
-                onSlideStart: function (value, percent, position) {
-                    console.info('onSlideStart', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
-                },
-
-                // Callback function
-                onSlide: function (value, percent, position) {
-                    console.log('onSlide', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
-                },
-
-                // Callback function
-                onSlideEnd: function (value, percent, position) {
-                    console.warn('onSlideEnd', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
-                }
-            });
-
-
-
-        })();
-    </script>
+    <script src="js/core/range-slider-custom.js"></script>
     <!-- Script for range input End -->
     <!-- Script for working block Start -->
     <script>

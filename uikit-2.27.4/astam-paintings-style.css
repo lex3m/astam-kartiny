@@ -10123,16 +10123,65 @@ h6 {
 /* Canvas Start */
 .canvas {
   position: relative;
+  height: 500px;
+  width: 885px;
+  background: #cecece;
+}
+.canvas .canvas-wrap {
+  height: 100%;
+}
+.canvas .canvas-wrap .tm-rul-wrap {
+  width: 100%;
+  background: #0098ff;
+  padding-top: 20px;
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+.canvas .canvas-wrap .tm-rul-wrap .tm-ruler {
+  width: 38px;
+  height: 10px;
+  border-right: 2px solid  #fff;
+  position: relative;
+}
+.canvas .canvas-wrap .tm-rul-wrap .tm-ruler span {
+  position: absolute;
+  top: -10px;
+  right: 2px;
+  color: #fff;
+  font-size: 12px;
+}
+.canvas .canvas-wrap .tm-canv-wrap .tm-rulv-wrap {
+  padding-left: 20px;
+  padding-top: 38px;
+  background: #0098ff;
+  min-height: 100%;
+}
+.canvas .canvas-wrap .tm-canv-wrap .tm-rulv-wrap .tm-ruler {
+  border-top: 2px solid  #fff;
+  width: 10px;
+  height: 40px;
+  position: relative;
+}
+.canvas .canvas-wrap .tm-canv-wrap .tm-rulv-wrap .tm-ruler span {
+  position: absolute;
+  top: 0px;
+  left: -10px;
+  color: #fff;
+  font-size: 12px;
 }
 .canvas #canvas {
-  position: absolute;
+  /* position: absolute;  */
   right: 55px;
   top: 65px;
-  height: 79%;
-  width: 85%;
+  /* height: 79%;
+    width: 85%; */
+  height: 468px;
+  width: 800px;
   overflow: hidden;
   background-position: center;
   background-size: 100% 100%;
+  border: none !important;
+  box-shadow: inset 1px 1px 10px #333;
   /* background-image: url(images/astam-img/top-slide-img-2.jpg); */
 }
 .canvas .tm-canv-icon {

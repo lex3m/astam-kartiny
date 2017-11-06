@@ -1,6 +1,6 @@
 $(function(){
     var calculation = {
-        koef: 4
+        koef: 8
     }
     var width = $('#canvas').width();
     var height = $('#canvas').height();
@@ -144,10 +144,6 @@ $(function(){
             var layer = this.getLayer();
             document.body.style.cursor = 'move';
             layer.draw();
-            /* console.log(e.target);
-            console.log(e.target.parent);
-            console.log(e.target.attrs.width);
-            console.log(e.target.attrs.height); */
         });
         /* droppableRect.on('dragmove', function(e) {
             // update tooltip
@@ -188,10 +184,11 @@ $(function(){
                 x : mousePos.x + 5,
                 y : mousePos.y + 5
             });
-            tooltip.text("width: " + e.target.attrs.width/calculation.koef + "см, height: " + e.target.attrs.height/calculation.koef + "см");
+            /* calculation.koef = 38/globalKoef; */
+            tooltip.text("ширина: " + Math.ceil(e.target.attrs.width/globalKoef) + "см, высота: " + Math.ceil(e.target.attrs.height/globalKoef) + "см");
             tooltip.show();
             tooltipLayer.draw();
-            console.log(this);
+            console.log(tooltip);
             // console.log(tooltip);
             // console.log(tooltipLayer);
         });
@@ -493,7 +490,7 @@ $(function(){
         var getStage = JSON.parse(stage.toJSON()).children[0].children;
         for (var i = 0, len = getStage.length; i < len; i++) {
             if(getStage[i].attrs.x && getStage[i].attrs.y){
-                sum += Math.abs(getStage[i].children[0].attrs.width)/calculation.koef * Math.abs(getStage[i].children[0].attrs.height)/calculation.koef;
+                sum += Math.abs(getStage[i].children[0].attrs.width)/globalKoef * Math.abs(getStage[i].children[0].attrs.height)/globalKoef;
             }
         }
         //console.log(sum);
