@@ -41,7 +41,6 @@ $(function(){
             rect.width(width);
             rect.height(height);
         }
-        /* console.log(rect); */
     }
 
     function addAnchor(group, x, y, name) {
@@ -145,10 +144,10 @@ $(function(){
             var layer = this.getLayer();
             document.body.style.cursor = 'move';
             layer.draw();
-            console.log(e.target);
+            /* console.log(e.target);
             console.log(e.target.parent);
             console.log(e.target.attrs.width);
-            console.log(e.target.attrs.height);
+            console.log(e.target.attrs.height); */
         });
         /* droppableRect.on('dragmove', function(e) {
             // update tooltip
@@ -192,6 +191,9 @@ $(function(){
             tooltip.text("width: " + e.target.attrs.width/calculation.koef + "см, height: " + e.target.attrs.height/calculation.koef + "см");
             tooltip.show();
             tooltipLayer.draw();
+            console.log(this);
+            // console.log(tooltip);
+            // console.log(tooltipLayer);
         });
         droppableRect.on('mouseup', function(e) {
             saveStage();
@@ -263,6 +265,7 @@ $(function(){
             height: height
         });
         stage.add(layer);
+        stage.add(tooltipLayer);
     }
 
     function downloadURI(uri, name) {
@@ -302,7 +305,7 @@ $(function(){
                 width: width,
                 height: height,
             }); 
-            console.log('Img loaded');
+           // console.log('Img loaded');
         };   
         imageObj.crossOrigin = "Anonymous"; 
     };
@@ -327,30 +330,33 @@ $(function(){
     });
 
     $('.tm-check').click(function(){
-        //var nodes = stage.find('Group');
-        /* for (var i = 0, len = nodes.length; i < len; i++) {
-            clipImg(nodes[i].attrs.x, nodes[i].attrs.y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
-        } */
-        var clipStage = JSON.parse(stage.toJSON()).children[0].children;
+        var nodes = stage.find('Group');
         clearStage();
         layer.clearBeforeDraw(false);
         var x, y;
-        for (var i = 0, len = clipStage.length; i < len; i++) {
-            if(clipStage[i].attrs.x && clipStage[i].attrs.y){
-                /* if(clipStage[i].children[0].attrs.y) {
-                    y = clipStage[i].attrs.y + clipStage[i].children[0].attrs.y + clipStage[i].children[0].attrs.height;
-                } else {
-                    y = clipStage[i].attrs.y;
-                }
-                if(clipStage[i].children[0].attrs.x) {
-                    x = clipStage[i].attrs.x + clipStage[i].children[0].attrs.x + clipStage[i].children[0].attrs.width;
-                } else {
-                    x = clipStage[i].attrs.x;
-                }
-                clipImg(x, y, Math.abs(clipStage[i].children[0].attrs.width), Math.abs(clipStage[i].children[0].attrs.height));
-                */clipImg(clipStage[i].attrs.x, clipStage[i].attrs.y, Math.abs(clipStage[i].children[0].attrs.width), Math.abs(clipStage[i].children[0].attrs.height));
-            }
-        }
+        // console.log(nodes);
+         for (var i = 0, len = nodes.length; i < len; i++) {
+             x = nodes[i].attrs.x + nodes[i].children[0].attrs.x;
+             y = nodes[i].attrs.y + nodes[i].children[0].attrs.y;
+            clipImg(x, y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
+        } 
+        // var clipStage = JSON.parse(stage.toJSON()).children[0].children;
+        // for (var i = 0, len = clipStage.length; i < len; i++) {
+        //     if(clipStage[i].attrs.x && clipStage[i].attrs.y){
+        //         /* if(clipStage[i].children[0].attrs.y) {
+        //             y = clipStage[i].attrs.y + clipStage[i].children[0].attrs.y + clipStage[i].children[0].attrs.height;
+        //         } else {
+        //             y = clipStage[i].attrs.y;
+        //         }
+        //         if(clipStage[i].children[0].attrs.x) {
+        //             x = clipStage[i].attrs.x + clipStage[i].children[0].attrs.x + clipStage[i].children[0].attrs.width;
+        //         } else {
+        //             x = clipStage[i].attrs.x;
+        //         }
+        //         clipImg(x, y, Math.abs(clipStage[i].children[0].attrs.width), Math.abs(clipStage[i].children[0].attrs.height));
+        //         */clipImg(clipStage[i].attrs.x, clipStage[i].attrs.y, Math.abs(clipStage[i].children[0].attrs.width), Math.abs(clipStage[i].children[0].attrs.height));
+        //     }
+        // }
         $("#canvas").css('backgroundImage', 'none');
         $('#logo').val('');
         /* $("#imgprvw").attr("src", ""); */
@@ -379,7 +385,7 @@ $(function(){
         }
     });
     $('.tm-upload').click(function(){
-        console.log('upload');
+        //console.log('upload');
         clearStage();
         // var json = '{"attrs":{"width":578,"height":200},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":100,"y":100,"sides":6,"radius":70,"fill":"red","stroke":"black","strokeWidth":4},"className":"RegularPolygon"}]}]}';
     // create node using json string
@@ -441,7 +447,7 @@ $(function(){
                 saveStage();
             });
         }
-        console.log(stage.find('Rect'));
+        //console.log(stage.find('Rect'));
     });
     var json;
     function saveStage() {
@@ -459,7 +465,7 @@ $(function(){
             type: 'GET',
             url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=mountain&image_type=photo&pretty=true',
             success: function(data){
-                console.log('success');
+                //console.log('success');
                 imgArr = data.hits;
                 var cont = $(".tm-modal-pics");
                     cont.empty();
