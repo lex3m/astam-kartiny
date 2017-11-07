@@ -90,6 +90,7 @@ $(function(){
             group.setDraggable(true);
             layer.draw();
             saveStage();
+            getTotal();
         });
         // add hover styling
         anchor.on('mouseover', function() {
@@ -169,12 +170,13 @@ $(function(){
             tooltipLayer.draw();
         });
         droppableRect.on('mousedown', function(e) {
-            var allRect = stage.find('Rect');
+            /* var allRect = stage.find('Rect');
             if(allRect) {
                 for (var i = 0, len = allRect.length; i < len; i++) {
                     allRect[i].fill(null);
                 }
-            }
+            } */
+            selectionRectRemove();
             sel = e.target.parent;
             active = e.target;
             active.fill('rgba(37, 60, 127, .3)');
@@ -233,6 +235,7 @@ $(function(){
         addAnchor(droppableGroup, 30, 20, 'bottomRight');
         addAnchor(droppableGroup, 0, 20, 'bottomLeft'); 
         saveStage();
+        getTotal();
     }
     $('.tm-draw').click(function(){
         rectDraw();       
@@ -250,8 +253,14 @@ $(function(){
         stage.add(layer);
         $("#canvas").css('backgroundImage', 'none');
         $('#logo').val('');
+        clearTotal();
+        clearHistory();
     });
 
+    function clearHistory () {
+        state = [];
+        mods = 0;
+    }
     function clearStage () {
         stage.clear();
         layer.clear();
@@ -264,6 +273,7 @@ $(function(){
         stage.add(layer);
         stage.add(tooltipLayer);
     }
+
 
     function downloadURI(uri, name) {
         var link = document.createElement("a");
@@ -282,6 +292,8 @@ $(function(){
         //downloadURI(dataURL, 'stage.png');
         e.preventDefault();
         clearStage();
+        clearHistory();
+        clearTotal();
     });
     $('.js-inter').click(function(e){
         // if ( modal2.isActive() ) {
@@ -322,8 +334,9 @@ $(function(){
 
     $('.tm-del').click(function(e){
         if(sel) sel.destroy();
-        layer.draw();
+        stage.draw();
         saveStage();
+        getTotal();
     });
 
     $('.tm-check').click(function(){
@@ -391,81 +404,95 @@ $(function(){
             reader.readAsBinaryString(file.files[0]);
         }
     });
-    $('.tm-upload').click(function(){
-        //console.log('upload');
+    $('.tm-undo').click(function(){
+        if (mods < state.length) {
+            history(true);
+        }        
+    });
+    $('.tm-redo').click(function(){
+        if (mods > 0){
+            history(false);
+        }
+    });
+    function history(arg) {
         clearStage();
-        // var json = '{"attrs":{"width":578,"height":200},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":100,"y":100,"sides":6,"radius":70,"fill":"red","stroke":"black","strokeWidth":4},"className":"RegularPolygon"}]}]}';
-    // create node using json string
-        stage = Konva.Node.create(json, 'canvas');
-        var arRect = stage.find('Rect');
-        var arCircle = stage.find('Circle');
-        for(var i = 0, len = arCircle.length; i < len; i ++){
-            var group = arCircle[i].parent;
-            arCircle[i].on('dragmove', function() {
-                update(this);
-                layer.draw();
-            });
-            arCircle[i].on('mousedown touchstart', function() {
-                group.setDraggable(false);
-                this.moveToTop();
-            });
-            arCircle[i].on('dragend', function() {
-                group.setDraggable(true);
-                layer.draw();
-                saveStage();
-            });
-            // add hover styling
-            arCircle[i].on('mouseover', function() {
-                var layer = this.getLayer();
-                document.body.style.cursor = 'nesw-resize';
-                this.setStrokeWidth(4);
-                layer.draw();
-            });
-            arCircle[i].on('mouseout', function() {
-                var layer = this.getLayer();
-                document.body.style.cursor = 'default';
-                this.setStrokeWidth(2);
-                layer.draw();
-            });
+        var st;
+        if(arg){
+            st = state[state.length - 1 - mods - 1];
+            mods += 1;
+        } else {
+            st = state[state.length - 1 - mods + 1];
+            mods -= 1;
         }
-        for(var i = 0, len = arRect.length; i < len; i ++){
-            arRect[i].on('mouseover', function(e) {
-                var layer = this.getLayer();
-                document.body.style.cursor = 'move';
-                layer.draw();
-            });
-            arRect[i].on('mouseout', function(e) {
-                var layer = this.getLayer();
-                document.body.style.cursor = 'default';
-                layer.draw();
-            });
-            arRect[i].on('mousedown', function(e) {
-                var allRect = stage.find('Rect');
-                if(allRect) {
-                    for (var i = 0, len = allRect.length; i < len; i++) {
-                        allRect[i].fill(null);
-                    }
-                }
-                sel = e.target.parent;
-                active = e.target;
-                active.fill('rgba(37, 60, 127, .3)');
-            });
-            arRect[i].on('mouseup', function(e) {
-                saveStage();
-            });
+        if(st) {
+            stage = Konva.Node.create(st, 'canvas');
+            var arRect = stage.find('Rect');
+            var arCircle = stage.find('Circle');
+            for(var i = 0, len = arCircle.length; i < len; i ++){
+                var group = arCircle[i].parent;
+                arCircle[i].on('dragmove', function() {
+                    update(this);
+                    layer.draw();
+                });
+                arCircle[i].on('mousedown touchstart', function() {
+                    group.setDraggable(false);
+                    this.moveToTop();
+                });
+                arCircle[i].on('dragend', function() {
+                    group.setDraggable(true);
+                    layer.draw();
+                    saveStage();
+                    getTotal();
+                });
+                // add hover styling
+                arCircle[i].on('mouseover', function() {
+                    var layer = this.getLayer();
+                    document.body.style.cursor = 'nesw-resize';
+                    this.setStrokeWidth(4);
+                    layer.draw();
+                });
+                arCircle[i].on('mouseout', function() {
+                    var layer = this.getLayer();
+                    document.body.style.cursor = 'default';
+                    this.setStrokeWidth(2);
+                    layer.draw();
+                });
+            }
+            for(var i = 0, len = arRect.length; i < len; i ++){
+                arRect[i].on('mouseover', function(e) {
+                    var layer = this.getLayer();
+                    document.body.style.cursor = 'move';
+                    layer.draw();
+                });
+                arRect[i].on('mouseout', function(e) {
+                    var layer = this.getLayer();
+                    document.body.style.cursor = 'default';
+                    layer.draw();
+                });
+                arRect[i].on('mousedown', function(e) {
+                    selectionRectRemove();
+                    sel = e.target.parent;
+                    active = e.target;
+                    active.fill('rgba(37, 60, 127, .3)');
+                });
+                arRect[i].on('mouseup', function(e) {
+                    saveStage();
+                    getTotal();
+                });
+            }
         }
-        console.log(stage.find('Group'));
-    });
-    var json;
-    function saveStage() {
-        //console.log('download');
-        json = stage.toJSON();
-        //console.log(json);
-    }
-    $('.tm-download').click(function(){
-        //saveStage();
         getTotal();
-    });
+        selectionRectRemove();
+    }
+    function selectionRectRemove () {
+        var allRect = stage.find('Rect');
+            if(allRect) {
+                for (var i = 0, len = allRect.length; i < len; i++) {
+                    allRect[i].fill(null);
+                }
+                stage.draw();
+            }
+    }
     $('.tm-api').click(function(){
         var imgArr = [];
         $.ajax({
@@ -505,6 +532,16 @@ $(function(){
         }
         //console.log(sum);
         $('.js-total').text(Math.round(sum));
+    }
+    function clearTotal() {
+        $('.js-total').text('0');
+    }
+    var state = [];
+    var mods = 0;
+    var json;
+    function saveStage() {
+        json = stage.toJSON();
+        state.push(json);
     }
 
 });

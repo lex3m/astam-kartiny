@@ -10228,16 +10228,16 @@ h6 {
 .canvas .tm-canv-icon.tm-del:hover {
   color: #cb3000;
 }
-.canvas .tm-canv-icon.tm-upload {
+.canvas .tm-canv-icon.tm-undo {
   top: 220px;
 }
-.canvas .tm-canv-icon.tm-upload:hover {
+.canvas .tm-canv-icon.tm-undo:hover {
   color: lightpink;
 }
-.canvas .tm-canv-icon.tm-download {
+.canvas .tm-canv-icon.tm-redo {
   top: 250px;
 }
-.canvas .tm-canv-icon.tm-download:hover {
+.canvas .tm-canv-icon.tm-redo:hover {
   color: lightgreen;
 }
 .canvas .tm-canv-icon.tm-save {
