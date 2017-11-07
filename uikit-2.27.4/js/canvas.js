@@ -193,9 +193,9 @@ $(function(){
             // console.log(tooltipLayer);
         });
         droppableRect.on('mouseup', function(e) {
-            saveStage();
             tooltip.hide();
             tooltipLayer.draw();
+            saveStage();
         });
         var droppableGroup = new Konva.Group({
             x: 50,
@@ -333,8 +333,18 @@ $(function(){
         var x, y;
         // console.log(nodes);
          for (var i = 0, len = nodes.length; i < len; i++) {
-             x = nodes[i].attrs.x + nodes[i].children[0].attrs.x;
-             y = nodes[i].attrs.y + nodes[i].children[0].attrs.y;
+             if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.x) {
+                x = nodes[i].attrs.x + nodes[i].children[0].attrs.x;
+             } else {
+                x = nodes[i].attrs.x;
+             }
+             if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.y) {
+                // x = nodes[i].attrs.x + nodes[i].children[0].attrs.x;
+                y = nodes[i].attrs.y + nodes[i].children[0].attrs.y;
+             } else {
+                // x = nodes[i].attrs.x;
+                y = nodes[i].attrs.y;
+             }
             clipImg(x, y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
         } 
         // var clipStage = JSON.parse(stage.toJSON()).children[0].children;
@@ -444,7 +454,7 @@ $(function(){
                 saveStage();
             });
         }
-        //console.log(stage.find('Rect'));
+        console.log(stage.find('Group'));
     });
     var json;
     function saveStage() {
