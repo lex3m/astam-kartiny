@@ -146,17 +146,6 @@ $(function(){
             document.body.style.cursor = 'move';
             layer.draw();
         });
-        /* droppableRect.on('dragmove', function(e) {
-            // update tooltip
-            var mousePos = stage.getPointerPosition();
-            tooltip.position({
-                x : mousePos.x + 5,
-                y : mousePos.y + 5
-            });
-            tooltip.text("width: " + e.target.attrs.width + ", height: " + e.target.attrs.height);
-            tooltip.show();
-            tooltipLayer.draw();
-        });*/
         droppableRect.on('mousemove', function(e) {
             tooltip.hide();
             tooltipLayer.draw();
@@ -170,12 +159,6 @@ $(function(){
             tooltipLayer.draw();
         });
         droppableRect.on('mousedown', function(e) {
-            /* var allRect = stage.find('Rect');
-            if(allRect) {
-                for (var i = 0, len = allRect.length; i < len; i++) {
-                    allRect[i].fill(null);
-                }
-            } */
             selectionRectRemove();
             sel = e.target.parent;
             active = e.target;
@@ -186,13 +169,9 @@ $(function(){
                 x : mousePos.x + 5,
                 y : mousePos.y + 5
             });
-            /* calculation.koef = 38/globalKoef; */
             tooltip.text("ширина: " + Math.round(e.target.attrs.width/globalKoef) + "см, высота: " + Math.round(e.target.attrs.height/globalKoef) + "см");
             tooltip.show();
             tooltipLayer.draw();
-            console.log(tooltip);
-            // console.log(tooltip);
-            // console.log(tooltipLayer);
         });
         droppableRect.on('mouseup', function(e) {
             tooltip.hide();
@@ -275,7 +254,7 @@ $(function(){
     }
 
 
-    function downloadURI(uri, name) {
+    /* function downloadURI(uri, name) {
         var link = document.createElement("a");
         link.download = name;
         link.href = uri;
@@ -283,11 +262,10 @@ $(function(){
         link.click();
         document.body.removeChild(link);
         delete link;
-    }
+    } */
 
     $('.tm-save').click(function(e){
         var dataURL = stage.toDataURL();
-       /*  console.log(dataURL); */
         $('.tm-ready').attr('src', dataURL);
         //downloadURI(dataURL, 'stage.png');
         e.preventDefault();
@@ -296,11 +274,9 @@ $(function(){
         clearTotal();
     });
     $('.js-inter').click(function(e){
-        // if ( modal2.isActive() ) {
-            modal2.show();
-            var curPic = $(this).attr('src');
-            $('.js-bgpic').attr('src', curPic);
-        // }
+        modal2.show();
+        var curPic = $(this).attr('src');
+        $('.js-bgpic').attr('src', curPic);
     });
 
     var bg, imageObj = new Image();
@@ -314,7 +290,6 @@ $(function(){
                 width: width,
                 height: height,
             }); 
-           // console.log('Img loaded');
         };   
         imageObj.crossOrigin = "Anonymous"; 
     };
@@ -344,7 +319,6 @@ $(function(){
         clearStage();
         layer.clearBeforeDraw(false);
         var x, y;
-        // console.log(nodes);
          for (var i = 0, len = nodes.length; i < len; i++) {
              if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.x) {
                 x = nodes[i].attrs.x + nodes[i].children[0].attrs.x;
@@ -352,31 +326,13 @@ $(function(){
                 x = nodes[i].attrs.x;
              }
              if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.y) {
-                // x = nodes[i].attrs.x + nodes[i].children[0].attrs.x;
                 y = nodes[i].attrs.y + nodes[i].children[0].attrs.y;
              } else {
-                // x = nodes[i].attrs.x;
                 y = nodes[i].attrs.y;
              }
             clipImg(x, y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
         } 
-        // var clipStage = JSON.parse(stage.toJSON()).children[0].children;
-        // for (var i = 0, len = clipStage.length; i < len; i++) {
-        //     if(clipStage[i].attrs.x && clipStage[i].attrs.y){
-        //         /* if(clipStage[i].children[0].attrs.y) {
-        //             y = clipStage[i].attrs.y + clipStage[i].children[0].attrs.y + clipStage[i].children[0].attrs.height;
-        //         } else {
-        //             y = clipStage[i].attrs.y;
-        //         }
-        //         if(clipStage[i].children[0].attrs.x) {
-        //             x = clipStage[i].attrs.x + clipStage[i].children[0].attrs.x + clipStage[i].children[0].attrs.width;
-        //         } else {
-        //             x = clipStage[i].attrs.x;
-        //         }
-        //         clipImg(x, y, Math.abs(clipStage[i].children[0].attrs.width), Math.abs(clipStage[i].children[0].attrs.height));
-        //         */clipImg(clipStage[i].attrs.x, clipStage[i].attrs.y, Math.abs(clipStage[i].children[0].attrs.width), Math.abs(clipStage[i].children[0].attrs.height));
-        //     }
-        // }
+
         $("#canvas").css('backgroundImage', 'none');
         $('#logo').val('');
         /* $("#imgprvw").attr("src", ""); */
@@ -499,7 +455,6 @@ $(function(){
             type: 'GET',
             url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=mountain&image_type=photo&pretty=true',
             success: function(data){
-                //console.log('success');
                 imgArr = data.hits;
                 var cont = $(".tm-modal-pics");
                     cont.empty();
@@ -530,7 +485,6 @@ $(function(){
                 sum += Math.abs(getStage[i].children[0].attrs.width)/globalKoef * Math.abs(getStage[i].children[0].attrs.height)/globalKoef;
             }
         }
-        //console.log(sum);
         $('.js-total').text(Math.round(sum));
     }
     function clearTotal() {
