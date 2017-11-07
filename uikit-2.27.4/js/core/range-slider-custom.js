@@ -1,8 +1,6 @@
  var globalW = 40; 
  var globalKoef = globalW/5; 
-/* function globalKoef (globalKoef) {
-    return 38/globalKoef;
-} */
+
 (function () {
 
     var selector = '[data-rangeSlider]',
@@ -52,7 +50,7 @@
             globalKoef = globalW/digit;
             var ar = [];
             for(var i = 1; i < 21; i++) {
-                ar.push(digit.toFixed(1)*i);
+                ar.push(Math.round(digit)*i);
             }
             $('.js-ruler-gor').empty();
             $('.js-ruler-ver').empty();

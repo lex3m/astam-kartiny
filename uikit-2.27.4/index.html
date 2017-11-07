@@ -216,7 +216,7 @@
                                 <div class="uk-width-small-1-1 uk-width-medium-1-2">
                                     <div class="uk-form-row">
                                         <label class="uk-form-label">Стоимость:</label>
-                                        <div class="tm-constructor-form-price">
+                                        <div class="tm-constructor-form-price uk-text-center">
                                             <span class="js-total">0</span> р
                                         </div>
                                     </div>
@@ -243,7 +243,9 @@
                                     <div class="uk-form-row">
                                         <label class="uk-form-label">Размер изображения (см)</label>
                                         <div class="tm-constructor-form-range">
-                                            <input type="range" min="0" max="200" step="1" data-buffer="0" data-rangeSlider />
+                                            <div class="tm-constructor-val val-left">50</div>
+                                            <div class="tm-constructor-val val-right">200</div>
+                                            <input type="range" min="50" max="200" step="25" value="100" data-buffer="0" data-rangeSlider />
                                             <output class="tm-constructor-form-range-info"></output>
                                         </div>
                                     </div>

@@ -185,7 +185,7 @@ $(function(){
                 y : mousePos.y + 5
             });
             /* calculation.koef = 38/globalKoef; */
-            tooltip.text("ширина: " + Math.ceil(e.target.attrs.width/globalKoef) + "см, высота: " + Math.ceil(e.target.attrs.height/globalKoef) + "см");
+            tooltip.text("ширина: " + Math.round(e.target.attrs.width/globalKoef) + "см, высота: " + Math.round(e.target.attrs.height/globalKoef) + "см");
             tooltip.show();
             tooltipLayer.draw();
             console.log(tooltip);
@@ -494,7 +494,7 @@ $(function(){
             }
         }
         //console.log(sum);
-        $('.js-total').text(sum);
+        $('.js-total').text(Math.round(sum));
     }
 
 });

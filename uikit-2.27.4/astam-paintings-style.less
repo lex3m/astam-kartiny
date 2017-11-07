@@ -948,6 +948,36 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
       background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAfCAYAAAAFkva3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2NzhkYjg1Mi02NWE1LTIxNGQtYjZhMi1lMGM4MWU1NGVhMWMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTg0RDY1MjZCN0UwMTFFN0IwNjBGNkZDODkyQjU1Q0YiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTg0RDY1MjVCN0UwMTFFN0IwNjBGNkZDODkyQjU1Q0YiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NjE1MTBhM2QtZjgyNC0zYTRlLWEwNWMtZGE5NTI5MjMzZGI2IiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6OWFkNmUyZDktYjQ5YS0xMWU3LWIxODYtOWQzYmJlYjk5YzBlIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8++SwaRQAAALVJREFUeNpiZJj5/z8DeUATiG/8T0MIMDGQDwLQBQaNYWZALEUtwxiB2I9ahoFAIDUNc2CcxcBPLcPYgNiLWoahxCo1DPMEepWdWobxArETtQyDxyojBXkTGbwAYmlquUwCiC2oZRjYq9Q0zJ+ahv2kpmGrqGnYamoZdgVYfN+glmFrqJkDVlLLMLAXqWXYGmoWQaupZRjIi9eoZdgaalYoq6ll2FUgvkYtw1ZTs3mAYRhAgAEA4QYg7BiB520AAAAASUVORK5CYII=') no-repeat 0 center;
     }
   }
+  .tm-constructor-form {
+    .tm-constructor-form-price {
+      padding: 20px;
+      border: 1px dotted @form-danger-border;
+      border-radius: 5px;
+      color: @form-danger-border;
+      font-family: 'RobotoLight', sans-serif;
+      font-size: 30px;
+      font-weight: 300;
+      span {
+        font-size: 40px;
+      }
+    }
+    .tm-constructor-form-range {
+      position: relative;
+      .tm-constructor-val {
+        position: absolute;
+        bottom: 15px;
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        &.val-left {
+          left: 0;
+        }
+        &.val-right {
+          right: 0;
+        }
+      }
+    }
+  }
 }
 /* Constructor End */
 
@@ -982,7 +1012,7 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
     .tm-canv-wrap {
       .tm-rulv-wrap {
         padding-left: 20px;
-        padding-top: 38px;
+        padding-top: 36px;
         background: @block-primary-background;
         min-height: 100%;
         .tm-ruler {
