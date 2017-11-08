@@ -40,12 +40,12 @@
 
         // Callback function
         onSlideStart: function (value, percent, position) {
-            console.info('onSlideStart', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
+            //console.info('onSlideStart', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
         },
 
         // Callback function
         onSlide: function (value, percent, position) {
-            console.log('onSlide', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
+            //console.log('onSlide', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
             var digit = value/20;
             globalKoef = globalW/digit;
             var ar = [];
@@ -64,7 +64,7 @@
 
         // Callback function
         onSlideEnd: function (value, percent, position) {
-            console.warn('onSlideEnd', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
+            //console.warn('onSlideEnd', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
         }
     });
 

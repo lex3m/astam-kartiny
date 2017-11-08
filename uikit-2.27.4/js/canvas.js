@@ -86,11 +86,26 @@ $(function(){
             group.setDraggable(false);
             this.moveToTop();
         });
-        anchor.on('dragend', function() {
+        anchor.on('dragend', function(e) {
             group.setDraggable(true);
             layer.draw();
             saveStage();
             getTotal();
+            // console.log(this.getLayer().children[0]);
+            /* var g = this.getLayer().children[0], r = this.getLayer().children[0].children[0], newX, newY;
+            console.log(r);
+            newX = Math.abs(g.attrs.x - r.attrs.x);
+            newY = Math.abs(g.attrs.y - r.attrs.y);
+            g.setAttrs({
+                x : newX,
+                y : newY
+            });
+            r.setAttrs({
+                x : 0,
+                y : 0
+            });
+            g.draw();
+            console.log(g); */
         });
         // add hover styling
         anchor.on('mouseover', function() {
@@ -116,38 +131,52 @@ $(function(){
     var layer = new Konva.Layer(); 
 
     stage.add(layer);
-    var tooltipLayer = new Konva.Layer();
+    var tooltipLayer = new Konva.Layer({
+        fill: "black"
+    });
     var tooltip = new Konva.Text({
         text: "",
         fontFamily: "Calibri",
         fontSize: 12,
         padding: 5,
         visible: true,
-        fill: "red",
+        fill: "#253c7f",
         opacity: 0.75,
         textFill: "white"
     });
+     var back = new Konva.Rect({
+        x: 0,
+        y: 0,
+        width: 160,
+        height: 23,
+        /* opacity: 0.5, */
+    }); 
+    tooltipLayer.add(back);
     tooltipLayer.add(tooltip);
     
     stage.add(tooltipLayer);
 
-    var sel, active;
+    var sel, active, current;
     function rectDraw() {
          var droppableRect = new Konva.Rect({
             x: 0,
             y: 0,
-            width: 30,
-            height: 20,
+            width: 150,
+            height: 100,
             stroke: 'black',
             strokeWidth: 2,
         });
         droppableRect.on('mouseover', function(e) {
             var layer = this.getLayer();
             document.body.style.cursor = 'move';
+
             layer.draw();
         });
+
         droppableRect.on('mousemove', function(e) {
+            back.show();
             tooltip.hide();
+            back.hide();
             tooltipLayer.draw();
         }); 
 
@@ -156,6 +185,7 @@ $(function(){
             document.body.style.cursor = 'default';
             layer.draw();
             tooltip.hide();
+            back.hide();
             tooltipLayer.draw();
         });
         droppableRect.on('mousedown', function(e) {
@@ -171,48 +201,63 @@ $(function(){
             });
             tooltip.text("ширина: " + Math.round(e.target.attrs.width/globalKoef) + "см, высота: " + Math.round(e.target.attrs.height/globalKoef) + "см");
             tooltip.show();
-            tooltipLayer.draw();
+            back.position({
+                x : mousePos.x + 5,
+                y : mousePos.y + 5
+            });
+            back.fill('white');
+            back.show();
+            tooltipLayer.moveToTop(); 
+            tooltipLayer.draw(); 
         });
         droppableRect.on('mouseup', function(e) {
+            current = e.target;
+            back.hide();
             tooltip.hide();
             tooltipLayer.draw();
             saveStage();
         });
         var droppableGroup = new Konva.Group({
-            x: 50,
-            y: 50, 
+            x: 330,
+            y: 180, 
             draggable: true,
             /* fill: 'rgba(180, 160, 127, .3)', */
-            /* dragBoundFunc: function(pos) {
-                var newY, newX;
-                if(pos.y < 0){
-                    newY = 0;
-                } else if (pos.y > height - active.attrs.height) {
+             /* dragBoundFunc: function(pos) {
+                var newY, newX, dX, dY;
+                dY = active.parent.attrs.y + active.attrs.y;
+                dX = active.parent.attrs.x + active.attrs.x;
+                if(dY < 0){
+                    newY = -1 * active.attrs.y;
+                } else if (dY > height - active.attrs.height) {
                     newY = height - active.attrs.height;
                 } else {
                     newY = pos.y;
                 }
-                if(pos.x < 0){
-                    newX = 0;
-                } else if (pos.x > width - active.attrs.width) {
+                if(dX < 0){
+                    newX = -1 * active.attrs.x;
+                } else if (dX > width - active.attrs.width) {
                     newX = width - active.attrs.width;
                 } else {
                     newX = pos.x;
                 }
+                console.log(pos);
+                console.log(active);
+                console.log(active.parent);
                 return {
                     x: newX,
                     y: newY
                 };
-            } */
+            }  */
         });
         layer.add(droppableGroup);
         stage.add(layer); 
         droppableGroup.add(droppableRect).draw();
 
         addAnchor(droppableGroup, 0, 0, 'topLeft');
-        addAnchor(droppableGroup, 30, 0, 'topRight');
-        addAnchor(droppableGroup, 30, 20, 'bottomRight');
-        addAnchor(droppableGroup, 0, 20, 'bottomLeft'); 
+        addAnchor(droppableGroup, 150, 0, 'topRight');
+        addAnchor(droppableGroup, 150, 100, 'bottomRight');
+        addAnchor(droppableGroup, 0, 100, 'bottomLeft'); 
+        stage.draw();
         saveStage();
         getTotal();
     }
@@ -319,17 +364,17 @@ $(function(){
         clearStage();
         layer.clearBeforeDraw(false);
         var x, y;
-         for (var i = 0, len = nodes.length; i < len; i++) {
-             if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.x) {
+        for (var i = 0, len = nodes.length; i < len; i++) {
+            if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.x) {
                 x = nodes[i].attrs.x + nodes[i].children[0].attrs.x;
-             } else {
+            } else {
                 x = nodes[i].attrs.x;
-             }
-             if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.y) {
+            }
+            if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.y) {
                 y = nodes[i].attrs.y + nodes[i].children[0].attrs.y;
-             } else {
+            } else {
                 y = nodes[i].attrs.y;
-             }
+            }
             clipImg(x, y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
         } 
 
@@ -418,11 +463,21 @@ $(function(){
                 arRect[i].on('mouseover', function(e) {
                     var layer = this.getLayer();
                     document.body.style.cursor = 'move';
+                    var mousePos = stage.getPointerPosition();
+                    tooltip.position({
+                        x : mousePos.x + 5,
+                        y : mousePos.y + 5
+                    });
+                    tooltip.text("ширина: " + Math.round(e.target.attrs.width/globalKoef) + "см, высота: " + Math.round(e.target.attrs.height/globalKoef) + "см");
+                    tooltip.show();
+                    tooltipLayer.draw();
                     layer.draw();
                 });
                 arRect[i].on('mouseout', function(e) {
                     var layer = this.getLayer();
                     document.body.style.cursor = 'default';
+                    tooltip.hide();
+                    tooltipLayer.draw();
                     layer.draw();
                 });
                 arRect[i].on('mousedown', function(e) {
@@ -430,8 +485,26 @@ $(function(){
                     sel = e.target.parent;
                     active = e.target;
                     active.fill('rgba(37, 60, 127, .3)');
+                    // update tooltip
+                    var mousePos = stage.getPointerPosition();
+                    tooltip.position({
+                        x : mousePos.x + 5,
+                        y : mousePos.y + 5
+                    });
+                    tooltip.text("ширина: " + Math.round(e.target.attrs.width/globalKoef) + "см, высота: " + Math.round(e.target.attrs.height/globalKoef) + "см");
+                    tooltip.show();
+                    back.position({
+                        x : mousePos.x + 5,
+                        y : mousePos.y + 5
+                    });
+                    back.fill('white');
+                    back.show();
+                    tooltipLayer.moveToTop(); 
+                    tooltipLayer.draw(); 
                 });
                 arRect[i].on('mouseup', function(e) {
+                    tooltip.hide();
+                    tooltipLayer.draw();
                     saveStage();
                     getTotal();
                 });
