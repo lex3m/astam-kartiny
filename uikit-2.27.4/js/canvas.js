@@ -92,20 +92,26 @@ $(function(){
             saveStage();
             getTotal();
             // console.log(this.getLayer().children[0]);
-            /* var g = this.getLayer().children[0], r = this.getLayer().children[0].children[0], newX, newY;
-            console.log(r);
-            newX = Math.abs(g.attrs.x - r.attrs.x);
-            newY = Math.abs(g.attrs.y - r.attrs.y);
-            g.setAttrs({
-                x : newX,
-                y : newY
-            });
-            r.setAttrs({
-                x : 0,
-                y : 0
-            });
-            g.draw();
-            console.log(g); */
+            //  var l = this.getLayer(), g = this.getLayer().children[0], r = this.getLayer().children[0].children[0], newX, newY;
+            // console.log(l); 
+            // console.log(g); 
+            // console.log(r);
+            // newX = Math.abs(g.attrs.x + r.attrs.x);
+            // newY = Math.abs(g.attrs.y + r.attrs.y);
+            //  g.setAttrs({
+            //     x : newX,
+            //     y : newY
+            // });  
+            //  r.setAttrs({
+            //     x : 0,
+            //     y : 0
+            // }); 
+            // g.draw();
+            // layer.draw();
+            // stage.draw();
+            // console.log(l); 
+            // console.log(g); 
+            // console.log(r);
         });
         // add hover styling
         anchor.on('mouseover', function() {
@@ -548,17 +554,50 @@ $(function(){
             }
         });
     });
-
-    var sum = 0;
+    $('.js-material').change(function(){
+        // console.log('asdasd');
+        var val = $(this).val();
+        console.log(val);
+        material = val;
+        getTotal();
+    });
+    $('.js-covering').change(function(){
+        // console.log('asdasd');
+        var val = $(this).val();
+        console.log(val);
+        covering = val;
+        getTotal();
+    });
+    $('.js-underframe').change(function(){
+        // console.log('asdasd');
+        var val = $(this).val();
+        console.log(val);
+        underframe = val;
+        getTotal();
+    });
+    $('.js-stylization').change(function(){
+        // console.log('asdasd');
+        var val = $(this).val();
+        console.log(val);
+        stylization = val;
+        getTotal();
+    });
+    
+    var sum = 0, perim = 0, area = 0, material = 1, covering = 1, underframe = 1, stylization = 1;
     function getTotal() {
         sum = 0;
+        perim = 0;
+        area = 0;
         var getStage = JSON.parse(stage.toJSON()).children[0].children;
         for (var i = 0, len = getStage.length; i < len; i++) {
-            if(getStage[i].attrs.x && getStage[i].attrs.y){
-                sum += Math.abs(getStage[i].children[0].attrs.width)/globalKoef * Math.abs(getStage[i].children[0].attrs.height)/globalKoef;
+            if(getStage[i]/* .attrs.x && getStage[i].attrs.y */){
+                //sum += Math.abs(getStage[i].children[0].attrs.width/globalKoef) * Math.abs(getStage[i].children[0].attrs.height/globalKoef);
+                perim += (Math.abs(Math.round(getStage[i].children[0].attrs.width/globalKoef)) + Math.abs(Math.round(getStage[i].children[0].attrs.height/globalKoef))) * 2;
+                area += Math.abs(Math.round(getStage[i].children[0].attrs.width/globalKoef)) * Math.abs(Math.round(getStage[i].children[0].attrs.height/globalKoef));
             }
         }
-        $('.js-total').text(Math.round(sum));
+        sum = area*(material + covering + stylization) + perim * underframe;
+        getSum();
     }
     function clearTotal() {
         $('.js-total').text('0');
@@ -569,6 +608,14 @@ $(function(){
     function saveStage() {
         json = stage.toJSON();
         state.push(json);
+    }
+
+    $('.js-dimen').change(function() {
+        getTotal();
+    });
+
+    function getSum() {
+        $('.js-total').text(sum);
     }
 
 });
