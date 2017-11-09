@@ -10198,7 +10198,7 @@ h6 {
 .canvas {
   position: relative;
   /* height: 500px; */
-  width: 925px;
+  width: 975px;
   background: #8e9593;
 }
 .canvas .canvas-wrap {
@@ -10213,6 +10213,7 @@ h6 {
   box-sizing: border-box;
 }
 .canvas .canvas-wrap .tm-rul-wrap .tm-ruler {
+  border-bottom: 2px solid #fff;
   width: 38px;
   height: 10px;
   border-right: 2px solid  #fff;
@@ -10232,6 +10233,7 @@ h6 {
   margin-right: 38px;
   background: #0098ff;
   min-height: 100%;
+  border-right: 2px solid #fff;
 }
 .canvas .canvas-wrap .tm-canv-wrap .tm-rulv-wrap .tm-ruler {
   border-top: 2px solid  #fff;
@@ -10248,8 +10250,25 @@ h6 {
 }
 .canvas .canvas-wrap .tm-canv-bottom {
   width: 100%;
-  height: 50px;
   background: #cecece;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+.canvas .canvas-wrap .tm-canv-bottom .tm-info {
+  font-size: 15px;
+  font-family: "RobotoLight", sans-serif;
+  font-weight: 400;
+}
+.canvas .canvas-wrap .tm-canv-bottom .tm-info i {
+  padding-left: 12px;
+  padding-right: 8px;
+  color: #426ec7;
+}
+.canvas .canvas-wrap .tm-canv-bottom .tm-info a {
+  color: #000;
+}
+.canvas .canvas-wrap .tm-canv-bottom .tm-info:last-child a {
+  margin-left: 10px;
 }
 .canvas #canvas {
   right: 55px;
