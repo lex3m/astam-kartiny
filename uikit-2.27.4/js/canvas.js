@@ -1,4 +1,10 @@
 $(function(){
+    /* $('input, select').styler(); */
+    $('.js-file').click(function(e){
+        e.preventDefault();
+        console.log('yeah');
+        $('#logo').click();
+    });
     var calculation = {
         koef: 8
     }
@@ -557,28 +563,24 @@ $(function(){
     $('.js-material').change(function(){
         // console.log('asdasd');
         var val = $(this).val();
-        console.log(val);
         material = val;
         getTotal();
     });
     $('.js-covering').change(function(){
         // console.log('asdasd');
         var val = $(this).val();
-        console.log(val);
         covering = val;
         getTotal();
     });
     $('.js-underframe').change(function(){
         // console.log('asdasd');
         var val = $(this).val();
-        console.log(val);
         underframe = val;
         getTotal();
     });
     $('.js-stylization').change(function(){
         // console.log('asdasd');
         var val = $(this).val();
-        console.log(val);
         stylization = val;
         getTotal();
     });

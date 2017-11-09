@@ -10104,6 +10104,52 @@ h6 {
   color: #253c7f;
   margin: 1em 0;
 }
+#constructor .tm-api,
+#constructor .js-file {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 10px;
+  background: #426ec7;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 18px;
+}
+#constructor .tm-api:hover,
+#constructor .js-file:hover {
+  background: #0081d9;
+}
+#constructor .tm-api:active,
+#constructor .js-file:active {
+  background: #0098ff;
+}
+#constructor .tm-book {
+  width: 100%;
+  height: 60px;
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+  background: #ea3d07;
+  border-radius: 5px;
+  font-size: 28px;
+  font-family: 'RobotoLight', sans-serif;
+  cursor: pointer;
+  outline: none;
+}
+#constructor .tm-book:hover {
+  background: rgba(234, 61, 7, 0.8);
+}
+#constructor .tm-book:active {
+  background: rgba(234, 61, 7, 0.5);
+}
+#constructor .js-material,
+#constructor .js-covering,
+#constructor .js-underframe,
+#constructor .js-stylization {
+  width: 100%;
+}
 .tm-constructor-wrap .uk-form-label {
   display: block;
   padding: 5px 0 14px;
@@ -10151,18 +10197,19 @@ h6 {
 /* Canvas Start */
 .canvas {
   position: relative;
-  height: 500px;
-  width: 885px;
-  background: #cecece;
+  /* height: 500px; */
+  width: 925px;
+  background: #8e9593;
 }
 .canvas .canvas-wrap {
-  height: 100%;
+  background: #8e9593;
 }
 .canvas .canvas-wrap .tm-rul-wrap {
   width: 100%;
   background: #0098ff;
   padding-top: 20px;
   padding-left: 30px;
+  margin-bottom: 38px;
   box-sizing: border-box;
 }
 .canvas .canvas-wrap .tm-rul-wrap .tm-ruler {
@@ -10181,6 +10228,8 @@ h6 {
 .canvas .canvas-wrap .tm-canv-wrap .tm-rulv-wrap {
   padding-left: 20px;
   padding-top: 36px;
+  margin-top: -38px;
+  margin-right: 38px;
   background: #0098ff;
   min-height: 100%;
 }
@@ -10197,20 +10246,21 @@ h6 {
   color: #fff;
   font-size: 12px;
 }
+.canvas .canvas-wrap .tm-canv-bottom {
+  width: 100%;
+  height: 50px;
+  background: #cecece;
+}
 .canvas #canvas {
-  /* position: absolute;  */
   right: 55px;
   top: 65px;
-  /* height: 79%;
-    width: 85%; */
-  height: 468px;
+  height: 458px;
   width: 800px;
   overflow: hidden;
   background-position: center;
   background-size: 100% 100%;
   border: none !important;
   box-shadow: inset 1px 1px 10px #333;
-  /* background-image: url(images/astam-img/top-slide-img-2.jpg); */
 }
 .canvas .tm-canv-icon {
   position: absolute;

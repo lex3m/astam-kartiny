@@ -46,17 +46,17 @@
         // Callback function
         onSlide: function (value, percent, position) {
             //console.log('onSlide', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
-            var digit = value/20;
+            var digit = value/21;
             globalKoef = globalW/digit;
             var ar = [];
-            for(var i = 1; i < 21; i++) {
+            for(var i = 1; i < 22; i++) {
                 ar.push(Math.round(digit)*i);
             }
             $('.js-ruler-gor').empty();
             $('.js-ruler-ver').empty();
-            for(var i = 1, len = 21; i < len; i++){
+            for(var i = 1, len = 22; i < len; i++){
                 $('.js-ruler-gor').append('<div class="tm-ruler rul'+i+'"><span>'+ ar[i-1] +'</span></div>');
-                if(i < 11){
+                if(i < 13){
                     $('.js-ruler-ver').append('<div class="tm-ruler rul'+i+'"><span>'+ ar[i-1] +'</span></div>');
                 }
             }
