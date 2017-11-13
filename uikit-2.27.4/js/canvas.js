@@ -224,6 +224,8 @@ $(function(){
             active = e.target;
         }); */
         droppableRect.on('mouseup', function(e) {
+            console.log('done');
+            console.log(e.target);
             back.hide();
             tooltip.hide();
             tooltipLayer.draw();
@@ -255,9 +257,9 @@ $(function(){
                     // console.log('2x');
                 } else {
                     newX = pos.x;
-                } 
+                }
                 // console.log(newX, newY);
-                console.log(this);
+                // console.log(this);
                
                 return {
                     x: newX,
