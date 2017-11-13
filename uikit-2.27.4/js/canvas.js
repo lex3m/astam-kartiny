@@ -1,13 +1,9 @@
 $(function(){
-    /* $('input, select').styler(); */
     $('.js-file').click(function(e){
         e.preventDefault();
-        console.log('yeah');
         $('#logo').click();
     });
-    var calculation = {
-        koef: 8
-    }
+
     var width = $('#canvas').width();
     var height = $('#canvas').height();
     var modal = UIkit.modal("#my-id");
@@ -222,8 +218,10 @@ $(function(){
             tooltipLayer.moveToTop(); 
             tooltipLayer.draw(); 
         });
+        /* droppableRect.on('dragend', function(e) {
+            active = e.target;
+        }); */
         droppableRect.on('mouseup', function(e) {
-            current = e.target;
             back.hide();
             tooltip.hide();
             tooltipLayer.draw();
@@ -234,32 +232,36 @@ $(function(){
             y: 180, 
             draggable: true,
             /* fill: 'rgba(180, 160, 127, .3)', */
-             /* dragBoundFunc: function(pos) {
+              /* dragBoundFunc: function(pos) {
                 var newY, newX, dX, dY;
                 dY = active.parent.attrs.y + active.attrs.y;
                 dX = active.parent.attrs.x + active.attrs.x;
-                if(dY < 0){
-                    newY = -1 * active.attrs.y;
+                if(dY <= 0){
+                    newY = -1 * active.attrs.y + 1;
+                    // console.log('1y');
                 } else if (dY > height - active.attrs.height) {
                     newY = height - active.attrs.height;
+                    // console.log('2y');
                 } else {
                     newY = pos.y;
                 }
-                if(dX < 0){
-                    newX = -1 * active.attrs.x;
+                if(dX <= 0){
+                    newX = -1 * active.attrs.x + 1;
+                    // console.log('1x');
                 } else if (dX > width - active.attrs.width) {
                     newX = width - active.attrs.width;
+                    // console.log('2x');
                 } else {
                     newX = pos.x;
-                }
-                console.log(pos);
-                console.log(active);
-                console.log(active.parent);
+                } 
+                // console.log(newX, newY);
+                console.log(this);
+               
                 return {
                     x: newX,
                     y: newY
                 };
-            }  */
+            }  */ 
         });
         layer.add(droppableGroup);
         stage.add(layer); 
