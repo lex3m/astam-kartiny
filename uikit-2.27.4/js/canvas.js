@@ -1,4 +1,6 @@
+
 $(function(){
+
     $('.js-file').click(function(e){
         e.preventDefault();
         $('#logo').click();
@@ -232,7 +234,7 @@ $(function(){
             y: 180, 
             draggable: true,
             /* fill: 'rgba(180, 160, 127, .3)', */
-              /* dragBoundFunc: function(pos) {
+               dragBoundFunc: function(pos) {
                 var newY, newX, dX, dY;
                 dY = active.parent.attrs.y + active.attrs.y;
                 dX = active.parent.attrs.x + active.attrs.x;
@@ -261,7 +263,7 @@ $(function(){
                     x: newX,
                     y: newY
                 };
-            }  */ 
+            }   
         });
         layer.add(droppableGroup);
         stage.add(layer); 
@@ -322,23 +324,29 @@ $(function(){
         document.body.removeChild(link);
         delete link;
     } */
-
-    $('.tm-save').click(function(e){
-        var dataURL = stage.toDataURL();
-        $('.tm-ready').attr('src', dataURL);
+    var dataURL;
+    function saveImg() {
+        dataURL = stage.toDataURL();
+        if(dataURL) $('.tm-ready').attr('src', dataURL);
         //downloadURI(dataURL, 'stage.png');
-        e.preventDefault();
+        // e.preventDefault();
         clearStage();
         clearHistory();
         clearTotal();
+    }
+
+    $('.tm-save').click(function(e){
+        saveImg();
     });
     $('.js-inter').click(function(e){
         modal2.show();
         var curPic = $(this).attr('src');
         $('.js-bgpic').attr('src', curPic);
+        if(dataURL) $('.tm-ready').attr('src', dataURL);
     });
 
     var bg, imageObj = new Image();
+        imageObj.crossOrigin = "Anonymous"; 
 
     function loadImg() {
         imageObj.onload = function() {
@@ -350,7 +358,6 @@ $(function(){
                 height: height,
             }); 
         };   
-        imageObj.crossOrigin = "Anonymous"; 
     };
    function clipImg (x, y, w, h) {
         var group = new Konva.Group({
@@ -537,16 +544,35 @@ $(function(){
             }
     }
     $('.tm-api').click(function(){
+        var query = 'car';
+        apiConnect(query);
+    });
+    $('.js-find').click(function(e){
+        var val = $('.tm-modal-search').val();
+        apiConnect(val);
+    });
+
+    $('.tm-modal-search').keypress(function(e){
+        if (e.which == 13) {
+            e.preventDefault();
+            apiConnect(this.value);
+            this.value = "";
+       }
+    });
+    function apiConnect(query) {
         var imgArr = [];
         $.ajax({
             type: 'GET',
-            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=mountain&image_type=photo&pretty=true',
+            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=' + query + '&image_type=photo&pretty=true',
             success: function(data){
                 imgArr = data.hits;
                 var cont = $(".tm-modal-pics");
                     cont.empty();
+                var temp = $(".js-temp");
+                    temp.empty();
                 for(var i = 0, len = imgArr.length; i < len; i ++) {
-                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img src="' +  imgArr[i].previewURL + '" alt="pic' + i + '"><div>');
+                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img onmouseover="showHint(this)" onmouseout="hideHint(this)" class="js-current-img" src="' +  imgArr[i].previewURL + '" data-origin="' +  imgArr[i].webformatURL + '" alt="pic' + i + '"><div>');
+                    temp.append('<li><img src="' +  imgArr[i].previewURL + '" alt="pic' + i + '">');
                 }
                 $('.tm-preview-cont').click(function(){
                     var count = $(this).attr('data-count');
@@ -561,7 +587,7 @@ $(function(){
                 });
             }
         });
-    });
+    }
     $('.js-material').change(function(){
         // console.log('asdasd');
         var val = $(this).val();

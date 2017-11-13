@@ -31,6 +31,10 @@
 
     <script src="https://cdn.rawgit.com/konvajs/konva/1.7.3/konva.min.js"></script>
 
+    <!-- <script>
+        
+    </script> -->
+
 <!-- Formstyler Plugin -->
     <!--  <link href="js/formstyler-plugin/jquery.formstyler.css" rel="stylesheet" />
     <link href="js/formstyler-plugin/jquery.formstyler.theme.css" rel="stylesheet" />
@@ -186,6 +190,11 @@
 
         <div id="constructor" class="tm-content-full">
             <h1 class="uk-text-center">Мощный конструктор картин</h1>
+            <!-- <div >
+                <ul class="js-temp">
+
+                </ul>
+            </div> -->
             <div class="tm-constructor-wrap uk-margin-bottom">
                 <div class="tm-constructor-top-wrap">
                     <label class="uk-form-label">Выбор изображения</label>
@@ -249,7 +258,7 @@
                                     </div>
                                     <div class="tm-info uk-text-left">
                                         <i class="uk-icon-exclamation uk-icon-hover"></i>
-                                        <span>Если Вы не можете воспользоваться конструктором, то любую модель картины мы можем сформировать за вас</span><a href="#">Помогите мне</a>
+                                        <span>Если Вы не можете воспользоваться конструктором, то любую модель картины мы можем сформировать за вас</span><a href="#git" data-uk-smooth-scroll>Помогите мне</a>
                                     </div>
                                 </div>
                             </div>
@@ -273,20 +282,25 @@
 
                                         <div id="my-id" class="uk-modal tm-modal">
                                             <div class="uk-modal-dialog uk-modal-dialog-large">
-                                                <div class="uk-grid">
+                                                <div class="uk-grid tm-modal-form-wrap">
                                                     <div class="uk-width-large-1-3">
-                                                        <label class="uk-form-label">Выберите картинку</label>
+                                                        <label class="uk-form-label tm-modal-label">Выберите картинку</label>
+                                                        <p class="tm-modal-info">Кликните по выбранной картинке, что бы загрузить её в конструктор</p>
                                                     </div>
-                                                    <div class="uk-width-large-1-3">
+                                                    <div class="uk-width-large-1-3 tm-modal-select">
                                                         <p>Категория изображения</p>
-                                                        <select name="" id="">
+                                                        <select>
                                                             <option value="">Абстракция</option>
                                                             <option value="">Абстракция1</option>
                                                             <option value="">Абстракция2</option>
                                                         </select>
                                                     </div>
                                                     <div class="uk-width-large-1-3">
-                                                        <input type="text" placeholder="Абстрактное искусство">
+                                                        <p>Поиск по названию</p>
+                                                        <div class="tm-modal-search-wrap">
+                                                            <input type="text" class="tm-modal-search" placeholder="Абстрактное искусство">
+                                                            <div class="js-find"><i class="tm-canv-icon uk-icon-search uk-icon-hover" ></i></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="uk-overflow-container">
@@ -687,6 +701,7 @@
     <script src="js/canvas.js"></script>
     <script src="js/core/jquery.base64.js"></script>
     <script src="js/core/range-slider-custom.js"></script>
+    <script src="js/main.js"></script>
     <!-- Script for range input End -->
     <!-- Script for working block Start -->
     <script>
