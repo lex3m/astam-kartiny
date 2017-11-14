@@ -160,6 +160,7 @@
 @text-primary-color: #253c7f;
 @text-success-color: #087c65;
 @text-danger-color: #ea3d07;
+@text-danger-color2: #fe3a00;
 @text-light-color: #ffffff;
 
 
@@ -1652,6 +1653,100 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
 /* Range End */
 
 /* Inner Page Start */
+
+.tm-global-wrap {
+  margin: 0 auto;
+  max-width: 1920px;
+  aside {
+    width: 30%;
+    height: 100px;
+    background: #333;
+  }
+  .tm-global-wrap-right {
+    /* SEC 1 start */
+    .tm-sec1-wrap {
+      position: relative;
+      font-family: 'RobotoLight', sans-serif;
+      .tm-sec1-img {
+        position: relative;
+        z-index: 2;
+      }
+      .tm-sec1-discont-text {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 44%;
+        color: @text-danger-color2;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1.2;
+      }
+      .tm-sec1-action {
+        background: @text-danger-color2;
+        height: 120px;
+        width: 100%;
+        position: absolute; 
+        left: 0;
+        bottom: 0;
+        p {
+          position: absolute;
+          /* left: 7%; */
+          width: 27%;
+          text-align: center;
+          bottom: 1vw;
+          color: #fff;
+          font-size: 34px;
+          font-weight: 300;
+        }
+      }
+    }
+    /* SEC 1 end */
+    /* SEC 2 start */
+    .tm-sec2-wrap {
+      .tm-sec2-header {
+        font-size: 48px;
+        color: @text-primary-color;
+        margin: 1.5em 0;
+      }
+      .tm-sec2-text {
+        font-size: 16px;
+        .tm-sec2-block {
+          float: right;
+          padding: 0 0 10px 10px;
+        }
+      }
+    }
+    /* SEC 2 end */
+
+    /* SEC 3 start */
+    .tm-sec3-wrap {
+      .tm-sec3-header {
+        font-size: 40px;
+        color: @text-primary-color;
+        margin: 1em 0;
+      }
+      .tm-sec3-tpls-wrap {
+        .tm-sec3-more {
+          width: 100%;
+          a {
+            color: #7e8684;
+            &:after {
+              display: inline-block;
+              content: '';
+              border: 5px solid transparent;
+              border-left: 8px solid #7e8684;
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+
+
+    /* SEC 3 end */
+  } /* Global-wrap end */
+}/* Global end */
+
 /* Inner Page End */
 
 
