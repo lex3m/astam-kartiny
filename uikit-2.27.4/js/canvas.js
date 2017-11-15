@@ -236,7 +236,7 @@ $(function(){
             y: 180, 
             draggable: true,
             /* fill: 'rgba(180, 160, 127, .3)', */
-               dragBoundFunc: function(pos) {
+               /* dragBoundFunc: function(pos) {
                 var newY, newX, dX, dY;
                 dY = active.parent.attrs.y + active.attrs.y;
                 dX = active.parent.attrs.x + active.attrs.x;
@@ -265,7 +265,7 @@ $(function(){
                     x: newX,
                     y: newY
                 };
-            }   
+            }    */
         });
         layer.add(droppableGroup);
         stage.add(layer); 
