@@ -166,6 +166,24 @@ $(function(){
     
     stage.add(tooltipLayer);
 
+    /* var too = new Konva.Text({
+            text: "",
+            fontFamily: "Calibri",
+            fontSize: 12,
+            padding: 5,
+            visible: true,
+            fill: "#253c7f",
+            opacity: 0.75,
+            textFill: "white"
+        });
+        var bac = new Konva.Rect({
+            x: 0,
+            y: 0,
+            width: 100,
+            height: 23,
+            fill: 'white'
+        });  */
+
     var sel, active, current;
     function rectDraw() {
          var droppableRect = new Konva.Rect({
@@ -217,6 +235,7 @@ $(function(){
             });
             back.fill('white');
             back.show();
+
             tooltipLayer.moveToTop(); 
             tooltipLayer.draw(); 
         });
@@ -224,8 +243,8 @@ $(function(){
             active = e.target;
         }); */
         droppableRect.on('mouseup', function(e) {
-            console.log('done');
-            console.log(e.target);
+            // console.log('done');
+            // console.log(e.target);
             back.hide();
             tooltip.hide();
             tooltipLayer.draw();
@@ -269,8 +288,8 @@ $(function(){
         });
         layer.add(droppableGroup);
         stage.add(layer); 
-        droppableGroup.add(droppableRect).draw();
 
+        droppableGroup.add(droppableRect).draw();
         addAnchor(droppableGroup, 0, 0, 'topLeft');
         addAnchor(droppableGroup, 150, 0, 'topRight');
         addAnchor(droppableGroup, 150, 100, 'bottomRight');
@@ -311,7 +330,8 @@ $(function(){
             container: 'canvas',
             width: width,
             height: height
-        });
+        }); 
+
         stage.add(layer);
         stage.add(tooltipLayer);
     }
@@ -332,9 +352,9 @@ $(function(){
         if(dataURL) $('.tm-ready').attr('src', dataURL);
         //downloadURI(dataURL, 'stage.png');
         // e.preventDefault();
-        clearStage();
-        clearHistory();
-        clearTotal();
+        // clearStage();
+        // clearHistory();
+        // clearTotal();
     }
 
     $('.tm-save').click(function(e){
@@ -362,6 +382,25 @@ $(function(){
         };   
     };
    function clipImg (x, y, w, h) {
+       /* var too = new Konva.Text({
+            text: "",
+            fontFamily: "Calibri",
+            fontSize: 12,
+            padding: 5,
+            visible: true,
+            fill: "#253c7f",
+            opacity: 0.75,
+            textFill: "white"
+        });
+        var bac = new Konva.Rect({
+            x: 0,
+            y: 0,
+            width: 100,
+            height: 23,
+            fill: 'white'
+        }); 
+
+        too.text(Math.round(w/globalKoef) + "см x " + Math.round(h/globalKoef) + "см"); */
         var group = new Konva.Group({
             clip: {
                 x : x,
@@ -370,6 +409,7 @@ $(function(){
                 height : h
             }
         });
+
         group.add(bg);
         layer.add(group);   
         layer.draw(); 
@@ -406,6 +446,35 @@ $(function(){
         /* $("#imgprvw").attr("src", ""); */
         layer.clearBeforeDraw(true);
         imageObj.src = "";
+        $('.js-dimen').attr('disabled', 'disabled');
+        $('.js-material').attr('disabled', 'disabled');
+        //console.log();
+        
+        // $('.js-dimen').rangeslider('update');
+        /* $('.js-material').change(function(){
+            // console.log('asdasd');
+            var val = $(this).val();
+            material = val;
+            getTotal();
+        });
+        $('.js-covering').change(function(){
+            // console.log('asdasd');
+            var val = $(this).val();
+            covering = val;
+            getTotal();
+        });
+        $('.js-underframe').change(function(){
+            // console.log('asdasd');
+            var val = $(this).val();
+            underframe = val;
+            getTotal();
+        });
+        $('.js-stylization').change(function(){
+            // console.log('asdasd');
+            var val = $(this).val();
+            stylization = val;
+            getTotal();
+        }); */
         /* console.log('**************************');
         console.log(Konva.stages[0].children[0].children[0].attrs.x);
         console.log(Konva.stages[0].children[0].attrs.y);

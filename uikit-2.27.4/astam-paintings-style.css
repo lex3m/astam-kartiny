@@ -9959,6 +9959,9 @@ h6 {
 .tm-header-wrapp .tm-header-nav {
   position: relative;
 }
+.tm-header-wrapp .tm-header-nav a {
+  cursor: pointer !important;
+}
 .tm-header-topbox {
   background: #0098ff;
   padding: 5px 0 6px;
@@ -10845,8 +10848,7 @@ h6 {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 50px;
-  padding-left: 50px;
+  padding: 15px 10px 15px 50px;
   box-sizing: border-box;
   font-size: 16px;
   color: #fff;
@@ -10911,8 +10913,7 @@ h6 {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 50px;
-  padding-left: 50px;
+  padding: 15px 10px 15px 50px;
   box-sizing: border-box;
   font-size: 16px;
   color: #fff;
