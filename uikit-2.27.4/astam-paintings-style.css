@@ -9956,6 +9956,9 @@ h6 {
   width: 100%;
   z-index: 3;
 }
+.tm-header-wrapp .tm-header-nav {
+  position: relative;
+}
 .tm-header-topbox {
   background: #0098ff;
   padding: 5px 0 6px;
@@ -11173,6 +11176,35 @@ h6 {
   }
 }
 @media screen and (max-width: 768px) {
+  #topnavbar-mobile {
+    position: absolute;
+    top: 40px;
+    height: 350px;
+  }
+  #topnavbar-mobile a {
+    cursor: pointer;
+  }
+  #topnavbar-mobile a.uk-close {
+    width: 50%;
+    height: 50px;
+    opacity: .8;
+  }
+  #topnavbar-mobile a.uk-close:after {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+  #topnavbar-mobile .topnavbar-mobile {
+    width: 50%;
+    float: right;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  #topnavbar-mobile .topnavbar-mobile li {
+    float: none;
+  }
   #cont .tm-cont-wrap .tm-cont-block {
     padding-left: 0;
   }

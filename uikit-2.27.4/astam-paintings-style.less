@@ -763,10 +763,8 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
   top: 0;
   width: 100%;
   z-index: 3;
-  #topnavbar-mobile {
-    ul {
-      
-    }
+  .tm-header-nav {
+    position: relative;
   }
 }
 .tm-header-topbox {
@@ -2097,6 +2095,35 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
   }
 }
 @media screen and (max-width: 768px) {
+  #topnavbar-mobile {
+    position: absolute;
+    top: 40px;
+    height: 350px;
+    a {
+      cursor: pointer;
+      &.uk-close {
+        width: 50%;
+        height: 50px;
+        opacity: .8;
+        &:after {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 30px;
+        }
+      }
+    }
+    .topnavbar-mobile {
+      width: 50%;
+      float: right;
+      height: 100%;
+      background: rgba(255,255,255,.6);
+      li {
+        float: none;
+      }
+    }
+  }
   #cont .tm-cont-wrap .tm-cont-block {
     padding-left: 0;
   }
