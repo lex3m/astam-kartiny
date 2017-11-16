@@ -1005,6 +1005,7 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
   .tm-constructor-inwrap {
     display: flex;
     flex-direction: row-reverse;
+    padding-bottom: 50px;
     .tm-constructor-left {
       width: 40%;
       .tm-modal-form-wrap {
@@ -1124,6 +1125,9 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
 /* Constructor End */
 
 /* Canvas Start */
+input:disabled, select:disabled {
+  cursor: not-allowed;
+}
 .canvas {
   position: relative;
   /* height: 500px; */
@@ -1210,14 +1214,30 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
     border: none !important;
     box-shadow: inset 1px 1px 10px #333;
   }
+  
     .tm-canv-icon {
+      display: block;
       position: absolute;
       top: 65px;
       right: 20px;
       color: #fff;
       cursor: pointer;
+      &.sub {
+        display: none; 
+        color: #cecece;
+        cursor: not-allowed;
+        &:hover {
+          color: #cecece;
+        }
+        &:nth-child(2) {
+          top: 95px;
+        }
+        &:nth-child(3) {
+          top: 125px;
+        }
+      }
       &:hover {
-        color: #0cc;
+        color: #253c7f;
       }
       &.tm-del {
         top: 95px;
@@ -1238,13 +1258,14 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
         }
       }
       &.tm-save {
-        top: 155px;
+        top: 185px;
         &:hover {
-          color: #253c7f;
+          color: #0cc;
         }
       }
       &.tm-rem {
-        top: 185px;
+        top: 155px;
+        display: block;
         &:hover {
           color: #cb3000;
         }
@@ -1277,6 +1298,23 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
 }
 
 /* Pics End */
+/* how to use Start */
+
+#how-to-use {
+  h4 {
+    font-size: 24px;
+    font-weight: 300;
+  }
+  .tm-pics {
+    ol li {
+      color: @global-color;
+      padding: 5px 0;
+      font-family: 'RobotoLight', sans-serif;
+    }
+  }
+}
+
+/* how to use End */
 
 /* See-in modal Start*/
 #see-in {

@@ -10180,6 +10180,7 @@ h6 {
 .tm-constructor-wrap .tm-constructor-inwrap {
   display: flex;
   flex-direction: row-reverse;
+  padding-bottom: 50px;
 }
 .tm-constructor-wrap .tm-constructor-inwrap .tm-constructor-left {
   width: 40%;
@@ -10295,6 +10296,10 @@ h6 {
 }
 /* Constructor End */
 /* Canvas Start */
+input:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
 .canvas {
   position: relative;
   /* height: 500px; */
@@ -10379,14 +10384,29 @@ h6 {
   box-shadow: inset 1px 1px 10px #333;
 }
 .canvas .tm-canv-icon {
+  display: block;
   position: absolute;
   top: 65px;
   right: 20px;
   color: #fff;
   cursor: pointer;
 }
+.canvas .tm-canv-icon.sub {
+  display: none;
+  color: #cecece;
+  cursor: not-allowed;
+}
+.canvas .tm-canv-icon.sub:hover {
+  color: #cecece;
+}
+.canvas .tm-canv-icon.sub:nth-child(2) {
+  top: 95px;
+}
+.canvas .tm-canv-icon.sub:nth-child(3) {
+  top: 125px;
+}
 .canvas .tm-canv-icon:hover {
-  color: #0cc;
+  color: #253c7f;
 }
 .canvas .tm-canv-icon.tm-del {
   top: 95px;
@@ -10407,13 +10427,14 @@ h6 {
   color: lightgreen;
 }
 .canvas .tm-canv-icon.tm-save {
-  top: 155px;
+  top: 185px;
 }
 .canvas .tm-canv-icon.tm-save:hover {
-  color: #253c7f;
+  color: #0cc;
 }
 .canvas .tm-canv-icon.tm-rem {
-  top: 185px;
+  top: 155px;
+  display: block;
 }
 .canvas .tm-canv-icon.tm-rem:hover {
   color: #cb3000;
@@ -10441,6 +10462,17 @@ h6 {
   margin: 1.5em 0;
 }
 /* Pics End */
+/* how to use Start */
+#how-to-use h4 {
+  font-size: 24px;
+  font-weight: 300;
+}
+#how-to-use .tm-pics ol li {
+  color: #344055;
+  padding: 5px 0;
+  font-family: 'RobotoLight', sans-serif;
+}
+/* how to use End */
 /* See-in modal Start*/
 #see-in .tm-see-pics {
   position: relative;

@@ -328,6 +328,8 @@ $(function(){
         $('.js-underframe').attr('disabled', arg).trigger('refresh');
         $('.js-stylization').attr('disabled', arg).trigger('refresh');
         $('.js-covering').attr('disabled', arg).trigger('refresh');
+        $('.tm-canv-icon.sub').css('display', 'block');
+        $('.tm-canv-icon.org').css('display', 'none');
         
         if(!arg) {
             //set custom selects to default value
@@ -338,6 +340,8 @@ $(function(){
             $('.tm-api').css('display', 'block');
             $('.js-file').css('display', 'block');
             $('.tm-button-dis').css('display', 'none');
+            $('.tm-canv-icon.sub').css('display', 'none');
+            $('.tm-canv-icon.org').css('display', 'block');
             //set rangeslider to defaul value
             var inputRange = document.querySelector('input[type="range"]');
                 value = '100',
@@ -672,25 +676,25 @@ $(function(){
         });
     }
     $('.js-material').change(function(){
-        console.log('material');
+        // console.log('material');
         var val = $(this).val();
         material = +val;
         getTotal();
     });
     $('.js-covering').change(function(){
-        console.log('covering');
+        // console.log('covering');
         var val = $(this).val();
         covering = +val;
         getTotal();
     });
     $('.js-underframe').change(function(){
-        console.log('underframe');
+        // console.log('underframe');
         var val = $(this).val();
         underframe = +val;
         getTotal();
     });
     $('.js-stylization').change(function(){
-        console.log('stylization');
+        // console.log('stylization');
         var val = $(this).val();
         stylization = +val;
         getTotal();
@@ -741,7 +745,6 @@ $(function(){
     }
 
     $('.js-dimen').change(function() {
-        console.log('dimen');
         getTotal();
     });
 
