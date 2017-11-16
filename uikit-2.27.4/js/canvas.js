@@ -330,6 +330,11 @@ $(function(){
         $('.js-covering').attr('disabled', arg).trigger('refresh');
         $('.tm-canv-icon.sub').css('display', 'block');
         $('.tm-canv-icon.org').css('display', 'none');
+        console.log(sum, area, material, covering, stylization, perim, underframe);
+        if(sum && area && material && covering && stylization && perim && underframe) {
+            $('.tm-book').attr('disabled', !arg);
+            console.log('in');
+        }
         
         if(!arg) {
             //set custom selects to default value
@@ -340,8 +345,7 @@ $(function(){
             $('.tm-api').css('display', 'block');
             $('.js-file').css('display', 'block');
             $('.tm-button-dis').css('display', 'none');
-            $('.tm-canv-icon.sub').css('display', 'none');
-            $('.tm-canv-icon.org').css('display', 'block');
+            $('.tm-book').attr('disabled', !arg);
             //set rangeslider to defaul value
             var inputRange = document.querySelector('input[type="range"]');
                 value = '100',
@@ -417,6 +421,8 @@ $(function(){
                 height: height,
             }); 
         };   
+        $('.tm-canv-icon.sub').css('display', 'none');
+        $('.tm-canv-icon.org').css('display', 'block');
     };
    function clipImg (x, y, w, h) {
        /* var too = new Konva.Text({
@@ -751,5 +757,11 @@ $(function(){
     function getSum() {
         $('.js-total').text(sum);
     }
+
+    $('.tm-book').click(function(e) {
+        e.preventDefault();
+        console.log('booook..');
+        console.log(sum, area, material, covering, stylization, perim, underframe);
+    });
 
 });

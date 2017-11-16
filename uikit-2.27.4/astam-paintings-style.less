@@ -996,6 +996,10 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
     &:active {
       background: rgba(234, 61, 7, .5);
     }
+    &:disabled {
+      background: rgba(255, 61, 0, .6);
+      cursor: not-allowed;
+    }
   }
   .js-material, .js-covering, .js-underframe, .js-stylization {
     width: 100%;
@@ -1216,14 +1220,14 @@ input:disabled, select:disabled {
   }
   
     .tm-canv-icon {
-      display: block;
+      display: none;
       position: absolute;
       top: 65px;
       right: 20px;
       color: #fff;
       cursor: pointer;
       &.sub {
-        display: none; 
+        display: block; 
         color: #cecece;
         cursor: not-allowed;
         &:hover {

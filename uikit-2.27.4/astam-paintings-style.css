@@ -10171,6 +10171,10 @@ h6 {
 #constructor .tm-book:active {
   background: rgba(234, 61, 7, 0.5);
 }
+#constructor .tm-book:disabled {
+  background: rgba(255, 61, 0, 0.6);
+  cursor: not-allowed;
+}
 #constructor .js-material,
 #constructor .js-covering,
 #constructor .js-underframe,
@@ -10384,7 +10388,7 @@ select:disabled {
   box-shadow: inset 1px 1px 10px #333;
 }
 .canvas .tm-canv-icon {
-  display: block;
+  display: none;
   position: absolute;
   top: 65px;
   right: 20px;
@@ -10392,7 +10396,7 @@ select:disabled {
   cursor: pointer;
 }
 .canvas .tm-canv-icon.sub {
-  display: none;
+  display: block;
   color: #cecece;
   cursor: not-allowed;
 }
