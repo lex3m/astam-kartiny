@@ -330,10 +330,10 @@ $(function(){
         $('.js-covering').attr('disabled', arg).trigger('refresh');
         $('.tm-canv-icon.sub').css('display', 'block');
         $('.tm-canv-icon.org').css('display', 'none');
-        console.log(sum, area, material, covering, stylization, perim, underframe);
+        // console.log(sum, area, material, covering, stylization, perim, underframe);
         if(sum && area && material && covering && stylization && perim && underframe) {
             $('.tm-book').attr('disabled', !arg);
-            console.log('in');
+            // console.log('in');
         }
         
         if(!arg) {
@@ -706,7 +706,7 @@ $(function(){
         getTotal();
     });
     
-    var sum = 0, perim = 0, area = 0, material = 1, covering = 1, underframe = 1, stylization = 1, iflag = false;
+    var sum = 0, perim = 0, area = 0, material = 1, covering = 1, underframe = 1, stylization = 1, iflag = false, mes = [];
     function getTotal() {
         iflag = false;
         var getStage = JSON.parse(stage.toJSON()).children[0].children;
@@ -724,12 +724,14 @@ $(function(){
             sum = 0;
             perim = 0;
             area = 0;
+            mes = [];
             if(getStage && getStage[0] && getStage[0].children[0] && getStage[0].children[0].attrs) {
                 for (var i = 0, len = getStage.length; i < len; i++) {
                     if(getStage[i] && getStage[i].children[0].className == 'Rect'){
                         //sum += Math.abs(getStage[i].children[0].attrs.width/globalKoef) * Math.abs(getStage[i].children[0].attrs.height/globalKoef);
                         perim += (Math.abs(Math.round(getStage[i].children[0].attrs.width/globalKoef)) + Math.abs(Math.round(getStage[i].children[0].attrs.height/globalKoef))) * 2;
                         area += Math.abs(Math.round(getStage[i].children[0].attrs.width/globalKoef)) * Math.abs(Math.round(getStage[i].children[0].attrs.height/globalKoef));
+                        mes.push({'width': Math.abs(Math.round(getStage[i].children[0].attrs.width/globalKoef)), 'height': Math.abs(Math.round(getStage[i].children[0].attrs.height/globalKoef))});
                     }
                 }
             }
@@ -761,7 +763,7 @@ $(function(){
     $('.tm-book').click(function(e) {
         e.preventDefault();
         console.log('booook..');
-        console.log(sum, area, material, covering, stylization, perim, underframe);
+        console.log(sum, area, material, covering, stylization, perim, underframe, mes);
     });
 
 });
