@@ -56,7 +56,7 @@
             $('.js-ruler-ver').empty();
             for(var i = 1, len = 21; i < len; i++){
                 $('.js-ruler-gor').append('<div class="tm-ruler rul'+i+'"><span>'+ ar[i-1] +'</span></div>');
-                if(i < 14){
+                if(i < 13){
                     $('.js-ruler-ver').append('<div class="tm-ruler rul'+i+'"><span>'+ ar[i-1] +'</span></div>');
                 }
             }
@@ -67,5 +67,5 @@
             //console.warn('onSlideEnd', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
         }
     });
-
+    
 })();

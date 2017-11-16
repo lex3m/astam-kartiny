@@ -316,8 +316,41 @@ $(function(){
         $('#logo').val('');
         clearTotal();
         clearHistory();
+        var inputRange = document.querySelector('input[type="range"]');
+        inputRange.disabled = false;
+        inputRange.rangeSlider.update();
+        toggleMesurement(false);
     });
-
+    //function for disable/enable slider and selects
+    function toggleMesurement(arg) {
+        
+        $('.js-material').attr('disabled', arg).trigger('refresh');
+        $('.js-underframe').attr('disabled', arg).trigger('refresh');
+        $('.js-stylization').attr('disabled', arg).trigger('refresh');
+        $('.js-covering').attr('disabled', arg).trigger('refresh');
+        
+        if(!arg) {
+            //set custom selects to default value
+            $('.js-material').val('1').trigger('refresh');
+            $('.js-underframe').val('1').trigger('refresh');
+            $('.js-stylization').val('1').trigger('refresh');
+            $('.js-covering').val('1').trigger('refresh');
+            $('.tm-api').css('display', 'block');
+            $('.js-file').css('display', 'block');
+            $('.tm-button-dis').css('display', 'none');
+            //set rangeslider to defaul value
+            var inputRange = document.querySelector('input[type="range"]');
+                value = '100',
+                event = document.createEvent('Event');
+                event.initEvent('change', true, true);
+                inputRange.value = value;
+                inputRange.dispatchEvent(event);
+        } else {
+            $('.tm-api').css('display', 'none');
+            $('.js-file').css('display', 'none');
+            $('.tm-button-dis').css('display', 'block');
+        }
+    }
     function clearHistory () {
         state = [];
         mods = 0;
@@ -421,7 +454,7 @@ $(function(){
         saveStage();
         getTotal();
     });
-
+   
     $('.tm-check').click(function(){
         var nodes = stage.find('Group');
         clearStage();
@@ -446,35 +479,14 @@ $(function(){
         /* $("#imgprvw").attr("src", ""); */
         layer.clearBeforeDraw(true);
         imageObj.src = "";
-        $('.js-dimen').attr('disabled', 'disabled');
-        $('.js-material').attr('disabled', 'disabled');
-        //console.log();
+        // $('.js-dimen').attr('disabled', 'disabled');
+        // $('.js-material').attr('disabled', 'disabled');
         
-        // $('.js-dimen').rangeslider('update');
-        /* $('.js-material').change(function(){
-            // console.log('asdasd');
-            var val = $(this).val();
-            material = val;
-            getTotal();
-        });
-        $('.js-covering').change(function(){
-            // console.log('asdasd');
-            var val = $(this).val();
-            covering = val;
-            getTotal();
-        });
-        $('.js-underframe').change(function(){
-            // console.log('asdasd');
-            var val = $(this).val();
-            underframe = val;
-            getTotal();
-        });
-        $('.js-stylization').change(function(){
-            // console.log('asdasd');
-            var val = $(this).val();
-            stylization = val;
-            getTotal();
-        }); */
+        var inputRange = document.querySelector('input[type="range"]');
+        inputRange.disabled = true;
+        inputRange.rangeSlider.update();
+        saveImg();
+        toggleMesurement(true);
         /* console.log('**************************');
         console.log(Konva.stages[0].children[0].children[0].attrs.x);
         console.log(Konva.stages[0].children[0].attrs.y);
@@ -660,44 +672,61 @@ $(function(){
         });
     }
     $('.js-material').change(function(){
-        // console.log('asdasd');
+        console.log('material');
         var val = $(this).val();
-        material = val;
+        material = +val;
         getTotal();
     });
     $('.js-covering').change(function(){
-        // console.log('asdasd');
+        console.log('covering');
         var val = $(this).val();
-        covering = val;
+        covering = +val;
         getTotal();
     });
     $('.js-underframe').change(function(){
-        // console.log('asdasd');
+        console.log('underframe');
         var val = $(this).val();
-        underframe = val;
+        underframe = +val;
         getTotal();
     });
     $('.js-stylization').change(function(){
-        // console.log('asdasd');
+        console.log('stylization');
         var val = $(this).val();
-        stylization = val;
+        stylization = +val;
         getTotal();
     });
     
-    var sum = 0, perim = 0, area = 0, material = 1, covering = 1, underframe = 1, stylization = 1;
+    var sum = 0, perim = 0, area = 0, material = 1, covering = 1, underframe = 1, stylization = 1, iflag = false;
     function getTotal() {
-        sum = 0;
-        perim = 0;
-        area = 0;
+        iflag = false;
         var getStage = JSON.parse(stage.toJSON()).children[0].children;
-        for (var i = 0, len = getStage.length; i < len; i++) {
-            if(getStage[i]/* .attrs.x && getStage[i].attrs.y */){
-                //sum += Math.abs(getStage[i].children[0].attrs.width/globalKoef) * Math.abs(getStage[i].children[0].attrs.height/globalKoef);
-                perim += (Math.abs(Math.round(getStage[i].children[0].attrs.width/globalKoef)) + Math.abs(Math.round(getStage[i].children[0].attrs.height/globalKoef))) * 2;
-                area += Math.abs(Math.round(getStage[i].children[0].attrs.width/globalKoef)) * Math.abs(Math.round(getStage[i].children[0].attrs.height/globalKoef));
+        // console.log(getStage);
+        if(getStage) {
+            for (var i = 0, len = getStage.length; i < len; i++) {
+                if (getStage[i].children.length == 0 || getStage[i].children[0].className == 'Image'){
+                    iflag = true;
+                }
             }
+
         }
-        sum = area*(material + covering + stylization) + perim * underframe;
+        // console.log(iflag);
+        if(!iflag){
+            sum = 0;
+            perim = 0;
+            area = 0;
+            if(getStage && getStage[0] && getStage[0].children[0] && getStage[0].children[0].attrs) {
+                for (var i = 0, len = getStage.length; i < len; i++) {
+                    if(getStage[i] && getStage[i].children[0].className == 'Rect'){
+                        //sum += Math.abs(getStage[i].children[0].attrs.width/globalKoef) * Math.abs(getStage[i].children[0].attrs.height/globalKoef);
+                        perim += (Math.abs(Math.round(getStage[i].children[0].attrs.width/globalKoef)) + Math.abs(Math.round(getStage[i].children[0].attrs.height/globalKoef))) * 2;
+                        area += Math.abs(Math.round(getStage[i].children[0].attrs.width/globalKoef)) * Math.abs(Math.round(getStage[i].children[0].attrs.height/globalKoef));
+                    }
+                }
+            }
+            sum = area*(material + covering + stylization) + perim * underframe;
+        }
+        /* console.log(area, material, covering, stylization, perim, underframe, globalKoef);
+        console.log(sum); */
         getSum();
     }
     function clearTotal() {
@@ -712,6 +741,7 @@ $(function(){
     }
 
     $('.js-dimen').change(function() {
+        console.log('dimen');
         getTotal();
     });
 
