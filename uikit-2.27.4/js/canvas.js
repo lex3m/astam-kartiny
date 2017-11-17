@@ -343,6 +343,7 @@ $(function(){
             $('.js-underframe').val('1').trigger('refresh');
             $('.js-stylization').val('1').trigger('refresh');
             $('.js-covering').val('1').trigger('refresh');
+            material = 1, covering = 1, underframe = 1, stylization = 1;
             $('.tm-api').css('display', 'block');
             $('.js-file').css('display', 'block');
             $('.tm-button-dis').css('display', 'none');
@@ -749,7 +750,7 @@ $(function(){
             sum = area*(material + covering + stylization) + perim * underframe;
         }
         /* console.log(area, material, covering, stylization, perim, underframe, globalKoef);
-        console.log(sum); */
+        console.log(sum);  */
         getSum();
     }
     function clearTotal() {
