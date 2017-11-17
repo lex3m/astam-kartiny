@@ -197,7 +197,6 @@ $(function(){
         droppableRect.on('mouseover', function(e) {
             var layer = this.getLayer();
             document.body.style.cursor = 'move';
-
             layer.draw();
         });
 
@@ -239,12 +238,7 @@ $(function(){
             tooltipLayer.moveToTop(); 
             tooltipLayer.draw(); 
         });
-        /* droppableRect.on('dragend', function(e) {
-            active = e.target;
-        }); */
         droppableRect.on('mouseup', function(e) {
-            // console.log('done');
-            // console.log(e.target);
             back.hide();
             tooltip.hide();
             tooltipLayer.draw();
@@ -312,6 +306,7 @@ $(function(){
             height: height
         });
         stage.add(layer);
+        stage.add(tooltipLayer);
         $("#canvas").css('backgroundImage', 'none');
         $('#logo').val('');
         clearTotal();
@@ -347,12 +342,12 @@ $(function(){
             $('.tm-button-dis').css('display', 'none');
             $('.tm-book').attr('disabled', !arg);
             //set rangeslider to defaul value
-            var inputRange = document.querySelector('input[type="range"]');
-                value = '100',
-                event = document.createEvent('Event');
-                event.initEvent('change', true, true);
-                inputRange.value = value;
-                inputRange.dispatchEvent(event);
+            // var inputRange = document.querySelector('input[type="range"]');
+            //     value = '100',
+            //     event = document.createEvent('Event');
+            //     event.initEvent('change', true, true);
+            //     inputRange.value = value;
+            //     inputRange.dispatchEvent(event);
         } else {
             $('.tm-api').css('display', 'none');
             $('.js-file').css('display', 'none');
@@ -574,6 +569,12 @@ $(function(){
                 });
             }
             for(var i = 0, len = arRect.length; i < len; i ++){
+                arRect[i].on('mousemove', function(e) {
+                    back.show();
+                    tooltip.hide();
+                    back.hide();
+                    tooltipLayer.draw();
+                }); 
                 arRect[i].on('mouseover', function(e) {
                     var layer = this.getLayer();
                     document.body.style.cursor = 'move';
@@ -590,9 +591,10 @@ $(function(){
                 arRect[i].on('mouseout', function(e) {
                     var layer = this.getLayer();
                     document.body.style.cursor = 'default';
-                    tooltip.hide();
-                    tooltipLayer.draw();
                     layer.draw();
+                    tooltip.hide();
+                    back.hide();
+                    tooltipLayer.draw();
                 });
                 arRect[i].on('mousedown', function(e) {
                     selectionRectRemove();
@@ -619,8 +621,7 @@ $(function(){
                 arRect[i].on('mouseup', function(e) {
                     tooltip.hide();
                     tooltipLayer.draw();
-                    saveStage();
-                    getTotal();
+                    saveStage();                    
                 });
             }
         }
@@ -637,7 +638,7 @@ $(function(){
             }
     }
     $('.tm-api').click(function(){
-        var query = 'car';
+        var query = 'forest';
         apiConnect(query);
     });
     $('.js-find').click(function(e){

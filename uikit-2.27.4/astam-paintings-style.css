@@ -10403,10 +10403,10 @@ select:disabled {
 .canvas .tm-canv-icon.sub:hover {
   color: #cecece;
 }
-.canvas .tm-canv-icon.sub:nth-child(2) {
+.canvas .tm-canv-icon.sub.close {
   top: 95px;
 }
-.canvas .tm-canv-icon.sub:nth-child(3) {
+.canvas .tm-canv-icon.sub.check {
   top: 125px;
 }
 .canvas .tm-canv-icon:hover {
