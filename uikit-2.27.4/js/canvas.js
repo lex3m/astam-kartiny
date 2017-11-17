@@ -220,6 +220,9 @@ $(function(){
             sel = e.target.parent;
             active = e.target;
             active.fill('rgba(37, 60, 127, .3)');
+            //make active icon for deletion
+            $('.tm-canv-icon.close').css('display', 'none');
+            $('.tm-canv-icon.tm-del').css('display', 'block');
             // update tooltip
             var mousePos = stage.getPointerPosition();
             tooltip.position({
@@ -291,6 +294,9 @@ $(function(){
         stage.draw();
         saveStage();
         getTotal();
+        //make clip active
+        $('.tm-canv-icon.square').css('display', 'none');
+        $('.tm-canv-icon.tm-check').css('display', 'block');
     }
     $('.tm-draw').click(function(){
         rectDraw();       
@@ -324,7 +330,7 @@ $(function(){
         $('.js-stylization').attr('disabled', arg).trigger('refresh');
         $('.js-covering').attr('disabled', arg).trigger('refresh');
         $('.tm-canv-icon.sub').css('display', 'block');
-        $('.tm-canv-icon.org').css('display', 'none');
+        $('.tm-canv-icon.org').css('display', 'none');        
         // console.log(sum, area, material, covering, stylization, perim, underframe);
         if(sum && area && material && covering && stylization && perim && underframe) {
             $('.tm-book').attr('disabled', !arg);
@@ -352,6 +358,8 @@ $(function(){
             $('.tm-api').css('display', 'none');
             $('.js-file').css('display', 'none');
             $('.tm-button-dis').css('display', 'block');
+            $('.tm-canv-icon.tm-rem').css('display', 'block');
+            $('.tm-canv-icon.trash').css('display', 'none');
         }
     }
     function clearHistory () {
@@ -416,8 +424,12 @@ $(function(){
                 height: height,
             }); 
         };   
-        $('.tm-canv-icon.sub').css('display', 'none');
-        $('.tm-canv-icon.org').css('display', 'block');
+        $('.tm-canv-icon.square').css('display', 'none');
+        $('.tm-canv-icon.trash').css('display', 'none');
+        $('.tm-canv-icon.tm-draw').css('display', 'block');
+        $('.tm-canv-icon.tm-rem').css('display', 'block');
+        // $('.tm-canv-icon.sub').css('display', 'none');
+        // $('.tm-canv-icon.org').css('display', 'block');
     };
    function clipImg (x, y, w, h) {
        /* var too = new Konva.Text({
@@ -484,8 +496,6 @@ $(function(){
         /* $("#imgprvw").attr("src", ""); */
         layer.clearBeforeDraw(true);
         imageObj.src = "";
-        // $('.js-dimen').attr('disabled', 'disabled');
-        // $('.js-material').attr('disabled', 'disabled');
         
         var inputRange = document.querySelector('input[type="range"]');
         inputRange.disabled = true;
@@ -759,11 +769,16 @@ $(function(){
 
     function getSum() {
         $('.js-total').text(sum);
+        if(!sum) {
+            $('.tm-canv-icon.close').css('display', 'block');
+            $('.tm-canv-icon.tm-del').css('display', 'none');
+            $('.tm-canv-icon.square').css('display', 'block');
+            $('.tm-canv-icon.tm-check').css('display', 'none');
+        }
     }
 
     $('.tm-book').click(function(e) {
         e.preventDefault();
-        console.log('booook..');
         console.log(sum, area, material, covering, stylization, perim, underframe, mes);
     });
 

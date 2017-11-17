@@ -10405,15 +10405,20 @@ select:disabled {
 }
 .canvas .tm-canv-icon.sub.close {
   top: 95px;
+  right: 22px;
 }
 .canvas .tm-canv-icon.sub.check {
   top: 125px;
+}
+.canvas .tm-canv-icon.sub.trash {
+  top: 155px;
 }
 .canvas .tm-canv-icon:hover {
   color: #253c7f;
 }
 .canvas .tm-canv-icon.tm-del {
   top: 95px;
+  right: 22px;
 }
 .canvas .tm-canv-icon.tm-del:hover {
   color: #cb3000;
@@ -10438,7 +10443,6 @@ select:disabled {
 }
 .canvas .tm-canv-icon.tm-rem {
   top: 155px;
-  display: block;
 }
 .canvas .tm-canv-icon.tm-rem:hover {
   color: #cb3000;
