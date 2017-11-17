@@ -471,6 +471,8 @@ $(function(){
         stage.draw();
         saveStage();
         getTotal();
+        $('.tm-canv-icon.close').css('display', 'block');
+        $('.tm-canv-icon.tm-del').css('display', 'none');
     });
    
     $('.tm-check').click(function(){
@@ -649,7 +651,7 @@ $(function(){
             }
     }
     $('.tm-api').click(function(){
-        var query = 'forest';
+        var query = 'fest';
         apiConnect(query);
     });
     $('.js-find').click(function(e){
