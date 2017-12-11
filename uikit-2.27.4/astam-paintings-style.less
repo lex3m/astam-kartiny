@@ -1185,6 +1185,36 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
         }
       }
     }
+    &.sh13 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .shape {
+        width: 18%;
+        margin-left: 5px;
+        &:nth-child(1) {
+          margin-left: 0;
+          margin-top: 10px;
+        }
+        &:nth-child(2) {
+         margin-top: 20px;
+        }
+        &:nth-child(3) {
+         margin-top: -20px;
+        }
+        &:nth-child(4) {
+         margin-top: -10px;
+        }
+        &:nth-child(1), &:nth-child(4) {
+          height: 45%;
+          width: 30%;
+        }
+        &:nth-child(2), &:nth-child(3) {
+          height: 75%;
+          width: 15%;
+        }
+      }
+    }
   }
   .tm-book {
     width: 100%;
