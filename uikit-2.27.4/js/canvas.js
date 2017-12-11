@@ -10,6 +10,28 @@ $(function(){
     var height = $('#canvas').height();
     var modal = UIkit.modal("#my-id");
     var modal2 = UIkit.modal("#see-in");
+    var modal3 = UIkit.modal("#js-shape-modal");
+    
+    
+    var shapes = [
+    /* 1 rect */    '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-1,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":802,"height":482,"stroke":"black","fill":"rgba(37, 60, 127, .3)"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":395.3125,"y":273.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 100см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":395.3125,"y":273.5625},"className":"Text"}]}]}',
+    /* 2 rect */    '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-2,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":395,"height":483,"stroke":"black","fill":"rgba(37, 60, 127, .3)"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":395,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":483,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":395,"y":483,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":402,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"x":4,"width":395,"height":482,"stroke":"black"},"className":"Rect"},{"attrs":{"x":4,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":399,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":399,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":4,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":190.3125,"y":220.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 49см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":190.3125,"y":220.5625},"className":"Text"}]}]}',
+    ]
+    $('.js-shape').click(function(e) {
+        e.preventDefault();
+        modal3.show();
+    });
+    $('.item').click(function(e) {
+        clearStage();
+        stage = Konva.Node.create(shapes[$(this).attr('data-number')], 'canvas');
+        // st1 = stage.toJSON();
+        // console.log(st1);
+        // console.log($(this).attr('data-number'));
+        $('.tm-canv-icon.check').css('display', 'none');
+        $('.tm-canv-icon.tm-check').css('display', 'block');
+        
+    });
+
     function update(activeAnchor) {
         var group = activeAnchor.getParent();
         var topLeft = group.get('.topLeft')[0];
@@ -359,6 +381,7 @@ $(function(){
             $('.tm-api').css('display', 'none');
             $('.js-file').css('display', 'none');
             $('.tm-button-dis').css('display', 'block');
+            $('.js-shape').attr('disabled', true);
             $('.tm-canv-icon.tm-rem').css('display', 'block');
             $('.tm-canv-icon.trash').css('display', 'none');
         }
@@ -429,6 +452,7 @@ $(function(){
         $('.tm-canv-icon.trash').css('display', 'none');
         $('.tm-canv-icon.tm-draw').css('display', 'block');
         $('.tm-canv-icon.tm-rem').css('display', 'block');
+        $('.js-shape').attr('disabled', false);
         // $('.tm-canv-icon.sub').css('display', 'none');
         // $('.tm-canv-icon.org').css('display', 'block');
     };

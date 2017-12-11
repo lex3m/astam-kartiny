@@ -10117,7 +10117,8 @@ h6 {
   display: none;
 }
 #constructor .tm-api,
-#constructor .js-file {
+#constructor .js-file,
+#constructor .js-shape {
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -10130,14 +10131,17 @@ h6 {
   font-size: 18px;
 }
 #constructor .tm-api:hover,
-#constructor .js-file:hover {
+#constructor .js-file:hover,
+#constructor .js-shape:hover {
   background: #0081d9;
 }
 #constructor .tm-api:active,
-#constructor .js-file:active {
+#constructor .js-file:active,
+#constructor .js-shape:active {
   background: #0098ff;
 }
 #constructor .tm-button-dis {
+  display: none;
   border: none;
   box-sizing: border-box;
   width: 100%;
@@ -10150,7 +10154,51 @@ h6 {
   font-size: 18px;
   font-family: 'RobotoLight', sans-serif;
   cursor: not-allowed;
-  display: none;
+}
+#constructor .js-shape {
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 8px;
+  background: #426ec7;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: 'RobotoLight', sans-serif;
+}
+#constructor .js-shape:disabled {
+  background: #81a1e0;
+  cursor: not-allowed;
+}
+#constructor .item {
+  background: #424444;
+  width: 140px;
+  height: 100px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+#constructor .item .shape {
+  border: 1px dotted #858585;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+#constructor .item:hover {
+  background: #6a6a65;
+  cursor: pointer;
+}
+#constructor .item:hover .shape {
+  border-color: #fff;
+}
+#constructor .item.double {
+  display: flex;
+  justify-content: space-between;
+}
+#constructor .item.double .shape {
+  width: 48%;
 }
 #constructor .tm-book {
   width: 100%;

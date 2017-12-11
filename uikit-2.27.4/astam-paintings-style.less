@@ -944,7 +944,7 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     display: none;
   }
-  .tm-api, .js-file {
+  .tm-api, .js-file, .js-shape {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -976,7 +976,51 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
     font-size: 18px;
     font-family: 'RobotoLight', sans-serif;
     cursor: not-allowed;
-    display: none;
+  }
+  .js-shape {
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+     width: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 8px;
+    background: #426ec7;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'RobotoLight', sans-serif;  
+    &:disabled {
+      background: #81a1e0;
+      cursor: not-allowed;
+    }
+  }
+  .item {
+    background: #424444;
+    width: 140px;
+    height: 100px;
+    padding: 5px;
+    box-sizing: border-box;
+    .shape {
+      border: 1px dotted #858585;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    &:hover {
+      background: #6a6a65;
+      cursor: pointer;
+      .shape {
+        border-color: #fff;
+      }
+    }
+    &.double {
+      display: flex;
+      justify-content: space-between;
+      .shape {
+        width: 48%;
+      }
+    }
   }
   .tm-book {
     width: 100%;
