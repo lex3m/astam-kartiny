@@ -10346,6 +10346,26 @@ h6 {
 #constructor .item.sh11 .sh-wrap .shape:nth-child(2n) {
   margin-left: 5px;
 }
+#constructor .item.sh12 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#constructor .item.sh12 .shape {
+  width: 18%;
+  margin-left: 5px;
+}
+#constructor .item.sh12 .shape:nth-child(1) {
+  margin-left: 0;
+}
+#constructor .item.sh12 .shape:nth-child(1),
+#constructor .item.sh12 .shape:nth-child(5) {
+  height: 50%;
+}
+#constructor .item.sh12 .shape:nth-child(2),
+#constructor .item.sh12 .shape:nth-child(4) {
+  height: 75%;
+}
 #constructor .tm-book {
   width: 100%;
   height: 60px;

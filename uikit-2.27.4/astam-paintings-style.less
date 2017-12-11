@@ -1167,6 +1167,24 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
         }
       }
     }
+    &.sh12 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .shape {
+        width: 18%;
+        margin-left: 5px;
+        &:nth-child(1) {
+          margin-left: 0;
+        }
+        &:nth-child(1), &:nth-child(5) {
+          height: 50%;
+        }
+        &:nth-child(2), &:nth-child(4) {
+          height: 75%;
+        }
+      }
+    }
   }
   .tm-book {
     width: 100%;
