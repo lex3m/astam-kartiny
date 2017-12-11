@@ -10193,12 +10193,26 @@ h6 {
 #constructor .item:hover .shape {
   border-color: #fff;
 }
-#constructor .item.double {
+#constructor .item.sh1 {
   display: flex;
   justify-content: space-between;
 }
-#constructor .item.double .shape {
+#constructor .item.sh1 .shape {
   width: 48%;
+}
+#constructor .item.sh2 .shape {
+  width: 100%;
+  height: 48%;
+}
+#constructor .item.sh2 .shape:first-child {
+  margin-bottom: 5px;
+}
+#constructor .item.sh3 {
+  display: flex;
+  justify-content: space-between;
+}
+#constructor .item.sh3 .shape {
+  width: 30%;
 }
 #constructor .tm-book {
   width: 100%;

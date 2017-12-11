@@ -15,21 +15,26 @@ $(function(){
     
     var shapes = [
     /* 1 rect */    '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-1,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":802,"height":482,"stroke":"black","fill":"rgba(37, 60, 127, .3)"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":395.3125,"y":273.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 100см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":395.3125,"y":273.5625},"className":"Text"}]}]}',
-    /* 2 rect */    '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-2,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":395,"height":483,"stroke":"black","fill":"rgba(37, 60, 127, .3)"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":395,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":483,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":395,"y":483,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":402,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"x":4,"width":395,"height":482,"stroke":"black"},"className":"Rect"},{"attrs":{"x":4,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":399,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":399,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":4,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":190.3125,"y":220.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 49см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":190.3125,"y":220.5625},"className":"Text"}]}]}',
+    /* 2 rect g*/    '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-2,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":395,"height":483,"stroke":"black","fill":"rgba(37, 60, 127, .3)"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":395,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":483,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":395,"y":483,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":402,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"x":4,"width":395,"height":482,"stroke":"black"},"className":"Rect"},{"attrs":{"x":4,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":399,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":399,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":4,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":190.3125,"y":220.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 49см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":190.3125,"y":220.5625},"className":"Text"}]}]}',
+    /* 2 rect v*/    '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":1,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":798,"height":228,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":798,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":798,"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"y":251,"draggable":true},"className":"Group","children":[{"attrs":{"x":1,"y":-3,"width":798,"height":231,"stroke":"black","fill":"rgba(37, 60, 127, .3)"},"className":"Rect"},{"attrs":{"x":799,"y":-3,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":1,"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":799,"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":1,"y":-3,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":172,"y":410.4375,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 100см, высота: 29см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":172,"y":410.4375},"className":"Text"}]}]}',
+    /* 3 rect g*/    '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":1,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":256,"height":477,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":256,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":256,"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":271,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":256,"height":478,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":256,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":256,"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":537,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"x":5,"width":256,"height":478,"stroke":"black","fill":"rgba(37, 60, 127, .3)"},"className":"Rect"},{"attrs":{"x":5,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":261,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":5,"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":261,"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":644,"y":141.4375,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 38см, высота: 72см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":644,"y":141.4375},"className":"Text"}]}]}',
+
     ]
     $('.js-shape').click(function(e) {
         e.preventDefault();
         modal3.show();
     });
     $('.item').click(function(e) {
-        clearStage();
-        stage = Konva.Node.create(shapes[$(this).attr('data-number')], 'canvas');
-        // st1 = stage.toJSON();
-        // console.log(st1);
-        // console.log($(this).attr('data-number'));
-        $('.tm-canv-icon.check').css('display', 'none');
-        $('.tm-canv-icon.tm-check').css('display', 'block');
+        // clearStage();
+        // stage = Konva.Node.create(shapes[$(this).attr('data-number')], 'canvas');
+        // updateBindings();
+        // $('.tm-canv-icon.check').css('display', 'none');
+        // $('.tm-canv-icon.tm-check').css('display', 'block');
+        // modal3.hide();
         
+        st1 = stage.toJSON();
+        console.log(st1);
+        // console.log($(this).attr('data-number'));
     });
 
     function update(activeAnchor) {
@@ -377,6 +382,7 @@ $(function(){
             //     event.initEvent('change', true, true);
             //     inputRange.value = value;
             //     inputRange.dispatchEvent(event);
+            $('.js-shape').attr('disabled', true);
         } else {
             $('.tm-api').css('display', 'none');
             $('.js-file').css('display', 'none');
@@ -573,6 +579,21 @@ $(function(){
         }
         if(st) {
             stage = Konva.Node.create(st, 'canvas');
+            updateBindings();
+        }
+        getTotal();
+        selectionRectRemove();
+    }
+    function selectionRectRemove () {
+        var allRect = stage.find('Rect');
+            if(allRect) {
+                for (var i = 0, len = allRect.length; i < len; i++) {
+                    allRect[i].fill(null);
+                }
+                stage.draw();
+            }
+    }
+    function updateBindings () {
             var arRect = stage.find('Rect');
             var arCircle = stage.find('Circle');
             for(var i = 0, len = arCircle.length; i < len; i ++){
@@ -661,19 +682,9 @@ $(function(){
                     saveStage();                    
                 });
             }
-        }
         getTotal();
-        selectionRectRemove();
     }
-    function selectionRectRemove () {
-        var allRect = stage.find('Rect');
-            if(allRect) {
-                for (var i = 0, len = allRect.length; i < len; i++) {
-                    allRect[i].fill(null);
-                }
-                stage.draw();
-            }
-    }
+    
     $('.tm-api').click(function(){
         var query = 'fest';
         apiConnect(query);
