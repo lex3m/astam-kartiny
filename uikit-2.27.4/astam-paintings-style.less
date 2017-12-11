@@ -1091,6 +1091,82 @@ body, p, span, a, li, td, h1, h2, h3, h4, h5, h6 {
         }
       }
     }
+    &.sh8 {
+      display: flex;
+      justify-content: space-between;
+      .shape {
+        width: 24%;
+        &:nth-child(2) {
+          width: 47%;
+        }
+      }
+    }
+    &.sh9 {
+      display: flex;
+      justify-content: space-between;
+      .shape {
+        width: 48%;
+      }
+      .sh-wrap {
+        width: 48%;
+        .shape{
+          width: 100%;
+          height: 47%;
+          &:first-child {
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+    &.sh10 {
+      display: flex;
+      justify-content: space-between;
+      .shape {
+        width: 35%;
+      }
+      .sh-wrap {
+        width: 63%;
+        .shape{
+          width: 100%;
+          height: 29.4%;
+          &:first-child {
+            margin-bottom: 5px;
+          }
+          &:nth-child(2) {
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+
+    &.sh11 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .shape {
+        width: 48%;
+        height: 70%;
+      }
+      .sh-wrap {
+        height: 68%;
+        width: 50%;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        align-content: flex-start;
+        justify-content: center;
+        .shape{
+          width: 43%;
+          height: 47%;
+          &:first-child, &:nth-child(2) {
+            margin-bottom: 5px;
+          }
+          &:nth-child(2n) {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
   }
   .tm-book {
     width: 100%;
