@@ -10334,6 +10334,7 @@ h6 {
   align-items: flex-start;
   align-content: flex-start;
   justify-content: center;
+  margin-top: -1px;
 }
 #constructor .item.sh11 .sh-wrap .shape {
   width: 43%;

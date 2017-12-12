@@ -40,6 +40,7 @@ $(function(){
     $('.item').click(function(e) {
         clearStage();
         stage = Konva.Node.create(shapes[$(this).attr('data-number')], 'canvas');
+        stage.add(tooltipLayer);
         updateBindings();
         $('.tm-canv-icon.check').css('display', 'none');
         $('.tm-canv-icon.tm-check').css('display', 'block');
@@ -681,6 +682,7 @@ $(function(){
                 });
                 arRect[i].on('mouseup', function(e) {
                     tooltip.hide();
+                    back.hide();
                     tooltipLayer.draw();
                     saveStage();                    
                 });
@@ -689,7 +691,7 @@ $(function(){
     }
     
     $('.tm-api').click(function(){
-        var query = 'fest';
+        var query = 'jungle';
         apiConnect(query);
     });
     $('.js-find').click(function(e){
