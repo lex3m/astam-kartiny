@@ -11,7 +11,7 @@ $(function(){
     var modal = UIkit.modal("#my-id");
     var modal2 = UIkit.modal("#see-in");
     var modal3 = UIkit.modal("#js-shape-modal");
-    
+    var isTplAct = false;
     
     var shapes = [
     /* 1 rect */        '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-1,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":802,"height":482,"stroke":"black","fill":"rgba(37, 60, 127, .3)"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":395.3125,"y":273.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 100см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":395.3125,"y":273.5625},"className":"Text"}]}]}',
@@ -47,6 +47,7 @@ $(function(){
         //block adding rect/unblock deletion
         $('.tm-canv-icon.square').css('display', 'block');
         $('.tm-canv-icon.tm-draw').css('display', 'none');
+        isTplAct = true;
        /*  uncomment to make shape
         st1 = stage.toJSON();
         console.log(st1); */
@@ -364,6 +365,7 @@ $(function(){
         inputRange.disabled = false;
         inputRange.rangeSlider.update();
         toggleMesurement(false);
+        isTplAct = false;
     });
     //function for disable/enable slider and selects
     function toggleMesurement(arg) {
@@ -470,34 +472,19 @@ $(function(){
                 height: height,
             }); 
         };   
-        $('.tm-canv-icon.square').css('display', 'none');
+        if(!isTplAct) {
+            $('.tm-canv-icon.square').css('display', 'none');
+            $('.tm-canv-icon.tm-draw').css('display', 'block');
+        }
+
         $('.tm-canv-icon.trash').css('display', 'none');
-        $('.tm-canv-icon.tm-draw').css('display', 'block');
         $('.tm-canv-icon.tm-rem').css('display', 'block');
         $('.js-shape').attr('disabled', false);
         // $('.tm-canv-icon.sub').css('display', 'none');
         // $('.tm-canv-icon.org').css('display', 'block');
     };
    function clipImg (x, y, w, h) {
-       /* var too = new Konva.Text({
-            text: "",
-            fontFamily: "Calibri",
-            fontSize: 12,
-            padding: 5,
-            visible: true,
-            fill: "#253c7f",
-            opacity: 0.75,
-            textFill: "white"
-        });
-        var bac = new Konva.Rect({
-            x: 0,
-            y: 0,
-            width: 100,
-            height: 23,
-            fill: 'white'
-        }); 
 
-        too.text(Math.round(w/globalKoef) + "см x " + Math.round(h/globalKoef) + "см"); */
         var group = new Konva.Group({
             clip: {
                 x : x,
