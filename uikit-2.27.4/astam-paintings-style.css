@@ -10398,6 +10398,49 @@ h6 {
   height: 75%;
   width: 15%;
 }
+#constructor .item.sh14 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#constructor .item.sh14 .shape {
+  width: 35%;
+  height: 50%;
+  margin-left: 5px;
+}
+#constructor .item.sh14 .shape:nth-child(1) {
+  margin-left: 0;
+}
+#constructor .item.sh14 .shape:nth-child(2) {
+  width: 25%;
+  height: 100%;
+}
+#constructor .item.sh15 {
+  display: flex;
+  justify-content: space-between;
+}
+#constructor .item.sh15 .shape {
+  width: 27%;
+  margin-left: 5px;
+}
+#constructor .item.sh15 .shape:nth-child(1) {
+  margin-left: 0;
+}
+#constructor .item.sh15 .shape:nth-child(2) {
+  width: 70%;
+}
+#constructor .item.sh16 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#constructor .item.sh16 .shape {
+  width: 23%;
+}
+#constructor .item.sh16 .shape:nth-child(1),
+#constructor .item.sh16 .shape:nth-child(4) {
+  height: 50%;
+}
 #constructor .tm-book {
   width: 100%;
   height: 60px;
