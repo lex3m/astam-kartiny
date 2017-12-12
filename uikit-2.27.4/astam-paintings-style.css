@@ -10441,6 +10441,23 @@ h6 {
 #constructor .item.sh16 .shape:nth-child(4) {
   height: 50%;
 }
+#constructor .item.sh17 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+#constructor .item.sh17 .shape {
+  width: 23%;
+}
+#constructor .item.sh17 .shape:nth-child(1) {
+  height: 50%;
+}
+#constructor .item.sh17 .shape:nth-child(2) {
+  height: 65%;
+}
+#constructor .item.sh17 .shape:nth-child(3) {
+  height: 85%;
+}
 #constructor .tm-book {
   width: 100%;
   height: 60px;
