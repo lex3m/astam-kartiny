@@ -689,12 +689,7 @@ $(function(){
             }
         getTotal();
     }
-    // $('.paginationjs-page a').click(function() {
-    //     console.log('clll///');
-    //     var num = $(this).parent().attr('data-mum');
-    //     console.log(num);
-    // });
-    // console.log(testAr);
+
     var query = {};
     $('.tm-api').click(function(){
         query.search = 'jungle';
@@ -723,41 +718,11 @@ $(function(){
             pageSize: 20,
              callback: function(data, pagination) {
                 if(!isInit) {
-                    apiConnect2(query.search, pagination.pageNumber);
+                    apiConnect(query.search, pagination.pageNumber, false);
                     isInit = !isInit;
                 }
                 isInit = !isInit;
             } 
-        });
-    }
-    function apiConnect2(query, page) {
-        console.log('api_2');
-        var imgArr = [];
-        $.ajax({
-            type: 'GET',
-            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=' + query + '&image_type=photo&pretty=true&orientation=horizontal&page=' + page,
-            success: function(data){
-                imgArr = data.hits;
-                var cont = $(".tm-modal-pics");
-                    cont.empty();
-                var temp = $(".js-temp");
-                    temp.empty();
-                for(var i = 0, len = imgArr.length; i < len; i ++) {
-                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img onmouseover="showHint(this)" onmouseout="hideHint(this)" class="js-current-img" src="' +  imgArr[i].previewURL + '" data-origin="' +  imgArr[i].webformatURL + '" alt="pic' + i + '"><div>');
-                    temp.append('<li><img src="' +  imgArr[i].previewURL + '" alt="pic' + i + '">');
-                }
-                $('.tm-preview-cont').click(function(){
-                    var count = $(this).attr('data-count');
-                    var img = imgArr[count].webformatURL;
-                    imageObj.src = img;
-                    $("#canvas").css('backgroundImage', 'url(' + img + ')');
-                    loadImg();
-                    layer.clearBeforeDraw(true);
-                    if ( modal.isActive() ) {
-                        modal.hide();
-                    }
-                });
-            }
         });
     }
     function apiConnect(query, page, isInit) {
@@ -765,22 +730,34 @@ $(function(){
         var imgArr = [];
         $.ajax({
             type: 'GET',
-            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=' + query + '&image_type=photo&pretty=true&orientation=horizontal&page=' + page,
+            //url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=' + query + '&image_type=photo&pretty=true&orientation=horizontal&page=' + page,
+            url: 'https://api.shutterstock.com/v2/images/search?query=' + query + '&safe=true&image_type=photo&orientation=horizontal&page=' + page + '&per_page=20',
+            headers: {
+                Authorization: 'Basic ' + window.btoa('e1217-793f4-4a546-154ee-a78d0-53a3b:be6ab-1b11e-dd3b8-4ac57-8617a-9febe')
+            },
             success: function(data){
-                var testAr = Array.from(Array(data.totalHits).keys());
-                paginationInit(page, testAr, isInit);
-                imgArr = data.hits;
+                var testAr = Array.from(Array(data.total_count).keys());
+                if(isInit) {
+                    paginationInit(page, testAr, isInit);
+                }
+                imgArr = data.data;
                 var cont = $(".tm-modal-pics");
                     cont.empty();
                 var temp = $(".js-temp");
                     temp.empty();
                 for(var i = 0, len = imgArr.length; i < len; i ++) {
-                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img onmouseover="showHint(this)" onmouseout="hideHint(this)" class="js-current-img" src="' +  imgArr[i].previewURL + '" data-origin="' +  imgArr[i].webformatURL + '" alt="pic' + i + '"><div>');
-                    temp.append('<li><img src="' +  imgArr[i].previewURL + '" alt="pic' + i + '">');
+                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img onmouseover="showHint(this)" onmouseout="hideHint(this)" class="js-current-img" src="' +  imgArr[i].assets.large_thumb.url + '" data-origin="' +  imgArr[i].assets.preview.url + '" alt="pic' + i + '"><div>');
+                    temp.append('<li><img src="' +  imgArr[i].assets.large_thumb.url + '" alt="pic' + i + '">');
                 }
                 $('.tm-preview-cont').click(function(){
                     var count = $(this).attr('data-count');
-                    var img = imgArr[count].webformatURL;
+                    var img = imgArr[count].assets.preview.url;
+                    var pic_id = imgArr[count].id;
+                    var pic_descr = imgArr[count].description;
+                    var pic_data = $('.js-pic-data');
+                        pic_data.empty();
+                        pic_data.append('<div class="pic-data">id: ' + pic_id + '</div>');
+                        pic_data.append('<div class="pic-data">' + pic_descr + '</div>');
                     imageObj.src = img;
                     $("#canvas").css('backgroundImage', 'url(' + img + ')');
                     loadImg();

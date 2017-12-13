@@ -1504,6 +1504,9 @@ input:disabled, select:disabled {
           }
         }
       }
+      .pic-data {
+        padding: 0 10px;
+      }
     }
   }
   #canvas {
@@ -2007,21 +2010,21 @@ input:disabled, select:disabled {
         padding: 0;
       li {
         float: left;
-        border: 1px solid #aaa;
+        border: 1px solid #426ec7;
         border-right: none;
         list-style: none;
         &.active {
           border: none;
-        &>a {
-          height: 30px;
-          line-height: 30px;
-          background: #aaa;
-          color: #fff;
-          &:hover {
-            background: #aaa;
-            cursor: text;
+          &>a {
+            height: 30px;
+            line-height: 30px;
+            background: #426ec7;
+            color: #fff;
+            &:hover {
+              background: #426ec7;
+              cursor: text;
+            }
           }
-        }
         }
         &.disabled>a {
           opacity: .3;
@@ -2033,7 +2036,7 @@ input:disabled, select:disabled {
           border-radius: 3px 0 0 3px;
         }
         &:last-child {
-          border-right: 1px solid #aaa;
+          border-right: 1px solid #426ec7;
           border-radius: 0 3px 3px 0;
         }
         &:last-child>a {
@@ -2049,8 +2052,9 @@ input:disabled, select:disabled {
           color: #333;
           text-decoration: none;
           text-align: center;
+          padding: 0 5px;
           &:hover {
-            background: #eee;
+            background: #81a1e0;
           }
         }
       }

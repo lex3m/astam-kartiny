@@ -10684,6 +10684,9 @@ select:disabled {
 .canvas .canvas-wrap .tm-canv-bottom .tm-info:last-child a {
   margin-left: 10px;
 }
+.canvas .canvas-wrap .tm-canv-bottom .pic-data {
+  padding: 0 10px;
+}
 .canvas #canvas {
   right: 55px;
   top: 65px;
@@ -11144,7 +11147,7 @@ select:disabled {
 }
 .tm-modal #pagination-container ul li {
   float: left;
-  border: 1px solid #aaa;
+  border: 1px solid #426ec7;
   border-right: none;
   list-style: none;
 }
@@ -11154,11 +11157,11 @@ select:disabled {
 .tm-modal #pagination-container ul li.active > a {
   height: 30px;
   line-height: 30px;
-  background: #aaa;
+  background: #426ec7;
   color: #fff;
 }
 .tm-modal #pagination-container ul li.active > a:hover {
-  background: #aaa;
+  background: #426ec7;
   cursor: text;
 }
 .tm-modal #pagination-container ul li.disabled > a {
@@ -11171,7 +11174,7 @@ select:disabled {
   border-radius: 3px 0 0 3px;
 }
 .tm-modal #pagination-container ul li:last-child {
-  border-right: 1px solid #aaa;
+  border-right: 1px solid #426ec7;
   border-radius: 0 3px 3px 0;
 }
 .tm-modal #pagination-container ul li:last-child > a {
@@ -11187,9 +11190,10 @@ select:disabled {
   color: #333;
   text-decoration: none;
   text-align: center;
+  padding: 0 5px;
 }
 .tm-modal #pagination-container ul li a:hover {
-  background: #eee;
+  background: #81a1e0;
 }
 /* Modal End */
 /* Range Start */
