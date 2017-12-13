@@ -692,15 +692,20 @@ $(function(){
 
     var query = {};
     $('.tm-api').click(function(){
-        query.search = 'jungle';
-        apiConnect(query.search, 1, true);
-        // query.testAr = Array.from(Array(500).keys());
-
+        query.search = query.search || 'jungle';
+        query.category = query.category || '';
+        apiConnect(query.search, 1, true, query.category);
+        $('.js-cat-search').click(function(){
+            $('.js-cat-search .jq-selectbox__dropdown ul li').click(function(){
+                query.category = $(this).attr('data-cat');
+                apiConnect(query.search, 1, true, query.category);
+            });
+        });
     });
     $('.js-find').click(function(e){
         var val = $('.tm-modal-search').val();
         query.search = val;
-        apiConnect(val, 1, true);
+        apiConnect(val, 1, true, query.category);
     });
 
     $('.tm-modal-search').keypress(function(e){
@@ -708,7 +713,7 @@ $(function(){
         if (e.which == 13) {
             e.preventDefault();
             query.search = this.value;
-            apiConnect(this.value, 1, true);
+            apiConnect(this.value, 1, true, query.category);
             this.value = "";
        }
     });
@@ -718,20 +723,24 @@ $(function(){
             pageSize: 20,
              callback: function(data, pagination) {
                 if(!isInit) {
-                    apiConnect(query.search, pagination.pageNumber, false);
+                    apiConnect(query.search, pagination.pageNumber, false, query.category);
                     isInit = !isInit;
                 }
                 isInit = !isInit;
             } 
         });
     }
-    function apiConnect(query, page, isInit) {
-        console.log('api_1');
+    function apiConnect(query, page, isInit, category) {
         var imgArr = [];
+        if(category && category != 'Any') {
+            cat =  '&category=' + category;
+        } else {
+            cat = '';
+        }
         $.ajax({
             type: 'GET',
             //url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=' + query + '&image_type=photo&pretty=true&orientation=horizontal&page=' + page,
-            url: 'https://api.shutterstock.com/v2/images/search?query=' + query + '&safe=true&image_type=photo&orientation=horizontal&page=' + page + '&per_page=20',
+            url: 'https://api.shutterstock.com/v2/images/search?query=' + query + '&safe=true&image_type=photo&orientation=horizontal' + cat + '&page=' + page + '&per_page=20',
             headers: {
                 Authorization: 'Basic ' + window.btoa('e1217-793f4-4a546-154ee-a78d0-53a3b:be6ab-1b11e-dd3b8-4ac57-8617a-9febe')
             },
@@ -745,9 +754,13 @@ $(function(){
                     cont.empty();
                 var temp = $(".js-temp");
                     temp.empty();
-                for(var i = 0, len = imgArr.length; i < len; i ++) {
-                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img onmouseover="showHint(this)" onmouseout="hideHint(this)" class="js-current-img" src="' +  imgArr[i].assets.large_thumb.url + '" data-origin="' +  imgArr[i].assets.preview.url + '" alt="pic' + i + '"><div>');
-                    temp.append('<li><img src="' +  imgArr[i].assets.large_thumb.url + '" alt="pic' + i + '">');
+                if(imgArr.length) {
+                    for(var i = 0, len = imgArr.length; i < len; i ++) {
+                        cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img onmouseover="showHint(this)" onmouseout="hideHint(this)" class="js-current-img" src="' +  imgArr[i].assets.large_thumb.url + '" data-origin="' +  imgArr[i].assets.preview.url + '" alt="pic' + i + '"><div>');
+                        temp.append('<li><img src="' +  imgArr[i].assets.large_thumb.url + '" alt="pic' + i + '">');
+                    }
+                } else {
+                    cont.append('<div class="js-nores">Нет результатов</div>');
                 }
                 $('.tm-preview-cont').click(function(){
                     var count = $(this).attr('data-count');

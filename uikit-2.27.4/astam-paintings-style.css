@@ -11134,6 +11134,13 @@ select:disabled {
   z-index: 20;
   border: 10px solid  #495057;
 }
+.tm-modal .tm-modal-pics .js-nores {
+  font-size: 30px;
+  font-weight: 300;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
 .tm-modal #pagination-container {
   display: flex;
   justify-content: center;
@@ -11187,10 +11194,11 @@ select:disabled {
   display: block;
   background: #fff;
   font-size: 14px;
-  color: #333;
+  color: #426ec7;
   text-decoration: none;
   text-align: center;
   padding: 0 5px;
+  font-weight: 600;
 }
 .tm-modal #pagination-container ul li a:hover {
   background: #81a1e0;
