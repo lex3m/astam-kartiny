@@ -11114,6 +11114,9 @@ select:disabled {
 .tm-modal .tm-modal-select .dropdown .jq-selectbox__dropdown {
   width: 100% !important;
 }
+.tm-modal .tm-modal-pics {
+  min-height: 300px;
+}
 .tm-modal .tm-modal-pics .tm-preview-cont {
   position: relative;
 }
@@ -11127,6 +11130,66 @@ select:disabled {
   /* top: 0; */
   z-index: 20;
   border: 10px solid  #495057;
+}
+.tm-modal #pagination-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+.tm-modal #pagination-container ul {
+  list-style-type: none;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+.tm-modal #pagination-container ul li {
+  float: left;
+  border: 1px solid #aaa;
+  border-right: none;
+  list-style: none;
+}
+.tm-modal #pagination-container ul li.active {
+  border: none;
+}
+.tm-modal #pagination-container ul li.active > a {
+  height: 30px;
+  line-height: 30px;
+  background: #aaa;
+  color: #fff;
+}
+.tm-modal #pagination-container ul li.active > a:hover {
+  background: #aaa;
+  cursor: text;
+}
+.tm-modal #pagination-container ul li.disabled > a {
+  opacity: .3;
+}
+.tm-modal #pagination-container ul li:first-child {
+  border-radius: 3px 0 0 3px;
+}
+.tm-modal #pagination-container ul li:first-child > a {
+  border-radius: 3px 0 0 3px;
+}
+.tm-modal #pagination-container ul li:last-child {
+  border-right: 1px solid #aaa;
+  border-radius: 0 3px 3px 0;
+}
+.tm-modal #pagination-container ul li:last-child > a {
+  border-radius: 0 3px 3px 0;
+}
+.tm-modal #pagination-container ul li a {
+  min-width: 30px;
+  height: 28px;
+  line-height: 28px;
+  display: block;
+  background: #fff;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  text-align: center;
+}
+.tm-modal #pagination-container ul li a:hover {
+  background: #eee;
 }
 /* Modal End */
 /* Range Start */

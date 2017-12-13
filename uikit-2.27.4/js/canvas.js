@@ -689,29 +689,86 @@ $(function(){
             }
         getTotal();
     }
-    
+    // $('.paginationjs-page a').click(function() {
+    //     console.log('clll///');
+    //     var num = $(this).parent().attr('data-mum');
+    //     console.log(num);
+    // });
+    // console.log(testAr);
+    var query = {};
     $('.tm-api').click(function(){
-        var query = 'jungle';
-        apiConnect(query);
+        query.search = 'jungle';
+        apiConnect(query.search, 1, true);
+        // query.testAr = Array.from(Array(500).keys());
+
     });
     $('.js-find').click(function(e){
         var val = $('.tm-modal-search').val();
-        apiConnect(val);
+        query.search = val;
+        apiConnect(val, 1, true);
     });
 
     $('.tm-modal-search').keypress(function(e){
+        
         if (e.which == 13) {
             e.preventDefault();
-            apiConnect(this.value);
+            query.search = this.value;
+            apiConnect(this.value, 1, true);
             this.value = "";
        }
     });
-    function apiConnect(query) {
+    var paginationInit = function (page, ar, isInit) {
+        $('#pagination-container').pagination({
+            dataSource: ar,
+            pageSize: 20,
+             callback: function(data, pagination) {
+                if(!isInit) {
+                    apiConnect2(query.search, pagination.pageNumber);
+                    isInit = !isInit;
+                }
+                isInit = !isInit;
+            } 
+        });
+    }
+    function apiConnect2(query, page) {
+        console.log('api_2');
         var imgArr = [];
         $.ajax({
             type: 'GET',
-            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=' + query + '&image_type=photo&pretty=true',
+            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=' + query + '&image_type=photo&pretty=true&orientation=horizontal&page=' + page,
             success: function(data){
+                imgArr = data.hits;
+                var cont = $(".tm-modal-pics");
+                    cont.empty();
+                var temp = $(".js-temp");
+                    temp.empty();
+                for(var i = 0, len = imgArr.length; i < len; i ++) {
+                    cont.append('<div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom tm-preview-cont uk-text-center" data-count="' + i + '"><img onmouseover="showHint(this)" onmouseout="hideHint(this)" class="js-current-img" src="' +  imgArr[i].previewURL + '" data-origin="' +  imgArr[i].webformatURL + '" alt="pic' + i + '"><div>');
+                    temp.append('<li><img src="' +  imgArr[i].previewURL + '" alt="pic' + i + '">');
+                }
+                $('.tm-preview-cont').click(function(){
+                    var count = $(this).attr('data-count');
+                    var img = imgArr[count].webformatURL;
+                    imageObj.src = img;
+                    $("#canvas").css('backgroundImage', 'url(' + img + ')');
+                    loadImg();
+                    layer.clearBeforeDraw(true);
+                    if ( modal.isActive() ) {
+                        modal.hide();
+                    }
+                });
+            }
+        });
+    }
+    function apiConnect(query, page, isInit) {
+        console.log('api_1');
+        var imgArr = [];
+        $.ajax({
+            type: 'GET',
+            url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=' + query + '&image_type=photo&pretty=true&orientation=horizontal&page=' + page,
+            success: function(data){
+                var testAr = Array.from(Array(data.totalHits).keys());
+                paginationInit(page, testAr, isInit);
                 imgArr = data.hits;
                 var cont = $(".tm-modal-pics");
                     cont.empty();
