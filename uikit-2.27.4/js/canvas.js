@@ -12,7 +12,8 @@ $(function(){
     var modal2 = UIkit.modal("#see-in");
     var modal3 = UIkit.modal("#js-shape-modal");
     var isTplAct = false;
-    
+
+    /* Ready shapes for modular pictures */
     var shapes = [
     /* 1 rect */        '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-1,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":802,"height":482,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":395.3125,"y":273.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 100см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":395.3125,"y":273.5625},"className":"Text"}]}]}',
     /* 2 rect row*/     '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-2,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":395,"height":483,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":395,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":483,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":395,"y":483,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":402,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"x":4,"width":395,"height":482,"stroke":"black"},"className":"Rect"},{"attrs":{"x":4,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":399,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":399,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":4,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":190.3125,"y":220.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 49см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":190.3125,"y":220.5625},"className":"Text"}]}]}',
@@ -37,18 +38,24 @@ $(function(){
         e.preventDefault();
         modal3.show();
     });
+    var shapeNo;
     $('.item').click(function(e) {
+        shapeNo = $(this).attr('data-number');
         clearStage();
-        stage = Konva.Node.create(shapes[$(this).attr('data-number')], 'canvas');
-        stage.add(tooltipLayer);
-        updateBindings();
+        stage = Konva.Node.create(shapes[shapeNo], 'canvas');
+        clipShape();
+        // stage.add(shadowedBg);
+        // stage.add(tooltipLayer);
+        // shadowedBg.moveToBottom();
+        // stage = Konva.Node.create(shapes[shapeNo], 'canvas');
+        // updateBindings();
         $('.tm-canv-icon.check').css('display', 'none');
         $('.tm-canv-icon.tm-check').css('display', 'block');
         modal3.hide();
         //block adding rect/unblock deletion
         $('.tm-canv-icon.square').css('display', 'block');
         $('.tm-canv-icon.tm-draw').css('display', 'none');
-        isTplAct = true;
+        isTplAct = true; //disable draw rectangles
        /*  uncomment to make shape
         st1 = stage.toJSON();
         console.log(st1); */
@@ -210,6 +217,22 @@ $(function(){
     tooltipLayer.add(tooltip);
     
     stage.add(tooltipLayer);
+
+    var shadowedBg = new Konva.Layer({
+        fill: "white",
+        opacity: 0.75,
+    });
+    var transpBg = new Konva.Rect({
+            x: 0,
+            y: 0,
+            width: width,
+            height: height,
+            fill: 'rgba(255, 255, 255, .9)'
+        });
+    
+    shadowedBg.add(transpBg);
+    stage.add(shadowedBg);
+    
 
     /* var too = new Konva.Text({
             text: "",
@@ -483,6 +506,8 @@ $(function(){
         $('.js-shape').attr('disabled', false);
         // $('.tm-canv-icon.sub').css('display', 'none');
         // $('.tm-canv-icon.org').css('display', 'block');
+        // shadowedBg.draw();
+        //stage.add(shadowedBg);
     };
    function clipImg (x, y, w, h) {
 
@@ -509,6 +534,32 @@ $(function(){
         $('.tm-canv-icon.tm-del').css('display', 'none');
     });
    
+    function clipShape() {
+        console.log('clipShape in prog))');
+        var nodes = stage.find('Group');
+        clearStage();
+        layer.clearBeforeDraw(false);
+        var x, y;
+        for (var i = 0, len = nodes.length; i < len; i++) {
+            if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.x) {
+                x = nodes[i].attrs.x + nodes[i].children[0].attrs.x;
+            } else {
+                x = nodes[i].attrs.x;
+            }
+            if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.y) {
+                y = nodes[i].attrs.y + nodes[i].children[0].attrs.y;
+            } else {
+                y = nodes[i].attrs.y;
+            }
+            clipImg(x, y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
+        } 
+        stage.add(shadowedBg);
+        //stage.add(tooltipLayer);
+        shadowedBg.moveToBottom();
+        //stage = Konva.Node.create(shapes[shapeNo], 'canvas');
+        //updateBindings();
+    }
+
     $('.tm-check').click(function(){
         var nodes = stage.find('Group');
         clearStage();
