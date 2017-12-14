@@ -1,0 +1,10 @@
+<option value="1">Выберите</option>
+<option value="2">Холст натуральный глянец</option>
+<option value="3">Холст натуральный матовый</option>
+<option value="4">Холст искусственный глянцевый</option>
+<option value="5">Холст искусственный матовый</option>
+<option value="6">Плёнка ПВХ глянцевая</option>
+<option value="7">Плёнка ПВХ матовая</option>
+<option value="8">Плёнка ПВХ сатиновая</option>
+<option value="9">Дескор - (ткань полиэстер)</option>
+<option value="10">Баннерная ткань DLS-Blackout</option>

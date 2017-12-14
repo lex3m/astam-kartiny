@@ -1,0 +1,12 @@
+<div class="tm-ruler rul1"><span>5</span></div>
+<div class="tm-ruler rul2"><span>10</span></div>
+<div class="tm-ruler rul3"><span>15</span></div>
+<div class="tm-ruler rul4"><span>20</span></div>
+<div class="tm-ruler rul5"><span>25</span></div>
+<div class="tm-ruler rul6"><span>30</span></div>
+<div class="tm-ruler rul7"><span>35</span></div>
+<div class="tm-ruler rul8"><span>40</span></div>
+<div class="tm-ruler rul9"><span>45</span></div>
+<div class="tm-ruler rul10"><span>50</span></div>
+<div class="tm-ruler rul11"><span>55</span></div>
+<div class="tm-ruler rul12"><span>60</span></div>

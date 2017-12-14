@@ -1,0 +1,170 @@
+/*!
+
+Theme Name: Astamart
+Theme URI: https://github.com/lex3m/astam-kartiny
+Author: Astam
+Author URI: http://astamweb.com
+Description: Astamart it's shop of modular paintings
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: astamart
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+
+div.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.alignleft {
+    float: left;
+    margin-right: 5px;
+}
+.alignright {
+    float: right;
+    margin-left: 5px;
+}
+.wp-caption {
+    border: 1px solid #ddd;
+    text-align: center;
+    background-color: #f3f3f3;
+    padding-top: 4px;
+    margin: 10px;
+    /* optional rounded corners for browsers that support it */
+    -moz-border-radius: 3px;
+    —khtml-border-radius: 3px;
+    —webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+strong {
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+}
+.wp-caption p.wp-caption-text {
+    font-size: 11px;
+    line-height: 17px;
+    padding: 0 4px 5px;
+    margin: 0;
+}
+/** ContactForm 7 styles*/
+.uk-form input[type="checkbox"]:not(:disabled), .uk-form input[type="radio"]:not(:disabled){
+    width: 25px;
+    height: 25px;
+    box-shadow: none;
+    background: #58667a;
+    border: 1px solid #89959d;
+    border-radius: 3px;
+    vertical-align: -4px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    user-select: none;
+}
+
+#git .tm-git-wrap .tm-git-form .tm-git-form-input label{
+    margin-left: 20px;
+}
+.tm-git-form-input .wpcf7-submit{
+    width: 400px !important;
+    height: 60px !important;
+    text-transform: uppercase !important;
+    color: #fff !important;
+    border: none !important;
+    background: #ea3d07 !important;
+    border-radius: 5px !important;
+    font-size: 28px !important;
+    font-family: 'RobotoLight', sans-serif !important;
+    cursor: pointer !important;
+    outline: none !important;
+}
+.tm-git-form-input .wpcf7-submit:hover {
+    background: rgba(234, 61, 7, 0.8) !important;
+}
+.wpcf7-spam-blocked {
+    background: #e2e2e2;
+    border: 1px solid #bcbcbc !important;
+    color: #383838;
+}
+.wpcf7-mail-sent-ng {
+    background: #fcf8e3;
+    border: 1px solid #ac9163 !important;
+    color: #8a6d3b;
+}
+.wpcf7-mail-sent-ok {
+    background: #dff0d8;
+    border: 1px solid #3c763d !important;
+    color: #3c763d;
+}
+span .wpcf7-not-valid {
+    border: 1px solid #ff0000 !important;
+}
+
+div.wpcf7-validation-errors {
+    background: #ffe2e2;
+    border: 1px solid #ff0000 !important;
+    color: #C10000;
+}
+div.wpcf7-response-output {
+    margin: 2em 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.wpcf7-spam-blocked {
+    background: #e2e2e2;
+    border: 1px solid #bcbcbc !important;
+    color: #383838;
+}
+.wpcf7-mail-sent-ng {
+    background: #fcf8e3;
+    border: 1px solid #ac9163 !important;
+    color: #8a6d3b;
+}
+.wpcf7-mail-sent-ok {
+    background: #dff0d8;
+    border: 1px solid #3c763d !important;
+    color: #3c763d;
+}
+/** END ContactForm 7 styles*/
+
+/* OnClick */
+.uk-navbar-nav > li > a:active {
+    background-color: #dddddd;
+    color: #444444;
+}
+/* Active */
+.uk-navbar-nav > li.current_page_item > a {
+    background-color: #f5f5f5;
+    color: #444444;
+}
+.error-404 .page-header{
+    text-align: center;
+}
+.error-404 .page-content{
+    text-align: center;
+}
+.error-404 .page-title{
+    font-weight: bold;
+}
+.menu-sidebar .current-menu-item {
+    border-left: 5px solid #3597f3;
+    background: #6a7372;
+}
+#madein .madein-block-wrap .madein-block.madein-block-text .madein-block-text-in{
+    padding: 20px 20px 5px 20px !important;
+}
+
+.post-edit-link{
+    text-decoration: none;
+}
+.tm-global-wrap .tm-contacts-wrap {
+    padding-top: 50px;
+}
