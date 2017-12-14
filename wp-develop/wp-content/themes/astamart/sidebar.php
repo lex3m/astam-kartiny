@@ -44,23 +44,8 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
         <h3 class="tm-as3-header">Полезные статьи</h3>
         <div class="tm-as3-wrap">
             <div class="tm-as3-block">
-                <ul>
-                    <li>
-                        <a class=" head uk-text-middle" href="#">Название какой-то статьи</a>
-                        <div class="tm-as3-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae eveniet quaerat nemo ex officia deleniti in reiciendis, dignissimos blanditiis architecto, inventore impedit. Voluptates!
-                            <div class="tm-as3-more uk-text-right"><a href="#">Подробнее</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <a class=" head uk-text-middle" href="#">Название какой-то ещё статьи</a>
-                        <div class="tm-as3-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae eveniet quaerat nemo ex officia deleniti in reiciendis, dignissimos blanditiis architecto, inventore impedit. Voluptates!
-                            <div class="tm-as3-more uk-text-right"><a href="#">Подробнее</a></div>
-                        </div>
-                    </li>
-                </ul>
-                <div class="tm-as3-more-art uk-text-center"><a href="#">больше статей</a></div>
+                <?php include ('inc/loop/sidebar_loop.php');?>
+                <div class="tm-as3-more-art uk-text-center"><a href="/articles/">больше статей</a></div>
             </div>
         </div>
     </div>

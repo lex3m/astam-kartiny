@@ -137,8 +137,6 @@ function astamart_scripts() {
 	wp_enqueue_style( 'formstyler-plugin-jquery-formstyler-theme-css', get_template_directory_uri() . '/js/formstyler-plugin/jquery.formstyler.theme.css', array(), 'null', true );
 	wp_enqueue_script( 'formstyler-plugin-jquery-formstyler-min', get_template_directory_uri() . '/js/formstyler-plugin/jquery.formstyler.min.js', array(), 'null', true );
 
-	wp_enqueue_script( 'jquery-maskedinput-min-js', get_template_directory_uri() . '/js/jquery.maskedinput.min.js', array(), 'null', true );
-
 	wp_enqueue_script( 'pagination-min', get_template_directory_uri() . '/js/pagination.min.js', array(), 'null', true );
 
 }
@@ -202,6 +200,9 @@ function wpmidia_activate_masked_input(){
 	</script>
 	<?php
 }
+add_filter('excerpt_more', function($more) {
+	return '...';
+});
 
 
 

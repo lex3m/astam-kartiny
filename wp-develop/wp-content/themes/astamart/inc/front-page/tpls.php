@@ -4,6 +4,6 @@
 		<div class="uk-grid tm-tpls-gal">
 			<?php echo do_shortcode('[album id=4 template=tpls_front_page ]');?>
 		</div>
-		<div class="tm-tpls-button uk-text-center"><a href="#">посмотреть все работы</a></div>
+		<div class="tm-tpls-button uk-text-center"><a href="/type-images/">посмотреть все работы</a></div>
 	</div>
 </div>

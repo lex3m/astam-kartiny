@@ -25,8 +25,12 @@ get_header(); ?>
 						endwhile; // End of the loop.
 						?>
                     </div>
+                </section><!-- sec2 end-->
+                <section><!-- sec3 start-->
+                    <div class="tm-sec5-wrap">
+	                    <?php include('inc/loop/articles_loop.php');?>
+                    </div>
                 </section>
-                <!-- sec2 end-->
 				<?php include('inc/page/global-wrap-after-content-sections.php');?>
             </div>
         </div> <!-- Grid end -->
