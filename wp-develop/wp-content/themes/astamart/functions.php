@@ -139,6 +139,8 @@ function astamart_scripts() {
 
 	wp_enqueue_script( 'jquery-maskedinput-min-js', get_template_directory_uri() . '/js/jquery.maskedinput.min.js', array(), 'null', true );
 
+	wp_enqueue_script( 'pagination-min', get_template_directory_uri() . '/js/pagination.min.js', array(), 'null', true );
+
 }
 add_action( 'wp_enqueue_scripts', 'astamart_scripts' );
 
@@ -170,6 +172,24 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+add_action('wp_footer', 'tm_working_item');
+function tm_working_item(){
+	?>
+    <script>
+        $(function () {
+            $('.tm-working-item').click(function(){
+                var arr = document.getElementsByClassName('tm-working-overlay');
+                $( arr ).each(function() {
+                    if(!$(this).hasClass('uk-hidden')) {
+                        $(this).addClass('uk-hidden');
+                    }
+                });
+                $(this).find( '.tm-working-overlay' ).toggleClass('uk-hidden');
+            });
+        });
+    </script>
+	<?php
+}
 
 
 add_action('wp_footer', 'wpmidia_activate_masked_input');

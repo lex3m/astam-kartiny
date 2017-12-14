@@ -47,6 +47,7 @@
 								<span>Если Вы не можете воспользоваться конструктором, то любую модель картины мы можем сформировать за вас</span><a
 									href="#git" data-uk-smooth-scroll>Помогите мне</a>
 							</div>
+                            <div class="tm-info uk-text-left js-pic-data"></div>
 						</div>
 					</div>
 					<!-- <img src="images/Canvas1.jpg" alt="canvas"> -->
@@ -61,10 +62,9 @@
 					   data-uk-tooltip="{animation:'true'}" title="Добавить элемент"></i>
 					<i class="tm-canv-icon sub trash uk-icon-trash-o uk-icon-hover"
 					   data-uk-tooltip="{animation:'true'}" title="Добавить элемент"></i>
-
-					<i class="tm-canv-icon org tm-draw uk-icon-pencil-square-o uk-icon-hover"
-					   data-uk-tooltip="{animation:'true'}" title="Добавить элемент"></i>
-					<i class="tm-canv-icon org tm-del uk-icon-close uk-icon-hover"
+                    <i class="tm-canv-icon sub trash uk-icon-trash-o uk-icon-hover"
+                       data-uk-tooltip="{animation:'true'}" title="Очистить всё"></i>
+                    <i class="tm-canv-icon org tm-del uk-icon-close uk-icon-hover"
 					   data-uk-tooltip="{animation:'true'}" title="Удалить элемент"></i>
 					<i class="tm-canv-icon org tm-check uk-icon-check uk-icon-hover"
 					   data-uk-tooltip="{animation:'true'}" title="Готово"></i>
@@ -92,7 +92,7 @@
 											</div>
 											<div class="uk-width-large-1-3 tm-modal-select">
 												<p>Категория изображения</p>
-												<select>
+												<select class="js-cat-search" id="select-search">
 													<!-- Images categories value -->
 													<?php include('images-categories.php'); ?>
 													<!-- End Images categories value -->
@@ -117,6 +117,7 @@
 												</div> -->
 											</div>
 										</div>
+                                        <div id="pagination-container"></div>
 										<a class="uk-modal-close uk-close"></a>
 									</div>
 								</div>
@@ -146,8 +147,169 @@
 						</div>
 						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
 							<div class="uk-form-row">
-								<!-- <button onclick="return false;" class="uk-button uk-button-primary">Загрузить</button> -->
-								<!-- <i class="tm-canv-icon tm-api uk-icon-download uk-icon-hover"></i>  -->
+                                <p class="uk-form-help-block">Выберите форму для картины</p>
+                                <button class="js-shape uk-text-center" disabled>выбрать форму</button>
+                                <!-- <i class="tm-canv-icon tm-api uk-icon-download uk-icon-hover"></i>  -->
+                                <div id="js-shape-modal" class="uk-modal tm-modal">
+                                    <div class="uk-modal-dialog uk-modal-dialog-large">
+                                        <div class="uk-grid tm-modal-form-wrap">
+                                            <div class="uk-width-large-1-3">
+                                                <label class="uk-form-label tm-modal-label">Выберите форму</label>
+                                                <p class="tm-modal-info">Кликните по выбранной картинке, что бы загрузить форму в конструктор</p>
+                                            </div>
+                                            <div class="uk-width-large-1-3 tm-modal-select">
+                                            </div>
+                                            <div class="uk-width-large-1-3">
+
+                                            </div>
+                                        </div>
+                                        <div class="uk-overflow-container">
+                                            <div class="uk-grid">
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item" data-number="0">
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh1" data-number="1">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh2" data-number="2">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh3" data-number="3">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh4" data-number="4">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh5" data-number="5">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh6" data-number="6">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh7" data-number="7">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh8" data-number="8">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh9" data-number="9">
+                                                        <div class="shape"></div>
+                                                        <div class="sh-wrap">
+                                                            <div class="shape"></div>
+                                                            <div class="shape"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh10" data-number="10">
+                                                        <div class="shape"></div>
+                                                        <div class="sh-wrap">
+                                                            <div class="shape"></div>
+                                                            <div class="shape"></div>
+                                                            <div class="shape"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh11" data-number="11">
+                                                        <div class="shape"></div>
+                                                        <div class="sh-wrap">
+                                                            <div class="shape"></div>
+                                                            <div class="shape"></div>
+                                                            <div class="shape"></div>
+                                                            <div class="shape"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh12" data-number="12">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh13" data-number="13">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh14" data-number="14">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh15" data-number="15">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh16" data-number="16">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-large-1-6 uk-width-medium-1-4 uk-width-small-1-3 uk-margin-bottom">
+                                                    <div class="item sh17" data-number="17">
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                        <div class="shape"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="uk-modal-close uk-close"></a>
+                                    </div>
+                                </div>
 							</div>
 						</div>
 					</div>

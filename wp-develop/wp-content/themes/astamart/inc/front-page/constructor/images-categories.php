@@ -1,3 +1,13 @@
-<option value="">Абстракция</option>
-<option value="">Абстракция1</option>
-<option value="">Абстракция2</option>
+<option data-cat="Any">Все</option>
+<option data-cat="Abstract">Абстрактные изображения</option>
+<option data-cat="Vintage">Винтаж</option>
+<option data-cat="Food and Drink">Еда и напитки</option>
+<option data-cat="Animals/Wildlife">Животные/Дикая природа</option>
+<option data-cat="Buildings/Landmarks">Здания/Достопримечательности</option>
+<option data-cat="Art">Искусство</option>
+<option data-cat="Parks/Outdoor">Парки/Природа</option>
+<option data-cat="Objects">Предметы</option>
+<option data-cat="Nature">Природа</option>
+<option data-cat="Transportation">Транспорт</option>
+<option data-cat="Miscellaneous">Разное</option>
+<option data-cat="Sports/Recreation">Спорт/Отдых</option>
