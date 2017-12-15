@@ -32,13 +32,14 @@ $(function(){
     /* 3 rect row 2cubs, 1rect*/        '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":2,"y":99,"draggable":true},"className":"Group","children":[{"attrs":{"width":279,"height":281,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":279,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":281,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":279,"y":281,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":519,"y":99,"draggable":true},"className":"Group","children":[{"attrs":{"width":279,"height":281,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":279,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":281,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":279,"y":281,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":301,"y":2,"draggable":true},"className":"Group","children":[{"attrs":{"width":199,"height":476,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":476,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":199,"y":476,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":199,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":435,"y":244.25,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 19см, высота: 13см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":435,"y":244.25},"className":"Text"}]}]}',
     /* 2 rect row 1rect 1 cub*/         '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":1,"y":2,"draggable":true},"className":"Group","children":[{"attrs":{"width":236,"height":476,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":236,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":476,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":236,"y":476,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":253,"y":2,"draggable":true},"className":"Group","children":[{"attrs":{"width":545,"height":476,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":545,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":476,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":545,"y":476,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":417,"y":233.25,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 19см, высота: 13см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":417,"y":233.25},"className":"Text"}]}]}',
     /* 4 rect row 2rect half-h 2full-h*/   '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":2,"y":97,"draggable":true},"className":"Group","children":[{"attrs":{"y":21,"width":183,"height":238,"stroke":"black"},"className":"Rect"},{"attrs":{"y":21,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":259,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":21,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":259,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":205,"y":2,"draggable":true},"className":"Group","children":[{"attrs":{"width":183,"height":477,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":412,"y":2,"draggable":true},"className":"Group","children":[{"attrs":{"width":183,"height":477,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":616,"y":117,"draggable":true},"className":"Group","children":[{"attrs":{"width":183,"height":238,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":238,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":238,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":423,"y":256.25,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 19см, высота: 13см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":423,"y":256.25},"className":"Text"}]}]}',
-    /* 4 rect row 1row, ascending*/         '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":1,"y":237,"draggable":true},"className":"Group","children":[{"attrs":{"width":183,"height":241,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":241,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":241,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":206,"y":157,"draggable":true},"className":"Group","children":[{"attrs":{"width":183,"height":322,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":322,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":322,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":412,"y":78,"draggable":true},"className":"Group","children":[{"attrs":{"y":1,"width":183,"height":400,"stroke":"black"},"className":"Rect"},{"attrs":{"y":1,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":401,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":401,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":1,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":616,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":183,"height":478,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":432,"y":234.25,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 19см, высота: 13см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":432,"y":234.25},"className":"Text"}]}]}'
+    /* 4 rect row 1row, ascending*/         '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{"name" : "layer1"},"className":"Layer","children":[{"attrs":{"x":1,"y":237,"draggable":true},"className":"Group","children":[{"attrs":{"width":183,"height":241,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":241,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":241,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":206,"y":157,"draggable":true},"className":"Group","children":[{"attrs":{"width":183,"height":322,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":322,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":322,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":412,"y":78,"draggable":true},"className":"Group","children":[{"attrs":{"y":1,"width":183,"height":400,"stroke":"black"},"className":"Rect"},{"attrs":{"y":1,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":401,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":401,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":1,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":616,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":183,"height":478,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":183,"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":432,"y":234.25,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 19см, высота: 13см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":432,"y":234.25},"className":"Text"}]}]}'
     ]
     $('.js-shape').click(function(e) {
         e.preventDefault();
         modal3.show();
     });
     var shapeNo;
+    var isShapeAtStage;
     $('.item').click(function(e) {
         shapeNo = $(this).attr('data-number');
         clearStage();
@@ -56,6 +57,7 @@ $(function(){
         $('.tm-canv-icon.square').css('display', 'block');
         $('.tm-canv-icon.tm-draw').css('display', 'none');
         isTplAct = true; //disable draw rectangles
+        isShapeAtStage = true; //some shapes present at current stage
        /*  uncomment to make shape
         st1 = stage.toJSON();
         console.log(st1); */
@@ -190,7 +192,9 @@ $(function(){
         width: width,
         height: height
     });
-    var layer = new Konva.Layer(); 
+    var layer = new Konva.Layer({
+        name: 'layer1'
+    }); 
 
     stage.add(layer);
     var tooltipLayer = new Konva.Layer({
@@ -308,6 +312,8 @@ $(function(){
 
             tooltipLayer.moveToTop(); 
             tooltipLayer.draw(); 
+            shadowedBg.moveToBottom();
+            shadowedBg.draw();
         });
         droppableRect.on('mouseup', function(e) {
             back.hide();
@@ -373,7 +379,9 @@ $(function(){
     $('.tm-rem').click(function(){
         stage.clear();
         layer.clear();
-        layer = new Konva.Layer(); 
+        layer = new Konva.Layer({
+            name: 'layer1'
+        }); 
         stage = new Konva.Stage({
             container: 'canvas',
             width: width,
@@ -381,6 +389,7 @@ $(function(){
         });
         stage.add(layer);
         stage.add(tooltipLayer);
+        stage.add(shadowedBg);
         $("#canvas").css('backgroundImage', 'none');
         $('#logo').val('');
         clearTotal();
@@ -390,6 +399,7 @@ $(function(){
         inputRange.rangeSlider.update();
         toggleMesurement(false);
         isTplAct = false;
+        isShapeAtStage = false;
     });
     //function for disable/enable slider and selects
     function toggleMesurement(arg) {
@@ -441,7 +451,9 @@ $(function(){
     function clearStage () {
         stage.clear();
         layer.clear();
-        layer = new Konva.Layer(); 
+        layer = new Konva.Layer({
+            name: 'layer1'
+        }); 
         stage = new Konva.Stage({
             container: 'canvas',
             width: width,
@@ -508,6 +520,11 @@ $(function(){
         // $('.tm-canv-icon.org').css('display', 'block');
         // shadowedBg.draw();
         //stage.add(shadowedBg);
+        console.log('loadImg');
+        if(isShapeAtStage) {
+            console.log('isShapeAtStage');
+            clipShape();
+        }
     };
    function clipImg (x, y, w, h) {
 
@@ -536,7 +553,15 @@ $(function(){
    
     function clipShape() {
         console.log('clipShape in prog))');
-        var nodes = stage.find('Group');
+        // var nodes = stage.find('Group');
+        // var layer1 = nodes[0].getParent();
+        var nodes = stage.find('.mainLayer')[0] && stage.find('.mainLayer')[0].children || stage.find('Group');
+        var layer1 = stage.find('.mainLayer')[0] || stage.find('Group')[0].getParent();
+        // console.log(stage);
+        console.log(nodes);
+        // console.log(main);
+        console.log(layer1);
+
         clearStage();
         layer.clearBeforeDraw(false);
         var x, y;
@@ -554,14 +579,27 @@ $(function(){
             clipImg(x, y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
         } 
         stage.add(shadowedBg);
+        stage.add(layer1);
+        // console.log(layer1);
         //stage.add(tooltipLayer);
         shadowedBg.moveToBottom();
+        layer1.moveToTop();
+        layer1.name('mainLayer');
         //stage = Konva.Node.create(shapes[shapeNo], 'canvas');
-        //updateBindings();
+        updateBindings();
     }
 
     $('.tm-check').click(function(){
-        var nodes = stage.find('Group');
+        var nodes = stage.find('.mainLayer')[0].children;
+        // var nodes = stage.find('Layer')[3].children;
+        //var nodes1 = stage.children[2].children;
+        // console.log(stage);
+        // console.log(stage.find('Layer')[0]);
+        // console.log(stage.find('Layer')[1]);
+        // console.log(stage.find('Layer')[2]);
+        // console.log(stage.find('Layer')[3]);
+        console.log(stage);
+        console.log(nodes);
         clearStage();
         layer.clearBeforeDraw(false);
         var x, y;
@@ -649,8 +687,11 @@ $(function(){
             }
     }
     function updateBindings () {
-            var arRect = stage.find('Rect');
-            var arCircle = stage.find('Circle');
+            var layer = stage.find('Layer')[3];
+            var arRect = layer.find('Rect');
+            var arCircle = layer.find('Circle');
+            // var arRect = stage.find('Rect');
+            // var arCircle = stage.find('Circle');
             for(var i = 0, len = arCircle.length; i < len; i ++){
                 var group = arCircle[i].parent;
                 arCircle[i].on('dragmove', function() {
@@ -710,12 +751,12 @@ $(function(){
                     tooltipLayer.draw();
                 });
                 arRect[i].on('mousedown', function(e) {
-                    selectionRectRemove();
+                    // selectionRectRemove();
                     sel = e.target.parent;
                     active = e.target;
                     active.fill('rgba(37, 60, 127, .3)');
                     // update tooltip
-                    var mousePos = stage.getPointerPosition();
+                     var mousePos = stage.getPointerPosition();
                     tooltip.position({
                         x : mousePos.x + 5,
                         y : mousePos.y + 5
@@ -727,9 +768,12 @@ $(function(){
                         y : mousePos.y + 5
                     });
                     back.fill('white');
-                    back.show();
-                    tooltipLayer.moveToTop(); 
+                    back.show(); 
+                    tooltipLayer.moveUp(); 
                     tooltipLayer.draw(); 
+                    // shadowedBg.moveToTop();
+                    // shadowedBg.draw();
+                    // stage.draw();
                 });
                 arRect[i].on('mouseup', function(e) {
                     tooltip.hide();
@@ -861,9 +905,16 @@ $(function(){
     var sum = 0, perim = 0, area = 0, material = 1, covering = 1, underframe = 1, stylization = 1, iflag = false, mes = [];
     function getTotal() {
         iflag = false;
-        var getStage = JSON.parse(stage.toJSON()).children[0].children;
+        var getStage;
+        // var getStage = JSON.parse(stage.toJSON()).children[0].children;
+        if(stage.find('.mainLayer')[0] && stage.find('.mainLayer')[0].children) {
+            getStage = stage.find('.mainLayer')[0].children;
+        } else {
+            getStage = null;
+        }
         // console.log(getStage);
         if(getStage) {
+            var getStage = stage.find('.mainLayer')[0].children
             for (var i = 0, len = getStage.length; i < len; i++) {
                 if (getStage[i].children.length == 0 || getStage[i].children[0].className == 'Image'){
                     iflag = true;
