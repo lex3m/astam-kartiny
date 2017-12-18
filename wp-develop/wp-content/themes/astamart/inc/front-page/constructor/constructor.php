@@ -125,9 +125,14 @@
 								<p class="uk-form-help-block">тут название выбранной картинки.jpg</p>
 							</div>
 						</div>
-						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-							з
-						</div>
+                        <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
+                            <div class="uk-form-row">
+                                <label class="uk-form-label">Стоимость:</label>
+                                <div class="tm-constructor-form-price uk-text-center">
+                                    <span class="js-total">0</span> р
+                                </div>
+                            </div>
+                        </div>
 					</div>
 					<div class="uk-grid">
 						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
