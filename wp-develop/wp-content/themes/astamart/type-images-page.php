@@ -25,6 +25,11 @@ get_header(); ?>
 						endwhile; // End of the loop.
 						?>
                     </div>
+                    <div class="tm-sec3-wrap">
+                        <div class="uk-grid tm-tpls-gal">
+	                    <?php echo do_shortcode('[album id=4 template=tpls_type_images_page ]');?>
+                        </div>
+                    </div>
                 </section>
                 <!-- sec2 end-->
 				<?php include('inc/page/global-wrap-after-content-sections.php');?>

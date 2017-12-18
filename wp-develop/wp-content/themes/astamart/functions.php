@@ -111,7 +111,6 @@ function astamart_scripts() {
 
 	wp_enqueue_style( 'astam-paintings-style', get_template_directory_uri() . '/astam-paintings-style.css', array(), 'null', false );
 	wp_enqueue_style( 'astam-paintings-media-style', get_template_directory_uri() . '/astam-paintings-media-style.css', array(), 'null', false );
-	wp_add_inline_script('astam-paintings-media-style', 'alert("Привет!");');
 
 	echo "
 	<style>
@@ -203,7 +202,3 @@ function wpmidia_activate_masked_input(){
 add_filter('excerpt_more', function($more) {
 	return '...';
 });
-
-
-
-

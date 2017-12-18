@@ -5,7 +5,6 @@
 		<div class="tm-sec3-tpls-wrap">
 			<div class="uk-grid tm-sec3-gal">
                 <?php echo do_shortcode('[album id=2 template=tpls_page ]');?>
-<!--                --><?php //echo do_shortcode('[nggallery id=3 template=tplspage ]');?>
 			</div>
 			<div class="tm-sec3-more"><a href="#">Больше фотографий</a></div>
 		</div>

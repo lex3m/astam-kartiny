@@ -207,3 +207,20 @@ div.wpcf7-response-output {
 .wp-pagenavi{
     text-align: center;
 }
+
+.tm-book-order {
+    width: 100%;
+    height: 60px;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    background: #ea3d07;
+    border-radius: 5px;
+    font-size: 28px;
+    font-family: 'RobotoLight', sans-serif;
+    cursor: pointer;
+    outline: none;
+}
+.ngg-gallery-thumbnail{
+    border: none !important;
+}

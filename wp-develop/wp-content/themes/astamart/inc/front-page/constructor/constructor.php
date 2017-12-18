@@ -44,7 +44,7 @@
 							</div>
 							<div class="tm-info uk-text-left">
 								<i class="uk-icon-exclamation uk-icon-hover"></i>
-								<span>Если Вы не можете воспользоваться конструктором, то любую модель картины мы можем сформировать за вас</span><a
+								<span>Если Вы не можете воспользоваться конструктором, то любую модель картины мы можем сформировать за вас </span><a
 									href="#git" data-uk-smooth-scroll>Помогите мне</a>
 							</div>
                             <div class="tm-info uk-text-left js-pic-data"></div>
@@ -126,12 +126,7 @@
 							</div>
 						</div>
 						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-							<div class="uk-form-row">
-								<label class="uk-form-label">Стоимость:</label>
-								<div class="tm-constructor-form-price uk-text-center">
-									<span class="js-total">0</span> р
-								</div>
-							</div>
+							з
 						</div>
 					</div>
 					<div class="uk-grid">
@@ -315,19 +310,7 @@
 					</div>
 
 					<div class="uk-grid">
-						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-							<div class="uk-form-row">
-								<label class="uk-form-label">Размер изображения (см)</label>
-								<!-- <button class="dis" data-behaviour="toggle">DIS</button> -->
-								<div class="tm-constructor-form-range">
-									<div class="tm-constructor-val val-left">50</div>
-									<div class="tm-constructor-val val-right">135</div>
-									<input class="js-dimen" type="range" min="50" max="135" step="5" value="100"
-									       data-buffer="0" data-rangeSlider/>
-									<output class="tm-constructor-form-range-info"></output>
-								</div>
-							</div>
-						</div>
+						s
 						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
 							<div class="uk-form-row">
 
