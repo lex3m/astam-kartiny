@@ -314,14 +314,26 @@
 						</div>
 					</div>
 
-					<div class="uk-grid">
-						s
-						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-							<div class="uk-form-row">
+                    <div class="uk-grid">
+                        <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
+                            <div class="uk-form-row">
+                                <label class="uk-form-label">Размер изображения (см)</label>
+                                <!-- <button class="dis" data-behaviour="toggle">DIS</button> -->
+                                <div class="tm-constructor-form-range">
+                                    <div class="tm-constructor-val val-left">50</div>
+                                    <div class="tm-constructor-val val-right">135</div>
+                                    <input class="js-dimen" type="range" min="50" max="135" step="5" value="100"
+                                           data-buffer="0" data-rangeSlider/>
+                                    <output class="tm-constructor-form-range-info"></output>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
+                            <div class="uk-form-row">
 
-							</div>
-						</div>
-					</div>
+                            </div>
+                        </div>
+                    </div>
 
 					<div class="uk-grid">
 						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
