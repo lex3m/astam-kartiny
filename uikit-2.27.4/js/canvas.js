@@ -381,8 +381,6 @@ $(function(){
         droppableGroup.on('dragmove', function() {
             layerProc();
         });
-        // stage.add(layer1); 
-        // stage.add(shadowedBg); 
 
         layer1.moveToTop();
         shadowedBg.moveToBottom();
@@ -500,7 +498,7 @@ $(function(){
     }
 
 
-    /* function downloadURI(uri, name) {
+     /* function downloadURI(uri, name) {
         var link = document.createElement("a");
         link.download = name;
         link.href = uri;
@@ -508,11 +506,12 @@ $(function(){
         link.click();
         document.body.removeChild(link);
         delete link;
-    } */
+    }  */
     var dataURL;
     function saveImg() {
         dataURL = stage.toDataURL();
         if(dataURL) $('.tm-ready').attr('src', dataURL);
+       // console.log(dataURL);
         //downloadURI(dataURL, 'stage.png');
         // e.preventDefault();
         // clearStage();
@@ -1026,7 +1025,24 @@ $(function(){
 
     $('.tm-book').click(function(e) {
         e.preventDefault();
-        console.log(sum, area, material, covering, stylization, perim, underframe, mes);
+        // console.log(sum, area, material, covering, stylization, perim, underframe, mes/* , dataURL */);
+        var isEmpty = localStorage.getItem('orderM');
+        var order, orderS, sumToCart = 0;
+        if(isEmpty) {
+            order = JSON.parse(isEmpty);
+            order.push({'sum':sum, 'area':area, 'material':material, 'covering':covering, 'stylization':stylization, 'perim':perim, 'underframe':underframe, 'mes':mes, 'img':dataURL});
+        } else {
+            order = [];
+            order.push({'sum':sum, 'area':area, 'material':material, 'covering':covering, 'stylization':stylization, 'perim':perim, 'underframe':underframe, 'mes':mes, 'img':dataURL});
+        }
+        for (var i = 0, len = order.length; i < len; i++) {
+            sumToCart += order[i].sum;
+        }
+        $('.js-total-sum').empty();
+        $('.js-total-sum').text(sumToCart);
+
+        orderS = JSON.stringify(order);
+        localStorage.setItem('orderM', orderS);
     });
 
 });
