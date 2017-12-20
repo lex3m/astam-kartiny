@@ -56,6 +56,9 @@ $(function(){
         //block adding rect/unblock deletion
         $('.tm-canv-icon.square').css('display', 'block');
         $('.tm-canv-icon.tm-draw').css('display', 'none');
+        //block deletion
+        $('.tm-canv-icon.close').css('display', 'block');
+        $('.tm-canv-icon.tm-del').css('display', 'none');
         isTplAct = true; //disable draw rectangles
         isShapeAtStage = true; //some shapes present at current stage
        /*  uncomment to make shape
@@ -150,7 +153,7 @@ $(function(){
             group.setDraggable(true);
             layer.draw();
             saveStage();
-            console.log('4');
+            // console.log('4');
             getTotal();
 
            
@@ -268,7 +271,7 @@ $(function(){
 
     var sel, active, current;
     function rectDraw() {
-        console.log(stage);
+        // console.log(stage);
         // var layer1 = stage.find('.mainLayer')[0];
          var droppableRect = new Konva.Rect({
             x: 0,
@@ -330,6 +333,7 @@ $(function(){
             shadowedBg.draw();
         });
         droppableRect.on('mouseup', function(e) {
+            // selectionRectRemove();
             back.hide();
             tooltip.hide();
             tooltipLayer.draw();
@@ -373,6 +377,10 @@ $(function(){
             }    */
         });
         layer1.add(droppableGroup);
+
+        droppableGroup.on('dragmove', function() {
+            layerProc();
+        });
         // stage.add(layer1); 
         // stage.add(shadowedBg); 
 
@@ -386,13 +394,15 @@ $(function(){
         addAnchor(droppableGroup, 0, 100, 'bottomLeft'); 
         layer1.draw();
         saveStage();
-        console.log('5');
+        // console.log('5');
         getTotal();
         //make clip active
         $('.tm-canv-icon.square').css('display', 'none');
         $('.tm-canv-icon.tm-check').css('display', 'block');
 
-        // layerProc();
+        layerProc();
+        isShapeAtStage = true;
+        console.log(stage);
     }
     $('.tm-draw').click(function(){
         rectDraw();       
@@ -431,14 +441,14 @@ $(function(){
     });
     //function for disable/enable slider and selects
     function toggleMesurement(arg) {
-        console.log('arg: ', arg);
+        // console.log('arg: ', arg);
         $('.js-material').attr('disabled', arg).trigger('refresh');
         $('.js-underframe').attr('disabled', arg).trigger('refresh');
         $('.js-stylization').attr('disabled', arg).trigger('refresh');
         $('.js-covering').attr('disabled', arg).trigger('refresh');
         $('.tm-canv-icon.sub').css('display', 'block');
         $('.tm-canv-icon.org').css('display', 'none');        
-        console.log(sum, area, material, covering, stylization, perim, underframe);
+        // console.log(sum, area, material, covering, stylization, perim, underframe);
         if(sum && area && material && covering && stylization && perim && underframe) {
             $('.tm-book').attr('disabled', !arg);
             // console.log('in');
@@ -548,9 +558,9 @@ $(function(){
         // $('.tm-canv-icon.org').css('display', 'block');
         // shadowedBg.draw();
         //stage.add(shadowedBg);
-        console.log('loadImg');
+        // console.log('loadImg');
         if(isShapeAtStage) {
-            console.log('isShapeAtStage');
+            // console.log('isShapeAtStage');
             setTimeout(function(){
                 clipShape();
             }, 100);
@@ -576,20 +586,22 @@ $(function(){
         if(sel) sel.destroy();
         stage.draw();
         saveStage();
-        console.log('6');
+        // console.log('6');
         getTotal();
         $('.tm-canv-icon.close').css('display', 'block');
         $('.tm-canv-icon.tm-del').css('display', 'none');
+        layerProc();
     });
 
     function layerProc () {
         var layer = stage.find('.mainLayer')[0]  || stage.find('Group')[0].getParent() ;
         var layer1 = stage.find('.layer1')[0] /* || stage.find('Group')[0].getParent() */;
-        console.log(layer);
-        console.log(layer1);
+        // console.log(layer);
+        // console.log(layer1);
 
         var nodes = stage.find('.mainLayer')[0] && stage.find('.mainLayer')[0].children || stage.find('Group');
         layer1.clear();
+        layer1.clearBeforeDraw(false);
         var x, y;
 
         for (var i = 0, len = nodes.length; i < len; i++) {
@@ -605,19 +617,19 @@ $(function(){
             }
             clipImg(x, y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
         } 
-        //layer1.draw();
+        // layer1.draw();
     }
     
     function clipShape() {
-        console.log('clipShape in prog))');
+        // console.log('clipShape in prog))');
         // var nodes = stage.find('Group');
         // var layer1 = nodes[0].getParent();
         var nodes = stage.find('.mainLayer')[0] && stage.find('.mainLayer')[0].children || stage.find('Group');
         var layer1 = stage.find('.mainLayer')[0] || stage.find('Group')[0].getParent();
         // console.log(stage);
-        console.log(nodes);
+        // console.log(nodes);
         // console.log(main);
-        console.log(layer1);
+        // console.log(layer1);
 
         clearStage();
         layer.clearBeforeDraw(false);
@@ -645,9 +657,9 @@ $(function(){
         layer1.name('mainLayer');
         //stage = Konva.Node.create(shapes[shapeNo], 'canvas');
         updateBindings();
-        console.log(layer);
-        console.log(layer1);
-        console.log(shadowedBg);
+        // console.log(layer);
+        // console.log(layer1);
+        // console.log(shadowedBg);
     }
     var forTotal;
     $('.tm-check').click(function(){
@@ -660,8 +672,8 @@ $(function(){
         // console.log(stage.find('Layer')[1]);
         // console.log(stage.find('Layer')[2]);
         // console.log(stage.find('Layer')[3]);
-        console.log(stage);
-        console.log(nodes);
+        // console.log(stage);
+        // console.log(nodes);
         clearStage();
         layer.clearBeforeDraw(false);
         var x, y;
@@ -737,28 +749,34 @@ $(function(){
             stage = Konva.Node.create(st, 'canvas');
             updateBindings();
         }
-        console.log('7');
+        // console.log('7');
         getTotal();
         selectionRectRemove();
     }
     function selectionRectRemove () {
-        var allRect = stage.find('Rect');
         var l = stage.find('.mainLayer')[0];
-        console.log(l);
-            /* if(allRect) {
+        var allRect = l.find('Rect');
+        // console.log(l);
+             if(allRect) {
                 for (var i = 0, len = allRect.length; i < len; i++) {
                     allRect[i].fill(null);
                 }
                 stage.draw();
-            } */
+            } 
     }
     function updateBindings () {
-            console.log('updB w');
+            // console.log('updB w');
             var layer = stage.find('Layer')[3];
             var arRect = layer.find('Rect');
             var arCircle = layer.find('Circle');
+            var arGroup = layer.find('Group');
             // var arRect = stage.find('Rect');
             // var arCircle = stage.find('Circle');
+            for(var i = 0, len = arGroup.length; i < len; i ++){
+                arGroup[i].on('dragmove', function() {
+                    layerProc();
+                });
+            }
             for(var i = 0, len = arCircle.length; i < len; i ++){
                 var group = arCircle[i].parent;
                 arCircle[i].on('dragmove', function() {
@@ -775,7 +793,7 @@ $(function(){
                     group.setDraggable(true);
                     layer.draw();
                     saveStage();
-                    console.log('1');
+                    // console.log('1');
                     getTotal();
 
                     
@@ -833,7 +851,7 @@ $(function(){
                 });
                 arRect[i].on('mousedown', function(e) {
                     // layerProc();
-                    // selectionRectRemove();
+                    selectionRectRemove();
                     sel = e.target.parent;
                     active = e.target;
                     active.fill('rgba(37, 60, 127, .3)');
@@ -858,6 +876,7 @@ $(function(){
                     // stage.draw();
                 });
                 arRect[i].on('mouseup', function(e) {
+                    // selectionRectRemove();
                     tooltip.hide();
                     back.hide();
                     tooltipLayer.draw();
@@ -867,7 +886,7 @@ $(function(){
                     // clipShape();
                 });
             }
-            console.log('2');
+            // console.log('2');
         getTotal();
     }
 
