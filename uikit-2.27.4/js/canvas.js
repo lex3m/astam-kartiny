@@ -394,7 +394,6 @@ $(function(){
         addAnchor(droppableGroup, 0, 100, 'bottomLeft'); 
         layer1.draw();
         saveStage();
-        // console.log('5');
         getTotal();
         //make clip active
         $('.tm-canv-icon.square').css('display', 'none');
@@ -402,7 +401,6 @@ $(function(){
 
         layerProc();
         isShapeAtStage = true;
-        console.log(stage);
     }
     $('.tm-draw').click(function(){
         rectDraw();       
@@ -448,10 +446,9 @@ $(function(){
         $('.js-covering').attr('disabled', arg).trigger('refresh');
         $('.tm-canv-icon.sub').css('display', 'block');
         $('.tm-canv-icon.org').css('display', 'none');        
-        // console.log(sum, area, material, covering, stylization, perim, underframe);
+
         if(sum && area && material && covering && stylization && perim && underframe) {
             $('.tm-book').attr('disabled', !arg);
-            // console.log('in');
         }
         
         if(!arg) {
@@ -554,13 +551,8 @@ $(function(){
         $('.tm-canv-icon.trash').css('display', 'none');
         $('.tm-canv-icon.tm-rem').css('display', 'block');
         $('.js-shape').attr('disabled', false);
-        // $('.tm-canv-icon.sub').css('display', 'none');
-        // $('.tm-canv-icon.org').css('display', 'block');
-        // shadowedBg.draw();
-        //stage.add(shadowedBg);
-        // console.log('loadImg');
+
         if(isShapeAtStage) {
-            // console.log('isShapeAtStage');
             setTimeout(function(){
                 clipShape();
             }, 100);
@@ -586,7 +578,7 @@ $(function(){
         if(sel) sel.destroy();
         stage.draw();
         saveStage();
-        // console.log('6');
+
         getTotal();
         $('.tm-canv-icon.close').css('display', 'block');
         $('.tm-canv-icon.tm-del').css('display', 'none');
@@ -595,9 +587,7 @@ $(function(){
 
     function layerProc () {
         var layer = stage.find('.mainLayer')[0]  || stage.find('Group')[0].getParent() ;
-        var layer1 = stage.find('.layer1')[0] /* || stage.find('Group')[0].getParent() */;
-        // console.log(layer);
-        // console.log(layer1);
+        var layer1 = stage.find('.layer1')[0];
 
         var nodes = stage.find('.mainLayer')[0] && stage.find('.mainLayer')[0].children || stage.find('Group');
         layer1.clear();
@@ -617,19 +607,14 @@ $(function(){
             }
             clipImg(x, y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
         } 
-        // layer1.draw();
+ 
     }
     
     function clipShape() {
-        // console.log('clipShape in prog))');
         // var nodes = stage.find('Group');
         // var layer1 = nodes[0].getParent();
         var nodes = stage.find('.mainLayer')[0] && stage.find('.mainLayer')[0].children || stage.find('Group');
         var layer1 = stage.find('.mainLayer')[0] || stage.find('Group')[0].getParent();
-        // console.log(stage);
-        // console.log(nodes);
-        // console.log(main);
-        // console.log(layer1);
 
         clearStage();
         layer.clearBeforeDraw(false);
@@ -650,30 +635,19 @@ $(function(){
         } 
         stage.add(shadowedBg);
         stage.add(layer1);
-        //stage.add(tooltipLayer);
+
         shadowedBg.moveToBottom();
-        // layer.moveToTop();
         layer1.moveToTop();
         layer1.name('mainLayer');
-        //stage = Konva.Node.create(shapes[shapeNo], 'canvas');
+
         updateBindings();
-        // console.log(layer);
-        // console.log(layer1);
-        // console.log(shadowedBg);
+
     }
     var forTotal;
     $('.tm-check').click(function(){
         forTotal = true;
         var nodes = stage.find('.mainLayer')[0].children;
-        // var nodes = stage.find('Layer')[3].children;
-        //var nodes1 = stage.children[2].children;
-        // console.log(stage);
-        // console.log(stage.find('Layer')[0]);
-        // console.log(stage.find('Layer')[1]);
-        // console.log(stage.find('Layer')[2]);
-        // console.log(stage.find('Layer')[3]);
-        // console.log(stage);
-        // console.log(nodes);
+
         clearStage();
         layer.clearBeforeDraw(false);
         var x, y;
@@ -702,12 +676,7 @@ $(function(){
         inputRange.rangeSlider.update();
         saveImg();
         toggleMesurement(true);
-        /* console.log('**************************');
-        console.log(Konva.stages[0].children[0].children[0].attrs.x);
-        console.log(Konva.stages[0].children[0].attrs.y);
-        console.log(Konva.stages[0].children[0].children[0].attrs.width);
-        console.log(Konva.stages[0].children[0].children[0].attrs.height);
-         console.log(Konva); */
+
     });
 
     $('#logo').bind('change', function(evt){
@@ -720,7 +689,6 @@ $(function(){
                  $("#canvas").css('backgroundImage', 'url(' + b + ')');
                  loadImg();
                  $('.js-pic-data').empty();
-                //  layer.clearBeforeDraw(true);
             };
             reader.readAsBinaryString(file.files[0]);
         }
@@ -749,14 +717,14 @@ $(function(){
             stage = Konva.Node.create(st, 'canvas');
             updateBindings();
         }
-        // console.log('7');
+
         getTotal();
         selectionRectRemove();
     }
     function selectionRectRemove () {
         var l = stage.find('.mainLayer')[0];
         var allRect = l.find('Rect');
-        // console.log(l);
+
              if(allRect) {
                 for (var i = 0, len = allRect.length; i < len; i++) {
                     allRect[i].fill(null);
@@ -765,13 +733,12 @@ $(function(){
             } 
     }
     function updateBindings () {
-            // console.log('updB w');
+
             var layer = stage.find('Layer')[3];
             var arRect = layer.find('Rect');
             var arCircle = layer.find('Circle');
             var arGroup = layer.find('Group');
-            // var arRect = stage.find('Rect');
-            // var arCircle = stage.find('Circle');
+
             for(var i = 0, len = arGroup.length; i < len; i ++){
                 arGroup[i].on('dragmove', function() {
                     layerProc();
@@ -793,10 +760,7 @@ $(function(){
                     group.setDraggable(true);
                     layer.draw();
                     saveStage();
-                    // console.log('1');
-                    getTotal();
-
-                    
+                    getTotal();                    
                 });
                 // add hover styling
                 arCircle[i].on('mouseover', function() {
@@ -820,12 +784,8 @@ $(function(){
                     tooltipLayer.draw();
 
                     layerProc();
-                    // clipShape();
                 }); 
                 arRect[i].on('mousedown mousemove', function() {
-                    /* update(this);
-                    layer.draw(); */
-
                     layerProc();
                 });
                 arRect[i].on('mouseover', function(e) {
@@ -850,7 +810,6 @@ $(function(){
                     tooltipLayer.draw();
                 });
                 arRect[i].on('mousedown', function(e) {
-                    // layerProc();
                     selectionRectRemove();
                     sel = e.target.parent;
                     active = e.target;
@@ -871,22 +830,16 @@ $(function(){
                     back.show(); 
                     tooltipLayer.moveUp(); 
                     tooltipLayer.draw(); 
-                    // shadowedBg.moveToTop();
-                    // shadowedBg.draw();
-                    // stage.draw();
                 });
                 arRect[i].on('mouseup', function(e) {
-                    // selectionRectRemove();
                     tooltip.hide();
                     back.hide();
                     tooltipLayer.draw();
                     saveStage();     
                     
                     layerProc();
-                    // clipShape();
                 });
             }
-            // console.log('2');
         getTotal();
     }
 
@@ -974,7 +927,7 @@ $(function(){
                     imageObj.src = img;
                     $("#canvas").css('backgroundImage', 'url(' + img + ')');
                     loadImg();
-                    // layer.clearBeforeDraw(true);
+
                     if ( modal.isActive() ) {
                         modal.hide();
                     }
@@ -983,25 +936,21 @@ $(function(){
         });
     }
     $('.js-material').change(function(){
-        // console.log('material');
         var val = $(this).val();
         material = +val;
         getTotal();
     });
     $('.js-covering').change(function(){
-        // console.log('covering');
         var val = $(this).val();
         covering = +val;
         getTotal();
     });
     $('.js-underframe').change(function(){
-        // console.log('underframe');
         var val = $(this).val();
         underframe = +val;
         getTotal();
     });
     $('.js-stylization').change(function(){
-        // console.log('stylization');
         var val = $(this).val();
         stylization = +val;
         getTotal();
@@ -1017,9 +966,7 @@ $(function(){
         } else {
             getStage = null;
         }
-        /* console.log(stage);
-        console.log(stage.find('.mainLayer')[0]);
-        console.log(getStage); */
+
         if(getStage) {
             var getStage = stage.find('.mainLayer')[0].children
             for (var i = 0, len = getStage.length; i < len; i++) {
@@ -1029,7 +976,7 @@ $(function(){
             }
 
         }
-        // console.log(iflag);
+
         if(!iflag){
             sum = 0;
             perim = 0;
@@ -1047,8 +994,7 @@ $(function(){
             }
             sum = area*(material + covering + stylization) + perim * underframe;
         }
-        /* console.log(area, material, covering, stylization, perim, underframe, globalKoef);
-        console.log(sum);  */
+
         getSum();
     }
     function clearTotal() {
