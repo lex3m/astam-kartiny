@@ -12,11 +12,12 @@ $(function(){
     var modal2 = UIkit.modal("#see-in");
     var modal3 = UIkit.modal("#js-shape-modal");
     var isTplAct = false;
-    
+
+    /* Ready shapes for modular pictures */
     var shapes = [
     /* 1 rect */        '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-1,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":802,"height":482,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":395.3125,"y":273.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 100см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":395.3125,"y":273.5625},"className":"Text"}]}]}',
     /* 2 rect row*/     '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-2,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":395,"height":483,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":395,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":483,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":395,"y":483,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":402,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"x":4,"width":395,"height":482,"stroke":"black"},"className":"Rect"},{"attrs":{"x":4,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":399,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":399,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":4,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":190.3125,"y":220.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 49см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":190.3125,"y":220.5625},"className":"Text"}]}]}',
-    /* 2 rect col*/     '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":1,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":798,"height":228,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":798,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":798,"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"y":251,"draggable":true},"className":"Group","children":[{"attrs":{"x":1,"y":-3,"width":798,"height":231,"stroke":"black"},"className":"Rect"},{"attrs":{"x":799,"y":-3,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":1,"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":799,"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":1,"y":-3,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":172,"y":410.4375,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 100см, высота: 29см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":172,"y":410.4375},"className":"Text"}]}]}',
+    /* 2 rect col*/     '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":1,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":798,"height":228,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":798,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":798,"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":1,"y":251,"draggable":true},"className":"Group","children":[{"attrs":{"x":1,"y":-3,"width":798,"height":231,"stroke":"black"},"className":"Rect"},{"attrs":{"x":799,"y":-3,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":1,"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":799,"y":228,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":1,"y":-3,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":172,"y":410.4375,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 100см, высота: 29см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":172,"y":410.4375},"className":"Text"}]}]}',
     /* 3 rect row*/     '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":1,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":256,"height":477,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":256,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":256,"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":271,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":256,"height":478,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":256,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":256,"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":537,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"x":5,"width":256,"height":478,"stroke":"black"},"className":"Rect"},{"attrs":{"x":5,"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":261,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":5,"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":261,"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":644,"y":141.4375,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 38см, высота: 72см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":644,"y":141.4375},"className":"Text"}]}]}',
     /* 3 rect col*/     '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":2,"y":2,"draggable":true},"className":"Group","children":[{"attrs":{"width":796,"height":149,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":796,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":149,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":796,"y":149,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":2,"y":166,"draggable":true},"className":"Group","children":[{"attrs":{"width":796,"height":149,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":796,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":149,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":796,"y":149,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":1,"y":330,"draggable":true},"className":"Group","children":[{"attrs":{"width":797,"height":149,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":797,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":149,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":797,"y":149,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":367.8125,"y":259.375,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 100см, высота: 19см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":367.8125,"y":259.375},"className":"Text"}]}]}',
     /* 4 rect row*/     '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":2,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":187,"height":477,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":187,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":187,"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":206,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":187,"height":478,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":187,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":187,"y":478,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":409,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":187,"height":477,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":187,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":187,"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]},{"attrs":{"x":612,"y":1,"draggable":true},"className":"Group","children":[{"attrs":{"width":187,"height":477,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":187,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":187,"y":477,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":692,"y":197.6875,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 23см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":692,"y":197.6875},"className":"Text"}]}]}',
@@ -37,18 +38,29 @@ $(function(){
         e.preventDefault();
         modal3.show();
     });
+    var shapeNo;
+    var isShapeAtStage;
     $('.item').click(function(e) {
+        shapeNo = $(this).attr('data-number');
         clearStage();
-        stage = Konva.Node.create(shapes[$(this).attr('data-number')], 'canvas');
-        stage.add(tooltipLayer);
-        updateBindings();
+        stage = Konva.Node.create(shapes[shapeNo], 'canvas');
+        clipShape();
+        // stage.add(shadowedBg);
+        // stage.add(tooltipLayer);
+        // shadowedBg.moveToBottom();
+        // stage = Konva.Node.create(shapes[shapeNo], 'canvas');
+        // updateBindings();
         $('.tm-canv-icon.check').css('display', 'none');
         $('.tm-canv-icon.tm-check').css('display', 'block');
         modal3.hide();
         //block adding rect/unblock deletion
         $('.tm-canv-icon.square').css('display', 'block');
         $('.tm-canv-icon.tm-draw').css('display', 'none');
-        isTplAct = true;
+        //block deletion
+        $('.tm-canv-icon.close').css('display', 'block');
+        $('.tm-canv-icon.tm-del').css('display', 'none');
+        isTplAct = true; //disable draw rectangles
+        isShapeAtStage = true; //some shapes present at current stage
        /*  uncomment to make shape
         st1 = stage.toJSON();
         console.log(st1); */
@@ -130,6 +142,8 @@ $(function(){
         anchor.on('dragmove', function() {
             update(this);
             layer.draw();
+
+            layerProc();
         });
         anchor.on('mousedown touchstart', function() {
             group.setDraggable(false);
@@ -139,7 +153,10 @@ $(function(){
             group.setDraggable(true);
             layer.draw();
             saveStage();
+            // console.log('4');
             getTotal();
+
+           
             // console.log(this.getLayer().children[0]);
             //  var l = this.getLayer(), g = this.getLayer().children[0], r = this.getLayer().children[0].children[0], newX, newY;
             // console.log(l); 
@@ -183,9 +200,16 @@ $(function(){
         width: width,
         height: height
     });
-    var layer = new Konva.Layer(); 
+    var layer = new Konva.Layer({
+        name: 'layer1'
+    }); 
+
+    var layer1 = new Konva.Layer({
+        name: 'mainLayer'
+    }); 
 
     stage.add(layer);
+    stage.add(layer1);
     var tooltipLayer = new Konva.Layer({
         fill: "black"
     });
@@ -211,6 +235,22 @@ $(function(){
     
     stage.add(tooltipLayer);
 
+    var shadowedBg = new Konva.Layer({
+        fill: "white",
+        opacity: 0.75,
+    });
+    var transpBg = new Konva.Rect({
+            x: 0,
+            y: 0,
+            width: width,
+            height: height,
+            fill: 'rgba(255, 255, 255, .9)'
+        });
+    
+    shadowedBg.add(transpBg);
+    stage.add(shadowedBg);
+    
+
     /* var too = new Konva.Text({
             text: "",
             fontFamily: "Calibri",
@@ -231,6 +271,8 @@ $(function(){
 
     var sel, active, current;
     function rectDraw() {
+        // console.log(stage);
+        // var layer1 = stage.find('.mainLayer')[0];
          var droppableRect = new Konva.Rect({
             x: 0,
             y: 0,
@@ -250,6 +292,8 @@ $(function(){
             tooltip.hide();
             back.hide();
             tooltipLayer.draw();
+
+            // layerProc();
         }); 
 
         droppableRect.on('mouseout', function(e) {
@@ -285,12 +329,16 @@ $(function(){
 
             tooltipLayer.moveToTop(); 
             tooltipLayer.draw(); 
+            shadowedBg.moveToBottom();
+            shadowedBg.draw();
         });
         droppableRect.on('mouseup', function(e) {
+            // selectionRectRemove();
             back.hide();
             tooltip.hide();
             tooltipLayer.draw();
             saveStage();
+            layerProc();
         });
         var droppableGroup = new Konva.Group({
             x: 330,
@@ -328,20 +376,29 @@ $(function(){
                 };
             }    */
         });
-        layer.add(droppableGroup);
-        stage.add(layer); 
+        layer1.add(droppableGroup);
+
+        droppableGroup.on('dragmove', function() {
+            layerProc();
+        });
+
+        layer1.moveToTop();
+        shadowedBg.moveToBottom();
 
         droppableGroup.add(droppableRect).draw();
         addAnchor(droppableGroup, 0, 0, 'topLeft');
         addAnchor(droppableGroup, 150, 0, 'topRight');
         addAnchor(droppableGroup, 150, 100, 'bottomRight');
         addAnchor(droppableGroup, 0, 100, 'bottomLeft'); 
-        stage.draw();
+        layer1.draw();
         saveStage();
         getTotal();
         //make clip active
         $('.tm-canv-icon.square').css('display', 'none');
         $('.tm-canv-icon.tm-check').css('display', 'block');
+
+        layerProc();
+        isShapeAtStage = true;
     }
     $('.tm-draw').click(function(){
         rectDraw();       
@@ -350,14 +407,21 @@ $(function(){
     $('.tm-rem').click(function(){
         stage.clear();
         layer.clear();
-        layer = new Konva.Layer(); 
+        layer = new Konva.Layer({
+            name: 'layer1'
+        }); 
+        layer1 = new Konva.Layer({
+            name: 'mainLayer'
+        }); 
         stage = new Konva.Stage({
             container: 'canvas',
             width: width,
             height: height
         });
         stage.add(layer);
+        stage.add(layer1);
         stage.add(tooltipLayer);
+        stage.add(shadowedBg);
         $("#canvas").css('backgroundImage', 'none');
         $('#logo').val('');
         clearTotal();
@@ -367,20 +431,22 @@ $(function(){
         inputRange.rangeSlider.update();
         toggleMesurement(false);
         isTplAct = false;
+        isShapeAtStage = false;
+        forTotal = false;
+        $('.js-pic-data').empty();
     });
     //function for disable/enable slider and selects
     function toggleMesurement(arg) {
-        
+        // console.log('arg: ', arg);
         $('.js-material').attr('disabled', arg).trigger('refresh');
         $('.js-underframe').attr('disabled', arg).trigger('refresh');
         $('.js-stylization').attr('disabled', arg).trigger('refresh');
         $('.js-covering').attr('disabled', arg).trigger('refresh');
         $('.tm-canv-icon.sub').css('display', 'block');
         $('.tm-canv-icon.org').css('display', 'none');        
-        // console.log(sum, area, material, covering, stylization, perim, underframe);
+
         if(sum && area && material && covering && stylization && perim && underframe) {
             $('.tm-book').attr('disabled', !arg);
-            // console.log('in');
         }
         
         if(!arg) {
@@ -418,7 +484,9 @@ $(function(){
     function clearStage () {
         stage.clear();
         layer.clear();
-        layer = new Konva.Layer(); 
+        layer = new Konva.Layer({
+            name: 'layer1'
+        }); 
         stage = new Konva.Stage({
             container: 'canvas',
             width: width,
@@ -430,7 +498,7 @@ $(function(){
     }
 
 
-    /* function downloadURI(uri, name) {
+     /* function downloadURI(uri, name) {
         var link = document.createElement("a");
         link.download = name;
         link.href = uri;
@@ -438,11 +506,12 @@ $(function(){
         link.click();
         document.body.removeChild(link);
         delete link;
-    } */
+    }  */
     var dataURL;
     function saveImg() {
         dataURL = stage.toDataURL();
         if(dataURL) $('.tm-ready').attr('src', dataURL);
+       // console.log(dataURL);
         //downloadURI(dataURL, 'stage.png');
         // e.preventDefault();
         // clearStage();
@@ -481,8 +550,12 @@ $(function(){
         $('.tm-canv-icon.trash').css('display', 'none');
         $('.tm-canv-icon.tm-rem').css('display', 'block');
         $('.js-shape').attr('disabled', false);
-        // $('.tm-canv-icon.sub').css('display', 'none');
-        // $('.tm-canv-icon.org').css('display', 'block');
+
+        if(isShapeAtStage) {
+            setTimeout(function(){
+                clipShape();
+            }, 100);
+        }
     };
    function clipImg (x, y, w, h) {
 
@@ -504,13 +577,76 @@ $(function(){
         if(sel) sel.destroy();
         stage.draw();
         saveStage();
+
         getTotal();
         $('.tm-canv-icon.close').css('display', 'block');
         $('.tm-canv-icon.tm-del').css('display', 'none');
+        layerProc();
     });
-   
+
+    function layerProc () {
+        var layer = stage.find('.mainLayer')[0]  || stage.find('Group')[0].getParent() ;
+        var layer1 = stage.find('.layer1')[0];
+
+        var nodes = stage.find('.mainLayer')[0] && stage.find('.mainLayer')[0].children || stage.find('Group');
+        layer1.clear();
+        layer1.clearBeforeDraw(false);
+        var x, y;
+
+        for (var i = 0, len = nodes.length; i < len; i++) {
+            if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.x) {
+                x = nodes[i].attrs.x + nodes[i].children[0].attrs.x;
+            } else {
+                x = nodes[i].attrs.x;
+            }
+            if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.y) {
+                y = nodes[i].attrs.y + nodes[i].children[0].attrs.y;
+            } else {
+                y = nodes[i].attrs.y;
+            }
+            clipImg(x, y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
+        } 
+ 
+    }
+    
+    function clipShape() {
+        // var nodes = stage.find('Group');
+        // var layer1 = nodes[0].getParent();
+        var nodes = stage.find('.mainLayer')[0] && stage.find('.mainLayer')[0].children || stage.find('Group');
+        var layer1 = stage.find('.mainLayer')[0] || stage.find('Group')[0].getParent();
+
+        clearStage();
+        layer.clearBeforeDraw(false);
+        var x, y;
+
+        for (var i = 0, len = nodes.length; i < len; i++) {
+            if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.x) {
+                x = nodes[i].attrs.x + nodes[i].children[0].attrs.x;
+            } else {
+                x = nodes[i].attrs.x;
+            }
+            if(nodes[i].children && nodes[i].children[0].attrs && nodes[i].children[0].attrs.y) {
+                y = nodes[i].attrs.y + nodes[i].children[0].attrs.y;
+            } else {
+                y = nodes[i].attrs.y;
+            }
+            clipImg(x, y, nodes[i].children[0].attrs.width, nodes[i].children[0].attrs.height);
+        } 
+        stage.add(shadowedBg);
+        stage.add(layer1);
+
+        shadowedBg.moveToBottom();
+        layer1.moveToTop();
+        layer1.name('mainLayer');
+
+        updateBindings();
+
+    }
+    var forTotal;
     $('.tm-check').click(function(){
-        var nodes = stage.find('Group');
+        forTotal = true;
+        var nodes = stage.find('.mainLayer')[0].children;
+
         clearStage();
         layer.clearBeforeDraw(false);
         var x, y;
@@ -539,12 +675,7 @@ $(function(){
         inputRange.rangeSlider.update();
         saveImg();
         toggleMesurement(true);
-        /* console.log('**************************');
-        console.log(Konva.stages[0].children[0].children[0].attrs.x);
-        console.log(Konva.stages[0].children[0].attrs.y);
-        console.log(Konva.stages[0].children[0].children[0].attrs.width);
-        console.log(Konva.stages[0].children[0].children[0].attrs.height);
-         console.log(Konva); */
+
     });
 
     $('#logo').bind('change', function(evt){
@@ -553,12 +684,15 @@ $(function(){
             var reader = new FileReader();
             reader.onload = function(e) {
                 var b = "data:image/jpeg;base64," + $.base64.encode(e.target.result);
+		var c = $.base64.encode(e.target.result);
                 imageObj.src = b;
                  $("#canvas").css('backgroundImage', 'url(' + b + ')');
+                 $("#canvas-code").text(c);
                  loadImg();
-                 layer.clearBeforeDraw(true);
+                 $('.js-pic-data').empty();
             };
             reader.readAsBinaryString(file.files[0]);
+	    //setTimeout(uploadbase64, 1500);
         }
     });
     $('.tm-undo').click(function(){
@@ -571,6 +705,33 @@ $(function(){
             history(false);
         }
     });
+    $('.tm-constructor-form-order-btn').click(function(e){
+        e.preventDefault();
+	    uploadbase64();
+    });
+    var imageready;
+    function uploadbase64 () {
+		var img = dataURL;
+		var onmg = encodeURIComponent(img);
+		var xhr = new XMLHttpRequest();
+		var body = "img=" + onmg;
+		xhr.open('POST', "/uploader/decode_image.php",true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		//xhr.setRequestHeader("Content-Length", body.length);
+		//xhr.setRequestHeader("Connection", "close");
+		xhr.send(body);
+		xhr.onreadystatechange = function () {
+		   if (xhr.status == 200 && xhr.readyState == 4) {
+		     //document.getElementById("result-loading").innerHTML = xhr.responseText;
+                imagStr = xhr.responseText;
+                var len = imagStr.length;
+                imageready = imagStr.slice(8, len);
+                putToCart();
+		    } else {
+		     //document.getElementById("result-loading").innerHTML = 'loading';
+		    }
+		}
+   }
     function history(arg) {
         clearStage();
         var st;
@@ -585,26 +746,40 @@ $(function(){
             stage = Konva.Node.create(st, 'canvas');
             updateBindings();
         }
+
         getTotal();
         selectionRectRemove();
     }
     function selectionRectRemove () {
-        var allRect = stage.find('Rect');
-            if(allRect) {
+        var l = stage.find('.mainLayer')[0];
+        var allRect = l.find('Rect');
+
+             if(allRect) {
                 for (var i = 0, len = allRect.length; i < len; i++) {
                     allRect[i].fill(null);
                 }
                 stage.draw();
-            }
+            } 
     }
     function updateBindings () {
-            var arRect = stage.find('Rect');
-            var arCircle = stage.find('Circle');
+
+            var layer = stage.find('Layer')[3];
+            var arRect = layer.find('Rect');
+            var arCircle = layer.find('Circle');
+            var arGroup = layer.find('Group');
+
+            for(var i = 0, len = arGroup.length; i < len; i ++){
+                arGroup[i].on('dragmove', function() {
+                    layerProc();
+                });
+            }
             for(var i = 0, len = arCircle.length; i < len; i ++){
                 var group = arCircle[i].parent;
                 arCircle[i].on('dragmove', function() {
                     update(this);
                     layer.draw();
+
+                    layerProc();
                 });
                 arCircle[i].on('mousedown touchstart', function() {
                     group.setDraggable(false);
@@ -614,7 +789,7 @@ $(function(){
                     group.setDraggable(true);
                     layer.draw();
                     saveStage();
-                    getTotal();
+                    getTotal();                    
                 });
                 // add hover styling
                 arCircle[i].on('mouseover', function() {
@@ -636,7 +811,12 @@ $(function(){
                     tooltip.hide();
                     back.hide();
                     tooltipLayer.draw();
+
+                    layerProc();
                 }); 
+                arRect[i].on('mousedown mousemove', function() {
+                    layerProc();
+                });
                 arRect[i].on('mouseover', function(e) {
                     var layer = this.getLayer();
                     document.body.style.cursor = 'move';
@@ -664,7 +844,7 @@ $(function(){
                     active = e.target;
                     active.fill('rgba(37, 60, 127, .3)');
                     // update tooltip
-                    var mousePos = stage.getPointerPosition();
+                     var mousePos = stage.getPointerPosition();
                     tooltip.position({
                         x : mousePos.x + 5,
                         y : mousePos.y + 5
@@ -676,15 +856,17 @@ $(function(){
                         y : mousePos.y + 5
                     });
                     back.fill('white');
-                    back.show();
-                    tooltipLayer.moveToTop(); 
+                    back.show(); 
+                    tooltipLayer.moveUp(); 
                     tooltipLayer.draw(); 
                 });
                 arRect[i].on('mouseup', function(e) {
                     tooltip.hide();
                     back.hide();
                     tooltipLayer.draw();
-                    saveStage();                    
+                    saveStage();     
+                    
+                    layerProc();
                 });
             }
         getTotal();
@@ -774,7 +956,7 @@ $(function(){
                     imageObj.src = img;
                     $("#canvas").css('backgroundImage', 'url(' + img + ')');
                     loadImg();
-                    layer.clearBeforeDraw(true);
+
                     if ( modal.isActive() ) {
                         modal.hide();
                     }
@@ -783,25 +965,21 @@ $(function(){
         });
     }
     $('.js-material').change(function(){
-        // console.log('material');
         var val = $(this).val();
         material = +val;
         getTotal();
     });
     $('.js-covering').change(function(){
-        // console.log('covering');
         var val = $(this).val();
         covering = +val;
         getTotal();
     });
     $('.js-underframe').change(function(){
-        // console.log('underframe');
         var val = $(this).val();
         underframe = +val;
         getTotal();
     });
     $('.js-stylization').change(function(){
-        // console.log('stylization');
         var val = $(this).val();
         stylization = +val;
         getTotal();
@@ -810,9 +988,16 @@ $(function(){
     var sum = 0, perim = 0, area = 0, material = 1, covering = 1, underframe = 1, stylization = 1, iflag = false, mes = [];
     function getTotal() {
         iflag = false;
-        var getStage = JSON.parse(stage.toJSON()).children[0].children;
-        // console.log(getStage);
+        var getStage;
+        // var getStage = JSON.parse(stage.toJSON()).children[0].children;
+        if(stage.find('.mainLayer')[0] && stage.find('.mainLayer')[0].children) {
+            getStage = stage.find('.mainLayer')[0].children;
+        } else {
+            getStage = null;
+        }
+
         if(getStage) {
+            var getStage = stage.find('.mainLayer')[0].children
             for (var i = 0, len = getStage.length; i < len; i++) {
                 if (getStage[i].children.length == 0 || getStage[i].children[0].className == 'Image'){
                     iflag = true;
@@ -820,7 +1005,7 @@ $(function(){
             }
 
         }
-        // console.log(iflag);
+
         if(!iflag){
             sum = 0;
             perim = 0;
@@ -838,8 +1023,7 @@ $(function(){
             }
             sum = area*(material + covering + stylization) + perim * underframe;
         }
-        /* console.log(area, material, covering, stylization, perim, underframe, globalKoef);
-        console.log(sum);  */
+
         getSum();
     }
     function clearTotal() {
@@ -854,7 +1038,9 @@ $(function(){
     }
 
     $('.js-dimen').change(function() {
-        getTotal();
+        if(!forTotal) {
+            getTotal();
+        }
     });
 
     function getSum() {
@@ -867,9 +1053,45 @@ $(function(){
         }
     }
 
-    $('.tm-book').click(function(e) {
-        e.preventDefault();
-        console.log(sum, area, material, covering, stylization, perim, underframe, mes);
-    });
+    //$('.tm-book').click(function(e) {
+        if(localStorage.getItem('totalPrice')) {
+            $('.js-total-sum').empty();
+            $('.js-total-sum').text(localStorage.getItem('totalPrice'));
+        }
+        var totalPrice = 0;
+        function putToCart () {
+            // e.preventDefault();
+            // console.log(sum, area, material, covering, stylization, perim, underframe, mes/* , dataURL */);
+            var isEmpty = localStorage.getItem('orderM');
+            var cartPrice = localStorage.getItem('totalPrice');
+            var order, orderS, sumToCart = 0;
+            var inputRange = document.querySelector('input[type="range"]');
+            var picWidth = inputRange.value;
+            if(isEmpty) {
+                order = JSON.parse(isEmpty);
+                order.push({'sum':sum, 'area':area, 'imgsize':picWidth, 'material':material, 'covering':covering, 'stylization':stylization, 'perim':perim, 'underframe':underframe, 'mes':mes, 'img':imageready});
+            } else {
+                order = [];
+                order.push({'sum':sum, 'area':area, 'imgsize':picWidth, 'material':material, 'covering':covering, 'stylization':stylization, 'perim':perim, 'underframe':underframe, 'mes':mes, 'img':imageready});
+            }
+            for (var i = 0, len = order.length; i < len; i++) {
+                sumToCart += order[i].sum;
+            }
+
+            orderS = JSON.stringify(order);
+            localStorage.setItem('orderM', orderS);
+
+            //var localValue = localStorage.getItem('orderM');
+            //console.log(localValue); //test
+            if(cartPrice) {
+                totalPrice = Number(cartPrice) + sum;
+            } else {
+                totalPrice = sum;
+            }
+            localStorage.setItem('totalPrice', totalPrice);
+            $('.js-total-sum').empty();
+            $('.js-total-sum').text(totalPrice);
+        }
+    //});
 
 });

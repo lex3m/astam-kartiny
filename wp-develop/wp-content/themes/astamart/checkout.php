@@ -25,126 +25,219 @@ get_header(); ?>
 						endwhile; // End of the loop.
 						?>
                     </div>
-                    <div class="tm-sec3-wrap tm-constructor-wrap">
-                        <div class="uk-grid tm-tpls-gal ">
-                            <div class="uk-grid " style="width: 100%">
-                                <div class="uk-overflow-container">
-                                    <div class="tm-see-pics uk-text-center">
-                                        <img class="js-bgpic" src="http://astamart-ru.loc/wp-content/themes/astamart/images/pics/pic1.jpg" alt="work1">
-                                        <img class="tm-ready" src="" alt="">
-                                        <!-- <div class="uk-width-large-1-4 uk-width-medium-1-3 uk-width-small-1-2 uk-margin-bottom">
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="uk-grid " style="width: 100%">
-                                <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-                                    <div class="uk-form-row">
-                                        <label class="uk-form-label">Размер изображения (см)</label>
-                                            <input class="js-dimen" type="text" value="100"/>
-                                    </div>
-                                    <div class="uk-form-row">
-                                        <label class="uk-form-label">Материал</label>
-                                        <select class="js-material">
-                                            <!-- Material value -->
-					                        <?php include('inc/front-page/constructor/material.php'); ?>
-                                            <!-- End material value -->
-                                        </select>
-                                    </div>
-                                    <div class="uk-form-row">
-                                        <label class="uk-form-label">Покрытие</label>
-                                        <select class="js-covering">
-                                            <!-- Covering value -->
-					                        <?php include('inc/front-page/constructor/covering.php'); ?>
-                                            <!-- End covering value -->
-                                        </select>
-                                    </div>
-                                    <div class="uk-form-row">
-                                        <label class="uk-form-label">Количество</label>
-                                        <div class="tm-constructor-form-price">
-                                            <input class="js-order-count" type="text" value="1"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-                                    <div class="uk-form-row">
-                                        <div class="uk-form-row">
-                                            <label class="uk-form-label">Виды подрамника</label>
-                                            <select class="js-underframe">
-                                                <!-- Underframe value -->
-						                        <?php include('inc/front-page/constructor/covering.php'); ?>
-                                                <!-- End underframe value-->
-                                            </select>
-                                        </div>
-                                        <div class="uk-form-row">
-                                            <label class="uk-form-label">Стилизация</label>
-                                            <div class="tm-style">
-                                                <select class="js-stylization">
-                                                    <!-- Stylization value -->
-							                        <?php include('inc/front-page/constructor/stylization.php'); ?>
-                                                    <!-- End stylization value-->
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="uk-form-row">
-                                            <label class="uk-form-label">Стоимость:</label>
-                                            <div class="tm-constructor-form-price">
-                                                <span class="js-total">0</span> р
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
+
+                    <div class="tm-sec3-wrap tm-constructor-wrap">
+			<form id="cart">
+                        <div class="uk-grid tm-tpls-gal ">
+                            <div class="uk-grid js-cart-container" style="width: 100%"></div>
+			<!--- start  list of orders -->
+                           <!--  <div class="uk-grid " style="width: 100%">
+                                <div class="uk-width-small-1-2 uk-width-medium-2-10 uk-grid-collapse">
+                                    <div class="uk-form-row">
+                                        <div class="tm-see-pics uk-text-center">
+                                            <label>Картинка</label>
+                                            <img class="js-bgpic" src="/wp-content/themes/astamart/images/test.jpg" alt="work1">
+                                            <img class="tm-ready" src="" alt="">
+                                        </div>                                            
+                                    </div> 
+                                </div>
+                                <div class="uk-width-small-1-2 uk-width-medium-1-10 uk-grid-collapse">
+                                        <div class="uk-form-row">
+                                            <label>№ заказа</label>
+                                             1
+                                        </div>
+                                </div>
+                                <div class="uk-width-small-1-2 uk-width-medium-4-10 uk-grid-collapse">
+                                        <div class="uk-form-row">
+                                            <label>Параметры картины</label>
+                                            <div class="tm-constructor-form-price">
+                                                <div class="options-razmer">Размер изображения: <span>100</span> см</div>
+                                                <div class="options-material">Материал: <span>Холст натуральный глянец</span></div>
+                                                <div class="options-podramnik">Виды подрамника: <span>Структурный гель</span></div>
+                                                <div class="options-pokritie">Покрытие: <span>Лак глянцевый</span></div>
+                                                <div class="options-stilizaciya">Стилизация: <span>Живопись</span></div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="uk-width-small-1-2 uk-width-medium-2-10 uk-grid-collapse">
+                                        <div class="uk-form-row">
+                                            <label>Цена</label>
+                                            <div class="tm-constructor-form-price">
+                                                <span class="js-total">15 000</span> руб.
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="uk-width-small-1-2 uk-width-medium-1-10 uk-grid-collapse">
+                                        <div class="uk-form-row">
+                                            <label></label>
+                                            <div class="tm-constructor-form-price">
+                                                <div class="remove-item">X</div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div> -->
+			<!--- end list of orders -->
+			<!--- start  list of orders -->
+                           <!--  <div class="uk-grid " style="width: 100%">
+                                <div class="uk-width-small-1-2 uk-width-medium-2-10 uk-grid-collapse">
+                                    <div class="uk-form-row">
+					 <div class="tm-see-pics uk-text-center">
+					    <label>Картинка</label>
+						<img class="js-bgpic" src="/wp-content/themes/astamart/images/test.jpg" alt="work1">
+						<img class="tm-ready" src="" alt="">
+						
+					</div>                                            
+                                    </div> 
+                                </div>
+                                <div class="uk-width-small-1-2 uk-width-medium-1-10 uk-grid-collapse">
+                                        <div class="uk-form-row">
+                                            <label>№ заказа</label>
+                                             1
+                                        </div>
+                                </div>
+                                <div class="uk-width-small-1-2 uk-width-medium-4-10 uk-grid-collapse">
+                                        <div class="uk-form-row">
+                                            <label>Параметры картины</label>
+                                            <div class="tm-constructor-form-price">
+                                                <div class="options-razmer">Размер изображения: <span>100</span> см</div>
+                                                <div class="options-material">Материал: <span>Холст натуральный глянец</span></div>
+                                                <div class="options-podramnik">Виды подрамника: <span>Структурный гель</span></div>
+                                                <div class="options-pokritie">Покрытие: <span>Лак глянцевый</span></div>
+                                                <div class="options-stilizaciya">Стилизация: <span>Живопись</span></div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="uk-width-small-1-2 uk-width-medium-2-10 uk-grid-collapse">
+                                        <div class="uk-form-row">
+                                            <label>Цена</label>
+                                            <div class="tm-constructor-form-price">
+                                                <span class="js-total">15 000</span> руб.
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="uk-width-small-1-2 uk-width-medium-1-10 uk-grid-collapse">
+                                        <div class="uk-form-row">
+                                            <label></label>
+                                            <div class="tm-constructor-form-price">
+                                                <div class="remove-item">X</div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div> -->
+			<!--- end list of orders -->
+                            <div class="uk-grid " style="width: 100%">
+                                <div class="uk-width-small-1-1 uk-width-medium-1-1 tm-custom uk-grid-collapse">
+                                        <div class="uk-form-row">
+						Итого: <span id="itogo"><strong class="js-itogo">0</strong> руб.</span>
+                                        </div>
+                                </div>
                             </div>
                             <div class="uk-grid " style="width: 100%">
                                 <div class="uk-grid" style="margin-top: 20px; width: 100%">
-                                    <div class="uk-width-small-1-1 uk-width-medium-1-1 tm-custom">
-                                        <h2>Контакная информация</h2>
-                                    </div>
-                                    <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-                                        <div class="uk-form-row">
-                                            <label class="uk-form-label">ФИО:</label>
-                                            <div class="tm-constructor-form-name">
-                                                <input class="js-name" type="text"/>
-                                            </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-2-10 tm-custom uk-grid-collapse">
+	                                        <div class="uk-form-row">
+	                                            <label>Ваше имя *</label>
+	                                        </div>
                                         </div>
-                                        <div class="uk-form-row">
-                                            <label class="uk-form-label">E-mail:</label>
-                                            <div class="tm-constructor-form-name">
-                                                <input class="js-telefon" type="text"/>
-                                            </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-8-10 tm-custom uk-grid-collapse">
+	                                        <div class="uk-form-row">
+	                                            <div class="tm-constructor-form-name">
+	                                                <input class="js-name" type="text" placeholder="Ваше имя" />
+	                                            </div>
+	                                        </div>
                                         </div>
-                                        <div class="uk-form-row">
-                                            <label class="uk-form-label">Телефон:</label>
-                                            <div class="tm-constructor-form-name">
-                                                <input class="js-email" type="email"/>
-                                            </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-2-10 tm-custom uk-grid-collapse">
+	                                        <div class="uk-form-row">
+	                                            <label>Телефон *</label>
+	                                        </div>
                                         </div>
-                                    </div>
-                                    <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-                                        <div class="uk-form-row">
-                                            <label class="uk-form-label">Тип доставки:</label>
-                                            <div class="tm-constructor-form-name">
-                                                <input class="js-delivery" type="checkbox" name="" value="" /> Самовывоз <br />
-                                                <input class="js-delivery" type="checkbox" name="" value="" /> Доставка курьером<br />
-                                            </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-8-10 tm-custom uk-grid-collapse">	
+	                                        <div class="uk-form-row">
+	                                            <div class="tm-constructor-form-name">
+	                                                <input class="js-telefon" type="tel" placeholder="+7 (555) 555-55-55" />
+	                                            </div>
+	                                        </div>
+	                                </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-2-10 tm-custom uk-grid-collapse">
+	                                        <div class="uk-form-row">
+                                            <label>E-mail</label>
+	                                        </div>
                                         </div>
-                                        <div class="uk-form-row">
-                                            <label class="uk-form-label">Тип оплаты:</label>
-                                            <div class="tm-constructor-form-name">
-                                                <input class="js-pay-method" type="checkbox" name="" value="" /> Наличный расчет <br />
-                                                <input class="js-pay-method" type="checkbox" name="" value="" /> Банковской картой<br />
-                                            </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-8-10 tm-custom uk-grid-collapse">	
+	                                        <div class="uk-form-row">
+	                                            <div class="tm-constructor-form-name">
+	                                                <input class="js-email" type="email" placeholder="mail@gmail.com" />
+	                                            </div>
+	                                        </div>
+	                                </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-2-10 tm-custom uk-grid-collapse">
+	                                        <div class="uk-form-row">
+                                            <label>Способ доставки</label>
+	                                        </div>
                                         </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-8-10 tm-custom uk-grid-collapse">	
+	                                        <div class="uk-form-row">
+	                                            <div class="tm-constructor-form-name">							 
+	                                                 <input type="radio" id="dostavka1" name="dostavka" value="Самовывоз (бесплатно)">
+							 <label>Самовывоз (бесплатно)</label>
+	                                            </div>
+	                                            <div class="tm-constructor-form-name">
+	                                                 <input type="radio" id="dostavka2" name="dostavka" value="Курьером в пределах КАД (200 руб.)">
+							 <label>Курьером в пределах КАД (200 руб.)</label>
+	                                            </div>
+	                                            <div class="tm-constructor-form-name">
+	                                                 <input type="radio" id="dostavka3" name="dostavka" value="Доставка почтой России (300 руб.)">
+							 <label>Доставка почтой России (300 руб.)</label>
+	                                            </div>
+	                                        </div>
+	                                </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-2-10 tm-custom uk-grid-collapse">
+	                                        <div class="uk-form-row">
+                                            <label>Способ оплаты</label>
+	                                        </div>
+                                        </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-8-10 tm-custom uk-grid-collapse">	
+	                                        <div class="uk-form-row">
+	                                            <div class="tm-constructor-form-name">							 
+	                                                 <input type="radio" id="oplata1" name="oplata" value="Наличными">
+							 <label>Наличными</label>
+	                                            </div>
+	                                            <div class="tm-constructor-form-name">
+	                                                 <input type="radio" id="oplata2" name="oplata" value="Банковской картой">
+							 <label>Банковской картой</label>
+	                                            </div>
+	                                        </div>
+	                                </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-2-10 tm-custom uk-grid-collapse">
+	                                        <div class="uk-form-row">
+                                            <label>Адрес доставки</label>
+	                                        </div>
+                                        </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-8-10 tm-custom uk-grid-collapse">	
+	                                        <div class="uk-form-row">
+							<textarea name="adress" class="delivery-address" placeholder="Адрес доставки"></textarea>
+	                                        </div>
+	                                </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-2-10 tm-custom uk-grid-collapse">
+	                                        <div class="uk-form-row">
+                                            <label>Сообщение</label>
+	                                        </div>
+                                        </div>
+                                       <div class="uk-width-small-1-2 uk-width-medium-8-10 tm-custom uk-grid-collapse">	
+	                                        <div class="uk-form-row">
+							<textarea name="message" class="additional-info" placeholder="Дополнительная информация"></textarea>
+	                                        </div>
+	                                </div>
                                     </div>
                                 </div>
                         </div>
                             <div class="uk-grid" style="margin-top: 20px; width: 100%">
                                 <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom uk-text-right">
-                                    <button class="tm-constructor-form-order-btn tm-book-order">Заказать
-                                    </button>
+                                    <button class="tm-constructor-form-order-btn tm-book-order">Заказать</button>
                                 </div>
                             </div>
+			</form>
                     </div>
                 </section>
                 <!-- sec2 end-->
@@ -169,6 +262,7 @@ get_header(); ?>
 		    <?php include('inc/front-page/maps.php'); ?>
         </div><!-- Map End -->
     </div>
+<script type='text/javascript' src='/wp-content/themes/astamart/js/cart.js'></script>
 
 <?php
 

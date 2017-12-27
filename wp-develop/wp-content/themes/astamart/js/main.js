@@ -34,3 +34,9 @@ function showHint(arg) {
 function hideHint(arg) {
     $('.js-hint').remove();
 };
+
+if(localStorage.getItem('totalPrice')) {
+    $('.js-total-sum').empty();
+    $('.js-total-sum').text(localStorage.getItem('totalPrice'));
+}
+
