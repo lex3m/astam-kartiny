@@ -169,6 +169,26 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+add_action('wp_footer', 'formstyler_plugin');
+function formstyler_plugin(){
+	?>
+    <!-- Script for working block End -->
+    <!-- Formstyler Plugin -->
+    <link href="<?php echo get_template_directory_uri() . '/js/formstyler-plugin/jquery.formstyler.css'?>" rel="stylesheet" />
+    <link href="<?php echo get_template_directory_uri() . '/js/formstyler-plugin/jquery.formstyler.theme.css'?>" rel="stylesheet" />
+    <script src="<?php echo get_template_directory_uri() . '/js/formstyler-plugin/jquery.formstyler.min.js'?>"></script>
+    <script>
+        (function($) {
+            $(function() {
+
+                $('select').styler();
+
+            });
+        })(jQuery);
+    </script>
+	<?php
+}
+
 add_action('wp_footer', 'tm_working_item');
 function tm_working_item(){
 	?>
