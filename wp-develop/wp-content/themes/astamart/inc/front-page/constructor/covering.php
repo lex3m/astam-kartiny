@@ -1,9 +1,4 @@
 <option value="1">Выберите</option>
-<optgroup label="Виды подрамника">
-    <option value="1">Подрамник  толщина 20 мм</option>
-    <option value="2">Подрамник  толщина 40 мм</option>
-</optgroup>
-<optgroup label="Без подрамника">
-    <option value="3">Рамка алюминиевая 17 мм.</option>
-    <option value="4">Рамка алюминиевая 22 мм.</option>
-</optgroup>
+<option value="2">Структурный гель</option>
+<option value="3">Лак глянцевый</option>
+<option value="4">Лак матовый</option>

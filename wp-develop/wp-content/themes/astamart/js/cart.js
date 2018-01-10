@@ -1,10 +1,19 @@
 jQuery( document ).ready(function($) {
+
+    var modal5 = UIkit.modal("#order-sent");
+     /*  UIkit.notify({
+        message : 'Done',
+        status  : 'success',
+        timeout : 5000,
+        pos     : 'top-center'
+    });  */ 
+    // console.log(UIkit);
     if(Number(localStorage.getItem('totalPrice'))) {
         $('.js-total-sum').empty();
         $('.js-total-sum').text(localStorage.getItem('totalPrice'));
         $('.js-itogo').text(localStorage.getItem('totalPrice'));
     } else {
-        $('.tm-constructor-wrap').css('visibility', 'hidden');
+        $('.tm-constructor-wrap').css('display', 'none');
         $('.tm-sec2-header').text('Корзина пуста');
     } 
 
@@ -27,7 +36,7 @@ jQuery( document ).ready(function($) {
                 imgCovering = coveringAr[orderM[i].covering - 1];
                 imgStylization = stylizationAr[orderM[i].stylization - 1];
                 imgPrice = orderM[i].sum;
-                $('.js-cart-container').append('<div class="uk-grid " style="width: 100%"><div class="uk-width-small-1-2 uk-width-medium-2-10 uk-grid-collapse"><div class="uk-form-row"><div class="tm-see-pics uk-text-center"><label>Картинка</label><img class="js-bgpic" src="http://astamart.ru/uploader/uploads/' + imgPath + '" alt="work1"><img class="tm-ready" src="" alt=""></div></div></div><div class="uk-width-small-1-2 uk-width-medium-1-10 uk-grid-collapse"><div class="uk-form-row"><label>№ заказа</label>' + orderNumber + '</div></div><div class="uk-width-small-1-2 uk-width-medium-4-10 uk-grid-collapse"><div class="uk-form-row"><label>Параметры картины</label><div class="tm-constructor-form-price"><div class="options-razmer">Размер изображения: <span>'+imgDimen+'</span> см</div><div class="options-material">Материал: <span>'+imgMaterial+'</span></div><div class="options-podramnik">Виды подрамника: <span>'+imgUnderframe+'</span></div><div class="options-pokritie">Покрытие: <span>'+imgCovering+'</span></div><div class="options-stilizaciya">Стилизация: <span>'+imgStylization+'</span></div></div></div></div><div class="uk-width-small-1-2 uk-width-medium-2-10 uk-grid-collapse"><div class="uk-form-row"><label>Цена</label><div class="tm-constructor-form-price"><span class="js-total">'+imgPrice+'</span> руб.</div></div></div><div class="uk-width-small-1-2 uk-width-medium-1-10 uk-grid-collapse"><div class="uk-form-row"><label></label><div class="tm-constructor-form-price"><div class="remove-item js-order-remove" style="cursor:pointer" data-onumber="' + orderNumber + '">X</div></div></div></div>      </div>');
+                $('.js-cart-container').append('<div class="uk-grid " style="width: 100%"><div class="uk-width-small-1-2 uk-width-medium-2-10 uk-grid-collapse"><div class="uk-form-row"><div class="tm-see-pics uk-text-center"><!--<label>Картинка</label>--><img class="js-bgpic" src="http://astamart.ru/uploader/uploads/' + imgPath + '" alt="work1"><img class="tm-ready" src="" alt=""></div></div></div><!--<div class="uk-width-small-1-2 uk-width-medium-1-10 uk-grid-collapse"><div class="uk-form-row"><label>№ заказа</label>' + orderNumber + '</div></div>--><div class="uk-width-small-1-2 uk-width-medium-4-10 uk-grid-collapse"><div class="uk-form-row"><label class="tm-order-thead">Параметры картины</label><div class="tm-constructor-form-price"><div class="options-razmer">Размер изображения: <span><strong>'+imgDimen+'</strong></span> см</div><div class="options-material">Материал: <span><strong>'+imgMaterial+'</strong></span></div><div class="options-podramnik">Виды подрамника: <span><strong>'+imgUnderframe+'</strong></span></div><div class="options-pokritie">Покрытие: <span><strong>'+imgCovering+'</strong></span></div><div class="options-stilizaciya">Стилизация: <span><strong>'+imgStylization+'</strong></span></div></div></div></div><div class="uk-width-small-1-2 uk-width-medium-2-10 uk-grid-collapse"><div class="uk-form-row"><label class="tm-order-thead">Цена</label><div class="tm-constructor-form-price"><span class="js-total"><strong>'+imgPrice+'</strong></span> руб.</div></div></div><div class="uk-width-small-1-2 uk-width-medium-1-10 uk-grid-collapse"><div class="uk-form-row"><label></label><div class="tm-constructor-form-price"><div class="remove-item js-order-remove uk-text-center" style="cursor:pointer" data-onumber="' + orderNumber + '"><button class="uk-button-danger">Удалить</button></div></div></div></div>      </div>');
             }
         }
 		    $('.js-order-remove').click(function(){
@@ -48,7 +57,7 @@ jQuery( document ).ready(function($) {
 		        if (orderM.length) {
 		            localStorage.setItem('orderM', JSON.stringify(orderM));
 		        } else {
-                    $('.tm-constructor-wrap').css('visibility', 'hidden');
+                    $('.tm-constructor-wrap').css('display', 'none');
                     $('.tm-sec2-header').text('Корзина пуста');
                 }
 		        //console.log(orderM);
@@ -56,16 +65,7 @@ jQuery( document ).ready(function($) {
 		    });
     }
     renderOrders();
-    //[{"sum":17814,"area":5700,"material":1,"covering":1,"stylization":1,"perim":714,"underframe":1,"mes":[{"width":100,"height":19},{"width":100,"height":19},{"width":100,"height":19}]}]
-    // imgPath
-    // orderNumber
-    // imgDimen
-    // imgMaterial
-    // imgUnderframe
-    // imgCovering
-    // imgStylization
-    // imgPrice
-    //[{"sum":16736,"area":5376,"material":1,"covering":1,"stylization":1,"perim":608,"underframe":1,"mes":[{"width":48,"height":28},{"width":48,"height":28},{"width":48,"height":28},{"width":48,"height":28}],"img":"5a421f15dd595txtimg.png"}]
+   
     $('.tm-book-order').click(function(e) {
         e.preventDefault();
         var bookingForm = {};
@@ -76,32 +76,84 @@ jQuery( document ).ready(function($) {
         bookingForm.payment = $('input[name=oplata]:checked').val();
         bookingForm.address = $('.delivery-address').val();
         bookingForm.info = $('.additional-info').val();
-        bookingForm.order = localStorage.getItem('orderM');
+        bookingForm.order = JSON.parse(localStorage.getItem('orderM'));
         bookingForm.total = localStorage.getItem('totalPrice');
-        var data = JSON.stringify(bookingForm);
-        console.log($('.js-name').val());
-        console.log($('.js-telefon').val());
-        console.log($('.js-email').val());
-        console.log($('input[name=dostavka]:checked').val());
-        console.log($('input[name=oplata]:checked').val());
-        console.log($('.delivery-address').val());
-        console.log($('.additional-info').val());
-        /* $.ajax({
-            type: 'GET',
-            url: 'https://some.url',
-            data: data,
-            success: function(data){
-                $('.tm-constructor-wrap').css('visibility', 'hidden');
-                $('.tm-sec2-header').text('Корзина пуста');
-                localStorage.removeItem('orderM');
-                localStorage.setItem('totalPrice', 0);
+        // var data  = JSON.stringify(bookingForm);
+        var data  = bookingForm;
+        // console.log(orderM);
+        // console.log($('.js-name').val());
+        // console.log($('.js-telefon').val());
+        // console.log($('.js-email').val());
+        // console.log($('input[name=dostavka]:checked').val());
+        // console.log($('input[name=oplata]:checked').val());
+        // console.log($('.delivery-address').val());
+        // console.log($('.additional-info').val());
+	//alert(data);
+        console.log(data);
+        if(bookingForm.name && bookingForm.phone && bookingForm.mail) {
+             $.ajax({
+                type: 'POST',
+                url: '/uploader/send.php',
+		        data: data,
+                success: function(data){
+                    $('.tm-constructor-wrap').css('visibility', 'hidden');
+                    $('.tm-sec2-header').text('Корзина пуста');
+                    localStorage.removeItem('orderM');
+                    localStorage.setItem('totalPrice', 0);
+                }
+            });
+             $('.tm-constructor-wrap').css('display', 'none');
+            $('.tm-sec2-header').text('Корзина пуста');
+            localStorage.removeItem('orderM');
+            localStorage.setItem('totalPrice', 0);
+            $('.js-total-sum').text('0');
+            //modal5modal5.show();
+            UIkit.notify("<i class='uk-icon-check'></i> Заказ отправлен в обработку", {
+                status  : 'success',
+                timeout : 5000,
+                pos     : 'top-center'
+            });
+        } else {
+            if(!$('.js-name').val()){
+                // $('.js-name').css('border-color', 'red');
+                $('.js-name').addClass('uk-form-danger');
             }
-        }); */
-        $('.tm-constructor-wrap').css('visibility', 'hidden');
-        $('.tm-sec2-header').text('Корзина пуста');
-        localStorage.removeItem('orderM');
-        localStorage.setItem('totalPrice', 0);
-        $('.js-total-sum').text('0');
+            if(!$('.js-telefon').val()){
+                // $('.js-telefon').css('border-color', 'red');
+                $('.js-telefon').addClass('uk-form-danger');
+            }
+            if(!$('.js-email').val()){
+                // $('.js-email').css('border-color', 'red');
+                $('.js-email').addClass('uk-form-danger');
+            }
+            UIkit.notify("<i class='uk-icon-close'></i> Заполните обязательные поля!", {
+                status  : 'danger',
+                timeout : 5000,
+                pos     : 'top-center'
+            });
+        }
+    });
+
+    $('.js-name').on('change', function () {
+        var curEl = $(this);
+        if(curEl.val()) {
+            // curEl.css('border-color', '#89959d'); 
+            curEl.removeClass('uk-form-danger'); 
+        }
+    });
+    $('.js-telefon').on('change', function () {
+        var curEl = $(this);
+        if(curEl.val()) {
+            // curEl.css('border-color', '#89959d');
+            curEl.removeClass('uk-form-danger');
+        }
+    });
+    $('.js-email').on('change', function () {
+        var curEl = $(this);
+        if(curEl.val()) {
+            // curEl.css('border-color', '#89959d');
+            curEl.removeClass('uk-form-danger');
+        }
     });
 
 });

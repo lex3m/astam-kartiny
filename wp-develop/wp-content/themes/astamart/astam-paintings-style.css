@@ -10467,7 +10467,7 @@ h6 {
   border: none;
   background: #ea3d07;
   border-radius: 5px;
-  font-size: 28px;
+  font-size: 22px;
   font-family: 'RobotoLight', sans-serif;
   cursor: pointer;
   outline: none;
@@ -10482,6 +10482,30 @@ h6 {
   background: rgba(255, 61, 0, 0.6);
   cursor: not-allowed;
 }
+#constructor .js-custom-save-pic:hover {
+  background: rgba(0, 128, 0, 0.8);
+}
+#constructor .js-custom-save-pic {
+  width: 100%;
+  height: 60px;
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+  background: green;
+  border-radius: 5px;
+  font-size: 22px;
+  font-family: 'RobotoLight', sans-serif;
+  cursor: pointer;
+  outline: none;
+}
+#constructor .js-custom-save-pic:active {
+  background: rgba(0, 128, 0, 0.5);
+}
+#constructor .js-custom-save-pic:disabled {
+  background: rgba(0, 128, 0, 0.5);
+  cursor: not-allowed;
+}
+
 #constructor .js-material,
 #constructor .js-covering,
 #constructor .js-underframe,
@@ -10697,6 +10721,29 @@ select:disabled {
   background-size: 100% 100%;
   border: none !important;
   box-shadow: inset 1px 1px 10px #333;
+}
+.canvas .js-tt-check {
+  display: none;
+  position: absolute;
+  background: #333;
+  border-radius: 3px;
+  right: 50px;
+  top: 113px;
+  color: #fff;
+  align-items: center;
+  padding: 10px;
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+.canvas .js-tt-check:after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  top: 10px;
+  border-left: 10px solid #333;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
 }
 .canvas .tm-canv-icon {
   display: none;
@@ -11493,6 +11540,14 @@ select:disabled {
   width: 100%;
   box-sizing: border-box;
 }
+.remove-item button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 /* Global end */
 /* Inner Page End */
 @media screen and (max-width: 1550px) {
@@ -11703,6 +11758,9 @@ select:disabled {
     margin-bottom: 0px;
     font-size: 12px;
   }
+  .tm-total-sum {
+    font-size: 24px;
+  }
 }
 @media screen and (max-width: 370px) {
   .tm-header-topbox .tm-header-topbox-contacts {
@@ -11720,5 +11778,57 @@ select:disabled {
 @media screen and (max-width: 370px) {
   .tm-header-topbox .tm-header-topbox-cart a .tm-header-topbox-cart-info {
     font-size: 9px;
+  }
+}
+
+@-webkit-keyframes bounce {
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  40% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+  60% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+}
+@-moz-keyframes bounce {
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+    -moz-transform: translateX(0);
+    transform: translateX(0);
+  }
+  40% {
+    -moz-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+  60% {
+    -moz-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+}
+@keyframes bounce {
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(-5px);
+  }
+  60% {
+    transform: translateX(-2px);
   }
 }

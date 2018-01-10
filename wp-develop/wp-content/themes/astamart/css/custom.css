@@ -1,0 +1,47 @@
+#cart input, #cart textarea  {
+    outline: none;
+}
+.tm-order-thead {
+     color: #253c7f;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    text-decoration: underline;
+ }
+.tm-sec2-header {
+    text-align: center;
+}
+.tm-git-form-input input, .tm-custom textarea {
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #89959d;
+    font-size: 16px;
+    padding: 12px 10px;
+    color: #333;
+ }
+.tm-custom {
+    margin-bottom: 10px !important;
+}
+.tm-constructor-form-name {
+    margin-bottom: 10px;
+}
+.tm-book-order {
+    width: 300px;
+}
+.tm-total-sum {
+    text-align: center;
+    font-size: 40px;
+    color: #253c7f;
+    padding: 20px 0;
+    font-family: 'Roboto';
+    font-weight: 300;
+}
+.tm-book-order:hover {
+  background: rgba(234, 61, 7, 0.8);
+}
+.tm-book-order:active {
+  background: rgba(234, 61, 7, 0.5);
+}
+.tm-book-order:disabled {
+  background: rgba(255, 61, 0, 0.6);
+  cursor: not-allowed;
+}

@@ -6,13 +6,19 @@ $(function(){
         $('#logo').click();
     });
 
+    $('.js-tt-check').click(function() {
+        $(this).css('display', 'none');
+    });
+
     var width = $('#canvas').width();
     var height = $('#canvas').height();
     var modal = UIkit.modal("#my-id");
     var modal2 = UIkit.modal("#see-in");
     var modal3 = UIkit.modal("#js-shape-modal");
+    // var modal4 = UIkit.modal.blockUI("Добавлено в корзину");
+    var modal4 = UIkit.modal("#cart-added");
     var isTplAct = false;
-
+        // modal4.hide();
     /* Ready shapes for modular pictures */
     var shapes = [
     /* 1 rect */        '{"attrs":{"width":800,"height":480},"className":"Stage","children":[{"attrs":{},"className":"Layer","children":[{"attrs":{"x":-1,"y":-1,"draggable":true},"className":"Group","children":[{"attrs":{"width":802,"height":482,"stroke":"black"},"className":"Rect"},{"attrs":{"stroke":"#666","fill":"#ddd","radius":8,"name":"topLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"stroke":"#666","fill":"#ddd","radius":8,"name":"topRight","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomLeft","draggable":true,"dragOnTop":false},"className":"Circle"},{"attrs":{"x":802,"y":482,"stroke":"#666","fill":"#ddd","radius":8,"name":"bottomRight","draggable":true,"dragOnTop":false},"className":"Circle"}]}]},{"attrs":{"fill":"black"},"className":"Layer","children":[{"attrs":{"x":395.3125,"y":273.5625,"width":160,"height":23,"visible":false,"fill":"white"},"className":"Rect"},{"attrs":{"text":"ширина: 100см, высота: 60см","fontFamily":"Calibri","padding":5,"visible":false,"fill":"#253c7f","opacity":0.75,"textFill":"white","x":395.3125,"y":273.5625},"className":"Text"}]}]}',
@@ -52,6 +58,8 @@ $(function(){
         // updateBindings();
         $('.tm-canv-icon.check').css('display', 'none');
         $('.tm-canv-icon.tm-check').css('display', 'block');
+        $('.js-tt-check').css('display', 'flex');
+        $('.js-custom-save-pic').attr('disabled', false);
         modal3.hide();
         //block adding rect/unblock deletion
         $('.tm-canv-icon.square').css('display', 'block');
@@ -396,6 +404,8 @@ $(function(){
         //make clip active
         $('.tm-canv-icon.square').css('display', 'none');
         $('.tm-canv-icon.tm-check').css('display', 'block');
+        $('.js-tt-check').css('display', 'flex');
+        $('.js-custom-save-pic').attr('disabled', false);
 
         layerProc();
         isShapeAtStage = true;
@@ -443,10 +453,11 @@ $(function(){
         $('.js-stylization').attr('disabled', arg).trigger('refresh');
         $('.js-covering').attr('disabled', arg).trigger('refresh');
         $('.tm-canv-icon.sub').css('display', 'block');
-        $('.tm-canv-icon.org').css('display', 'none');        
+        $('.tm-canv-icon.org').css('display', 'none');      
+        $('.js-custom-save-pic').attr('disabled', true);
 
         if(sum && area && material && covering && stylization && perim && underframe) {
-            $('.tm-book').attr('disabled', !arg);
+            $('.js-book').attr('disabled', !arg);
         }
         
         if(!arg) {
@@ -459,7 +470,7 @@ $(function(){
             $('.tm-api').css('display', 'block');
             $('.js-file').css('display', 'block');
             $('.tm-button-dis').css('display', 'none');
-            $('.tm-book').attr('disabled', !arg);
+            $('.js-book').attr('disabled', !arg);
             //set rangeslider to defaul value
             // var inputRange = document.querySelector('input[type="range"]');
             //     value = '100',
@@ -643,7 +654,17 @@ $(function(){
 
     }
     var forTotal;
+    $('.js-custom-save-pic').click(function(e){
+        e.preventDefault();
+        makePic();
+        $('.js-custom-save-pic').attr('disabled', true);
+        $('.js-tt-check').css('display', 'none');
+    });
     $('.tm-check').click(function(){
+        makePic();
+        $('.js-tt-check').css('display', 'none');
+    });
+    function makePic() {
         forTotal = true;
         var nodes = stage.find('.mainLayer')[0].children;
 
@@ -675,9 +696,7 @@ $(function(){
         inputRange.rangeSlider.update();
         saveImg();
         toggleMesurement(true);
-
-    });
-
+    }
     $('#logo').bind('change', function(evt){
 		var file = evt.target;
         if(file.files.length) {
@@ -707,7 +726,8 @@ $(function(){
     });
     $('.tm-constructor-form-order-btn').click(function(e){
         e.preventDefault();
-	    uploadbase64();
+        uploadbase64();
+        modal4.show();
     });
     var imageready;
     function uploadbase64 () {
@@ -874,11 +894,12 @@ $(function(){
 
     var query = {};
     $('.tm-api').click(function(){
-        query.search = query.search || 'jungle';
+        query.search = query.search || 'kindness';
         query.category = query.category || '';
         apiConnect(query.search, 1, true, query.category);
         $('.js-cat-search').click(function(){
             $('.js-cat-search .jq-selectbox__dropdown ul li').click(function(){
+                query.search = '';
                 query.category = $(this).attr('data-cat');
                 apiConnect(query.search, 1, true, query.category);
             });
@@ -919,10 +940,15 @@ $(function(){
         } else {
             cat = '';
         }
+        if(query) {
+            query =  '&query=' + query + '&';
+        } else {
+            query = '';
+        }
         $.ajax({
-            type: 'GET',
+            type: 'GET', //safe=true&
             //url: 'https://pixabay.com/api/?key=6906797-5f5add9e7ac4c0d8d54331350&q=' + query + '&image_type=photo&pretty=true&orientation=horizontal&page=' + page,
-            url: 'https://api.shutterstock.com/v2/images/search?query=' + query + '&safe=true&image_type=photo&orientation=horizontal' + cat + '&page=' + page + '&per_page=20',
+            url: 'https://api.shutterstock.com/v2/images/search?' + query + 'image_type=photo&orientation=horizontal' + cat + '&page=' + page + '&per_page=20',
             headers: {
                 Authorization: 'Basic ' + window.btoa('e1217-793f4-4a546-154ee-a78d0-53a3b:be6ab-1b11e-dd3b8-4ac57-8617a-9febe')
             },
@@ -1050,6 +1076,8 @@ $(function(){
             $('.tm-canv-icon.tm-del').css('display', 'none');
             $('.tm-canv-icon.square').css('display', 'block');
             $('.tm-canv-icon.tm-check').css('display', 'none');
+            $('.js-tt-check').css('display', 'none');
+            $('.js-custom-save-pic').attr('disabled', true);
         }
     }
 

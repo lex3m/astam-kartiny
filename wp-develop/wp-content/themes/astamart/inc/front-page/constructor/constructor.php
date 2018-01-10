@@ -16,6 +16,7 @@
 				<div class="uk-width-medium-1-2">
 					<a href="" class="js-file uk-text-center">Загрузить</a>
 					<button class="tm-button-dis uk-text-center" disabled>Загрузить</button>
+					<div id="result-loading"></div>
 				</div>
 			</div>
 		</div>
@@ -36,6 +37,7 @@
 								<!-- End Canvas height value -->
 							</div>
 							<div id="canvas" style="border: 1px solid grey"></div>
+							<div id="canvas-code" style="display:none;"></div>
 						</div>
 						<div class="tm-canv-bottom">
 							<div class="tm-info uk-text-left">
@@ -54,6 +56,7 @@
 					<!-- <i class="tm-canv-icon tm-undo uk-icon-mail-reply uk-icon-hover" ></i>
 					<i class="tm-canv-icon tm-redo uk-icon-mail-forward uk-icon-hover" ></i>   -->
 					<!-- <i class="tm-canv-icon tm-save uk-icon-save uk-icon-hover" data-uk-tooltip="{animation:'true'}" title="Сохранить"></i> -->
+                    <div class="js-tt-check">Сохранить картину</div>
 					<i class="tm-canv-icon sub close uk-icon-close uk-icon-hover"
 					   data-uk-tooltip="{animation:'true'}" title="Удалить элемент"></i>
 					<i class="tm-canv-icon sub check uk-icon-check uk-icon-hover"
@@ -62,6 +65,7 @@
 					   data-uk-tooltip="{animation:'true'}" title="Добавить элемент"></i>
 					<i class="tm-canv-icon sub trash uk-icon-trash-o uk-icon-hover"
 					   data-uk-tooltip="{animation:'true'}" title="Добавить элемент"></i>
+ 					<i class="tm-canv-icon org tm-draw uk-icon-pencil-square-o uk-icon-hover" data-uk-tooltip="{animation:'true'}" title="Добавить элемент"></i>
                     <i class="tm-canv-icon sub trash uk-icon-trash-o uk-icon-hover"
                        data-uk-tooltip="{animation:'true'}" title="Очистить всё"></i>
                     <i class="tm-canv-icon org tm-del uk-icon-close uk-icon-hover"
@@ -73,7 +77,7 @@
 				</div>
 			</div>
 			<div class="tm-constructor-left">
-				<form class="uk-form tm-constructor-form">
+				<form class="uk-form tm-constructor-form" id="constructor-form">
 					<div class="uk-grid">
 						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
 							<div class="uk-form-row">
@@ -122,7 +126,7 @@
 									</div>
 								</div>
 
-								<p class="uk-form-help-block">тут название выбранной картинки.jpg</p>
+								<!-- <p class="uk-form-help-block">тут название выбранной картинки.jpg</p> -->
 							</div>
 						</div>
                         <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
@@ -143,6 +147,7 @@
 								<!--  <img src="" id="imgprvw" alt="">   -->
 								<a href="" class="js-file uk-text-center">Загрузить</a>
 								<button class="tm-button-dis uk-text-center" disabled>Загрузить</button>
+
 							</div>
 						</div>
 						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
@@ -360,7 +365,7 @@
 									<label class="uk-form-label">Виды подрамника</label>
 									<select class="js-underframe">
 										<!-- Underframe value -->
-										<?php include('covering.php'); ?>
+										<?php include('underframe.php'); ?>
 										<!-- End underframe value-->
 									</select>
 								</div>
@@ -379,14 +384,24 @@
 					</div>
 
 					<div class="uk-grid">
-						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-							<button class="tm-constructor-form-order-btn tm-book uk-text-center" disabled>Заказать
+						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom" style="margin-bottom: 15px;">
+							<button class="tm-constructor-form-order-btn tm-book js-book uk-text-center" disabled>Заказать
 							</button>
 							<!-- <a href="#see-in" class="uk-button tm-api" data-uk-modal>Посмотреть в интерьере</a> -->
 						</div>
+						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom tm-custom-save-pic">
+							<button class="tm-book uk-text-center js-custom-save-pic" disabled>Сохранить картину</button>
+						</div>
 					</div>
-
-				</form>
+                
+                </form>
+                <div id="cart-added" class="uk-modal tm-modal">
+                    <div class="uk-modal-dialog uk-modal-dialog-large uk-text-center">
+                      <h4 class="uk-text-center" style="font-size: 30px; margin-bottom: 30px;">Добавлено в <a href="/checkout" style="outline: none; text-decoration: none;">корзину</a></h4> 
+                        <a class="uk-modal-close uk-close"></a>
+                        <img class="tm-ready" src="" alt="modular picture">
+                    </div>
+                </div>
 			</div>
 
 		</div>
