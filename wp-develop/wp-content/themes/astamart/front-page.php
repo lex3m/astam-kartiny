@@ -13,6 +13,10 @@
     <?php include('inc/front-page/home-slide-show.php'); ?>
 <!-- Home Slideshow End -->
 
+<!-- Home Slideshow Start -->
+<?php include('inc/front-page/action.php'); ?>
+<!-- Home Slideshow End -->
+
 <!-- Constructor Start -->
     <?php include('inc/front-page/constructor/constructor.php'); ?>
 <!-- Constructor End -->

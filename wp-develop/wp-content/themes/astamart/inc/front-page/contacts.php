@@ -9,5 +9,13 @@
 			<div class="tm-cont-block-text uk-margin-bottom uk-text-center-small">Телефон многоканальный:</div>
 			<div class="tm-cont-block-text uk-text-center-small">+7(499) 643-46-33</div>
 		</div>
+        <div class="tm-cont-block uk-width-large-1-1 uk-width-medium-1-1 uk-width-small-1-1">
+            <div id="social-icons">
+                <a href="#"><img src="<?php echo get_template_directory_uri() . '/images/social-icons/fb.png'?>;" alt="facebook"></a>
+                <a href="#"><img src="<?php echo get_template_directory_uri() . '/images/social-icons/vk.png'?>;" alt="vk"></a>
+                <a href="#"><img src="<?php echo get_template_directory_uri() . '/images/social-icons/ok.png'?>;" alt="ok"></a>
+                <a href="#"><img src="<?php echo get_template_directory_uri() . '/images/social-icons/youtube.png'?>;" alt="youtube"></a>
+            </div>
+        </div>
 	</div>
 </div>

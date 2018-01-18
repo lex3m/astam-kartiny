@@ -224,3 +224,27 @@ div.wpcf7-response-output {
 .ngg-gallery-thumbnail{
     border: none !important;
 }
+#social-icons{
+    text-align: center;
+}
+
+#social-icons  a{
+    display: inline-block;
+    margin: 0 10px;
+}
+#social-icons img{
+    width: 100%;
+    max-width: 40px;
+}
+
+#copy .tm-global-wrap{
+    padding-bottom: 0 !important;
+}
+#copy a{
+    color: #cacdce;
+    font-size: 14px;
+    font-family: 'RobotoLight', sans-serif;
+    background: #344055;
+    text-decoration: none;
+}
+

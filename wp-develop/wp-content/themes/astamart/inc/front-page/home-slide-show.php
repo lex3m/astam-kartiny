@@ -19,6 +19,6 @@
 		</ul>
 	</div>
 	<div class="uk-animation-hover tm-home-slideshow-button">
-		<a href="#constructor" class="uk-animation-scale-down" data-uk-smooth-scroll>скомпоновать свой набор</a>
+<!--		<a href="#constructor" class="uk-animation-scale-down" data-uk-smooth-scroll>скомпоновать свой набор</a>-->
 	</div>
 </div>

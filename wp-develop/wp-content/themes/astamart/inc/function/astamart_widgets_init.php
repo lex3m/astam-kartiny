@@ -14,6 +14,16 @@ function astamart_widgets_init() {
 		'before_title'  => '',
 		'after_title'   => '',
 	) );
+	/** Action widget */
+	register_sidebar( array(
+		'name'          => esc_html__( 'Action img', 'astamart' ),
+		'id'            => 'action-img',
+		'description'   => esc_html__( 'Добавить виджет.', 'astamart' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'astamart' ),
 		'id'            => 'sidebar-1',

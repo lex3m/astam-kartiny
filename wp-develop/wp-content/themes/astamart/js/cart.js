@@ -1,13 +1,7 @@
 jQuery( document ).ready(function($) {
 
     var modal5 = UIkit.modal("#order-sent");
-     /*  UIkit.notify({
-        message : 'Done',
-        status  : 'success',
-        timeout : 5000,
-        pos     : 'top-center'
-    });  */ 
-    // console.log(UIkit);
+
     if(Number(localStorage.getItem('totalPrice'))) {
         $('.js-total-sum').empty();
         $('.js-total-sum').text(localStorage.getItem('totalPrice'));
@@ -40,8 +34,7 @@ jQuery( document ).ready(function($) {
             }
         }
 		    $('.js-order-remove').click(function(){
-		        //console.log('REMOVe is w************');
-                //console.log(orderM);
+
                 var totalPrice = Number(localStorage.getItem('totalPrice'));
                 var onumber = Number($(this).attr('data-onumber')) - 1;
                 var subsum = orderM[onumber].sum;
@@ -52,7 +45,6 @@ jQuery( document ).ready(function($) {
                 localStorage.setItem('totalPrice', newTotalPrice);
                 $('.js-itogo').text(newTotalPrice);
 		        orderM.splice(onumber, 1);
-		        //console.log(orderM);
 		        localStorage.removeItem('orderM');
 		        if (orderM.length) {
 		            localStorage.setItem('orderM', JSON.stringify(orderM));
@@ -60,15 +52,27 @@ jQuery( document ).ready(function($) {
                     $('.tm-constructor-wrap').css('display', 'none');
                     $('.tm-sec2-header').text('Корзина пуста');
                 }
-		        //console.log(orderM);
+
 		        renderOrders();
 		    });
     }
     renderOrders();
    
     $('.tm-book-order').click(function(e) {
-        e.preventDefault();
         var bookingForm = {};
+        var orderLS = JSON.parse(localStorage.getItem('orderM'));
+        bookingForm.order = orderLS;
+        if (orderLS && orderLS.length) {
+            for(var i = 0, len = orderLS.length; i < len; i++) {
+                bookingForm.order[i].material = materialAr[orderLS[i].material - 1];
+                bookingForm.order[i].underframe = underframeAr[orderLS[i].underframe - 1];
+                bookingForm.order[i].covering = coveringAr[orderLS[i].covering - 1];
+                bookingForm.order[i].stylization = stylizationAr[orderLS[i].stylization - 1];
+            }
+        }
+
+
+        e.preventDefault();
         bookingForm.name = $('.js-name').val();
         bookingForm.phone = $('.js-telefon').val();
         bookingForm.mail = $('.js-email').val();
@@ -76,20 +80,11 @@ jQuery( document ).ready(function($) {
         bookingForm.payment = $('input[name=oplata]:checked').val();
         bookingForm.address = $('.delivery-address').val();
         bookingForm.info = $('.additional-info').val();
-        bookingForm.order = JSON.parse(localStorage.getItem('orderM'));
+        //bookingForm.order = JSON.parse(localStorage.getItem('orderM'));
         bookingForm.total = localStorage.getItem('totalPrice');
-        // var data  = JSON.stringify(bookingForm);
+
         var data  = bookingForm;
-        // console.log(orderM);
-        // console.log($('.js-name').val());
-        // console.log($('.js-telefon').val());
-        // console.log($('.js-email').val());
-        // console.log($('input[name=dostavka]:checked').val());
-        // console.log($('input[name=oplata]:checked').val());
-        // console.log($('.delivery-address').val());
-        // console.log($('.additional-info').val());
-	//alert(data);
-        console.log(data);
+
         if(bookingForm.name && bookingForm.phone && bookingForm.mail) {
              $.ajax({
                 type: 'POST',
@@ -115,15 +110,12 @@ jQuery( document ).ready(function($) {
             });
         } else {
             if(!$('.js-name').val()){
-                // $('.js-name').css('border-color', 'red');
                 $('.js-name').addClass('uk-form-danger');
             }
             if(!$('.js-telefon').val()){
-                // $('.js-telefon').css('border-color', 'red');
                 $('.js-telefon').addClass('uk-form-danger');
             }
             if(!$('.js-email').val()){
-                // $('.js-email').css('border-color', 'red');
                 $('.js-email').addClass('uk-form-danger');
             }
             UIkit.notify("<i class='uk-icon-close'></i> Заполните обязательные поля!", {

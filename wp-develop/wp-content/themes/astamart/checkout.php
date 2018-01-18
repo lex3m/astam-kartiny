@@ -89,12 +89,12 @@ get_header(); ?>
 							 <label>Самовывоз (бесплатно)</label>
 	                                            </div>
 	                                            <div class="tm-constructor-form-name">
-	                                                 <input type="radio" id="dostavka2" name="dostavka" value="Курьером в пределах КАД (200 руб.)">
-							 <label>Курьером в пределах КАД (200 руб.)</label>
+	                                                 <input type="radio" id="dostavka2" name="dostavka" value="Курьером в пределах КАД">
+							 <label>Курьером в пределах КАД</label>
 	                                            </div>
 	                                            <div class="tm-constructor-form-name">
-	                                                 <input type="radio" id="dostavka3" name="dostavka" value="Доставка почтой России (300 руб.)">
-							 <label>Доставка почтой России (300 руб.)</label>
+	                                                 <input type="radio" id="dostavka3" name="dostavka" value="Доставка почтой России">
+							 <label>Доставка почтой России</label>
 	                                            </div>
 	                                        </div>
 	                                </div>

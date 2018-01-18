@@ -15,7 +15,8 @@ if(isset($_POST)){
 	}
 }
 
-$to = ' astamlex@mail.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
+$to = ' astamlex@mail.ru, melkarina@yandex.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
+
 $subject = 'Заказ картины | Astamart.ru';
 $message = '
 <!DOCTYPE html>
@@ -75,7 +76,7 @@ $message = '
                                         </td>
                                         <td align="left"  valign="top" width="40%" style="font-size:16px;padding-left: 0;">
                                             <ul style="list-style-type: none; text-align: left; display: block;padding-left: 20px;margin-top: 5px;">
-                                                <li>Размер изображения: <strong>'.$order["imgsize"].'</strong></li>
+                                                <li>Размер изображения: <strong>'.$order["imgsize"].' см</strong></li>
                                                 <li>Материал: <strong>'.$order["material"].'</strong></li>
                                                 <li>Виды подрамника: <strong>'.$order["underframe"].'</strong></li>
                                                 <li>Покрытие: <strong>'.$order["covering"].'</strong></li>
