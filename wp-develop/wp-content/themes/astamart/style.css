@@ -248,3 +248,19 @@ div.wpcf7-response-output {
     text-decoration: none;
 }
 
+#footer-service h2{
+    color: #cacdce;
+    font-family: 'RobotoLight', sans-serif;
+}
+#footer-service ul{
+    list-style-type: none;
+    padding: 0;
+}
+#footer-client h2{
+    color: #cacdce;
+    font-family: 'RobotoLight', sans-serif;
+}
+#footer-client ul{
+    list-style-type: none;
+    padding: 0;
+}
