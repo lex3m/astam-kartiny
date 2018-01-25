@@ -9,11 +9,11 @@
 		<div class="tm-constructor-top-wrap">
 			<label class="uk-form-label">Выбор изображения</label>
 			<div class="uk-grid">
-				<div class="uk-width-medium-1-2">
+				<div class="uk-width-1-2">
 					<a href="#my-id" class="uk-text-center tm-api" data-uk-modal>Подобрать из каталога</a>
 					<button class="tm-button-dis uk-text-center" disabled>Подобрать из каталога</button>
 				</div>
-				<div class="uk-width-medium-1-2">
+				<div class="uk-width-1-2">
 					<a href="" class="js-file uk-text-center">Загрузить</a>
 					<button class="tm-button-dis uk-text-center" disabled>Загрузить</button>
 					<div id="result-loading"></div>
@@ -397,7 +397,7 @@
                 </form>
                 <div id="cart-added" class="uk-modal tm-modal">
                     <div class="uk-modal-dialog uk-modal-dialog-large uk-text-center">
-                      <h4 class="uk-text-center" style="font-size: 30px; margin-bottom: 30px;">Добавлено в <a href="/checkout" style="outline: none; text-decoration: none;">корзину</a></h4> 
+                      <h4 class="uk-text-center" style="font-size: 30px; margin-bottom: 30px;">Перейти в <a href="/checkout" style="outline: none; text-decoration: none;">корзину</a></h4>
                         <a class="uk-modal-close uk-close"></a>
                         <img class="tm-ready" src="" alt="modular picture">
                     </div>
