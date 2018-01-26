@@ -44,6 +44,7 @@ $(function(){
         e.preventDefault();
         modal3.show();
     });
+
     var shapeNo;
     var isShapeAtStage;
     $('.item').click(function(e) {
@@ -413,7 +414,11 @@ $(function(){
     $('.tm-draw').click(function(){
         rectDraw();       
     });
-    
+    $('.js-user-shape').click(function(e) {
+        e.preventDefault();
+        rectDraw();
+    });
+
     $('.tm-rem').click(function(){
         stage.clear();
         layer.clear();
@@ -479,11 +484,13 @@ $(function(){
             //     inputRange.value = value;
             //     inputRange.dispatchEvent(event);
             $('.js-shape').attr('disabled', true);
+            $('.js-user-shape').attr('disabled', true);
         } else {
             $('.tm-api').css('display', 'none');
             $('.js-file').css('display', 'none');
             $('.tm-button-dis').css('display', 'block');
             $('.js-shape').attr('disabled', true);
+            $('.js-user-shape').attr('disabled', true);
             $('.tm-canv-icon.tm-rem').css('display', 'block');
             $('.tm-canv-icon.trash').css('display', 'none');
         }
@@ -561,6 +568,7 @@ $(function(){
         $('.tm-canv-icon.trash').css('display', 'none');
         $('.tm-canv-icon.tm-rem').css('display', 'block');
         $('.js-shape').attr('disabled', false);
+        $('.js-user-shape').attr('disabled', false);
 
         if(isShapeAtStage) {
             setTimeout(function(){

@@ -131,35 +131,25 @@
 						</div>
                         <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
                             <div class="uk-form-row">
-                                <label class="uk-form-label">Стоимость:</label>
-                                <div class="tm-constructor-form-price uk-text-center">
-                                    <span class="js-total">0</span> р
-                                </div>
+                                <p class="uk-form-help-block">Или загрузите ваше изображение (jpg, png)</p>
+                                <input type="file" class="uk-hidden" oi-file="options" id="logo"
+                                       accept="image/*,image/jpeg,image/png,image/jpg">
+                                <!--  <img src="" id="imgprvw" alt="">   -->
+                                <a href="" class="js-file uk-text-center">Загрузить</a>
+                                <button class="tm-button-dis uk-text-center" disabled>Загрузить</button>
+
                             </div>
                         </div>
-					</div>
-					<div class="uk-grid">
-						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-							<div class="uk-form-row">
-								<p class="uk-form-help-block">Или загрузите ваше изображение (jpg, png)</p>
-								<input type="file" class="uk-hidden" oi-file="options" id="logo"
-								       accept="image/*,image/jpeg,image/png,image/jpg">
-								<!--  <img src="" id="imgprvw" alt="">   -->
-								<a href="" class="js-file uk-text-center">Загрузить</a>
-								<button class="tm-button-dis uk-text-center" disabled>Загрузить</button>
-
-							</div>
-						</div>
-						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-							<div class="uk-form-row">
+                        <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
+                            <div class="uk-form-row">
                                 <p class="uk-form-help-block">Выберите форму для картины</p>
-                                <button class="js-shape uk-text-center" disabled>выбрать форму</button>
+                                <button class="js-shape uk-text-center" disabled>Выбрать готовые блоки</button>
                                 <!-- <i class="tm-canv-icon tm-api uk-icon-download uk-icon-hover"></i>  -->
                                 <div id="js-shape-modal" class="uk-modal tm-modal">
                                     <div class="uk-modal-dialog uk-modal-dialog-large">
                                         <div class="uk-grid tm-modal-form-wrap">
                                             <div class="uk-width-large-1-3">
-                                                <label class="uk-form-label tm-modal-label">Выберите форму</label>
+                                                <label class="uk-form-label tm-modal-label">Выбрать готовые блоки</label>
                                                 <p class="tm-modal-info">Кликните по выбранной картинке, что бы загрузить форму в конструктор</p>
                                             </div>
                                             <div class="uk-width-large-1-3 tm-modal-select">
@@ -315,30 +305,14 @@
                                         <a class="uk-modal-close uk-close"></a>
                                     </div>
                                 </div>
-							</div>
-						</div>
+                            </div>
+                        </div>
+                        <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
+                            <div class="uk-form-row">
+                                <button class="js-user-shape" disabled>Добавить свой блок</button>
+                            </div>
+                        </div>
 					</div>
-
-                    <div class="uk-grid">
-                        <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-                            <div class="uk-form-row">
-                                <label class="uk-form-label">Размер изображения (см)</label>
-                                <!-- <button class="dis" data-behaviour="toggle">DIS</button> -->
-                                <div class="tm-constructor-form-range">
-                                    <div class="tm-constructor-val val-left">50</div>
-                                    <div class="tm-constructor-val val-right">135</div>
-                                    <input class="js-dimen" type="range" min="50" max="135" step="5" value="100"
-                                           data-buffer="0" data-rangeSlider/>
-                                    <output class="tm-constructor-form-range-info"></output>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
-                            <div class="uk-form-row">
-
-                            </div>
-                        </div>
-                    </div>
 
 					<div class="uk-grid">
 						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
@@ -383,7 +357,31 @@
 						</div>
 					</div>
 
-					<div class="uk-grid">
+                    <div class="uk-grid">
+                        <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
+                            <div class="uk-form-row">
+                                <label class="uk-form-label">Размер изображения (см)</label>
+                                <!-- <button class="dis" data-behaviour="toggle">DIS</button> -->
+                                <div class="tm-constructor-form-range">
+                                    <div class="tm-constructor-val val-left">50</div>
+                                    <div class="tm-constructor-val val-right">135</div>
+                                    <input class="js-dimen" type="range" min="50" max="135" step="5" value="100"
+                                           data-buffer="0" data-rangeSlider/>
+                                    <output class="tm-constructor-form-range-info"></output>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom">
+                            <div class="uk-form-row">
+                                <label class="uk-form-label">Стоимость:</label>
+                                <div class="tm-constructor-form-price uk-text-center">
+                                    <span class="js-total">0</span> р
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-grid">
 						<div class="uk-width-small-1-1 uk-width-medium-1-2 tm-custom" style="margin-bottom: 15px;">
 							<button class="tm-constructor-form-order-btn tm-book js-book uk-text-center" disabled>Заказать
 							</button>

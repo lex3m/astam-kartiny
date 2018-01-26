@@ -10153,6 +10153,12 @@ h6 {
 #constructor .js-shape:active {
   background: #0098ff;
 }
+#constructor .js-file{
+  margin-top: 5px;
+}
+#constructor .js-file{
+  margin-top: 5px;
+}
 #constructor .tm-button-dis {
   display: none;
   border: none;
@@ -10472,6 +10478,25 @@ h6 {
 #constructor .item.sh17 .shape:nth-child(3) {
   height: 85%;
 }
+#constructor .js-user-shape {
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 8px;
+  margin-top: 25px;
+  background: #426ec7;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: 'RobotoLight', sans-serif;
+}
+#constructor .js-user-shape:disabled {
+  background: #81a1e0;
+  cursor: not-allowed;
+}
 #constructor .tm-book {
   width: 100%;
   height: 60px;
@@ -10616,6 +10641,7 @@ h6 {
 }
 .tm-constructor-wrap .tm-constructor-form .tm-constructor-form-price {
   padding: 20px;
+  margin-top: 30px;
   border: 1px dotted #ea3d07;
   border-radius: 5px;
   color: #ea3d07;
@@ -10976,7 +11002,7 @@ select:disabled {
 /* madein End */
 /* vidblk Start */
 #vidblk {
-  padding-top: 150px;
+  padding-top: 240px;
   padding-bottom: 100px;
 }
 #vidblk h1 {
