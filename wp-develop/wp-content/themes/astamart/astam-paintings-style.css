@@ -10493,6 +10493,9 @@ h6 {
   font-size: 18px;
   font-family: 'RobotoLight', sans-serif;
 }
+#constructor .js-user-shape:hover {
+  background: #0081d9;
+}
 #constructor .js-user-shape:disabled {
   background: #81a1e0;
   cursor: not-allowed;
@@ -10683,6 +10686,27 @@ select:disabled {
 }
 .canvas .canvas-wrap {
   background: #8e9593;
+}
+.canvas .canvas-pics-wrap {
+  background: #ffffff;
+}
+.canvas .canvas-pics-button {
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 70%;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 8px;
+  margin-top: 25px;
+  background: #0098ff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: 'RobotoLight', sans-serif;
+}
+.canvas .canvas-pics-button:hover {
+  background: #0081d9;
 }
 .canvas .canvas-wrap .tm-rul-wrap {
   width: 100%;

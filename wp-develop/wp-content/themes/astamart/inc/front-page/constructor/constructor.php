@@ -52,6 +52,9 @@
                             <div class="tm-info uk-text-left js-pic-data"></div>
 						</div>
 					</div>
+                    <div class="canvas-pics-wrap">
+                        <button class="canvas-pics-button uk-text-center js-inter" onclick="window.location.href='#pics'">Посмотреть эту картину в интерьере</button>
+                    </div>
 					<!-- <img src="images/Canvas1.jpg" alt="canvas"> -->
 					<!-- <i class="tm-canv-icon tm-undo uk-icon-mail-reply uk-icon-hover" ></i>
 					<i class="tm-canv-icon tm-redo uk-icon-mail-forward uk-icon-hover" ></i>   -->
