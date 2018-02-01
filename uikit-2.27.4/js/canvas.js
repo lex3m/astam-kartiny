@@ -341,8 +341,10 @@ $(function(){
             layerProc();
         });
         var droppableGroup = new Konva.Group({
-            x: 330,
-            y: 180, 
+            /* x: 330,
+            y: 180, */
+            x: 10,
+            y: 10, 
             draggable: true,
             /* fill: 'rgba(180, 160, 127, .3)', */
                /* dragBoundFunc: function(pos) {
@@ -434,6 +436,7 @@ $(function(){
         isShapeAtStage = false;
         forTotal = false;
         $('.js-pic-data').empty();
+        $('#canvas').width(800); $('#canvas').height(480);
     });
     //function for disable/enable slider and selects
     function toggleMesurement(arg) {
@@ -534,12 +537,27 @@ $(function(){
 
     function loadImg() {
         imageObj.onload = function() {
+            var imgw, imgh, w, h, k, k1;
+            k = 800/480;
+            k1 = this.width/this.height;
+            imgw = this.width;
+            imgh = this.height;
+            if (k <= k1) {
+                h = 800*imgh/imgw;
+                w = 800;
+            } else {
+                h = 480;
+                w = imgw*480/imgh;
+            }
+            console.log( imgw, imgh);
+            console.log( w, h);
+            $('#canvas').width(w); $('#canvas').height(h);
             bg = new Konva.Image({
                 x: 0,
                 y: 0,
                 image: imageObj,
-                width: width,
-                height: height,
+                width: w,
+                height: h, 
             }); 
         };   
         if(!isTplAct) {
