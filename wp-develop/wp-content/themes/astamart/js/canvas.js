@@ -5,6 +5,57 @@ $(function(){
         e.preventDefault();
         $('#logo').click();
     });
+var files;
+$('input[type=file]').change(function(){
+    files = this.files;
+});
+$('.js-custom-save-pic').click(function( event ){
+    event.stopPropagation(); // Остановка происходящего
+    event.preventDefault();  // Полная остановка происходящего
+ 
+    // Создадим данные формы и добавим в них данные файлов из files
+ 
+    var data = new FormData();
+    $.each( files, function( key, value ){
+        data.append( key, value );
+    });
+ 
+    // Отправляем запрос
+ 
+    $.ajax({
+        url: './uploader/upload.php?uploadfiles',
+        type: 'POST',
+        data: data,
+        cache: false,
+        dataType: 'json',
+        processData: false, // Не обрабатываем файлы (Don't process the files)
+        contentType: false, // Так jQuery скажет серверу что это строковой запрос
+        success: function( respond, textStatus, jqXHR ){
+ 
+            // Если все ОК
+ 
+            if( typeof respond.error === 'undefined' ){
+                // Файлы успешно загружены, делаем что нибудь здесь
+ 
+                // выведем пути к загруженным файлам в блок '.ajax-respond'
+ 
+                var files_path = respond.files;
+				var filename = respond.fileName;
+               
+                var html = '';
+                $.each( files_path, function( key, val ){ html += val +'<br>'; } )
+                $('.ajax-respond').html( html );
+            }
+            else{
+                console.log('ОШИБКИ ОТВЕТА сервера: ' + respond.error );
+            }
+        },
+        error: function( jqXHR, textStatus, errorThrown ){
+            console.log('ОШИБКИ AJAX запроса: ' + textStatus );
+        }
+    });
+ 
+});
 
     $('.js-tt-check').click(function() {
         $(this).css('display', 'none');
@@ -44,7 +95,6 @@ $(function(){
         e.preventDefault();
         modal3.show();
     });
-
     var shapeNo;
     var isShapeAtStage;
     $('.item').click(function(e) {
@@ -419,6 +469,7 @@ $(function(){
         rectDraw();
     });
 
+	
     $('.tm-rem').click(function(){
         stage.clear();
         layer.clear();
@@ -484,13 +535,13 @@ $(function(){
             //     inputRange.value = value;
             //     inputRange.dispatchEvent(event);
             $('.js-shape').attr('disabled', true);
-            $('.js-user-shape').attr('disabled', true);
+			$('.js-user-shape').attr('disabled', true);
         } else {
             $('.tm-api').css('display', 'none');
             $('.js-file').css('display', 'none');
             $('.tm-button-dis').css('display', 'block');
             $('.js-shape').attr('disabled', true);
-            $('.js-user-shape').attr('disabled', true);
+			$('.js-user-shape').attr('disabled', true);
             $('.tm-canv-icon.tm-rem').css('display', 'block');
             $('.tm-canv-icon.trash').css('display', 'none');
         }
@@ -568,7 +619,7 @@ $(function(){
         $('.tm-canv-icon.trash').css('display', 'none');
         $('.tm-canv-icon.tm-rem').css('display', 'block');
         $('.js-shape').attr('disabled', false);
-        $('.js-user-shape').attr('disabled', false);
+		$('.js-user-shape').attr('disabled', false);
 
         if(isShapeAtStage) {
             setTimeout(function(){
@@ -705,6 +756,7 @@ $(function(){
         saveImg();
         toggleMesurement(true);
     }
+	
     $('#logo').bind('change', function(evt){
 		var file = evt.target;
         if(file.files.length) {

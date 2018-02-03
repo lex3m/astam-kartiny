@@ -15,7 +15,8 @@ if(isset($_POST)){
 	}
 }
 
-$to = ' astamlex@mail.ru, melkarina@yandex.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
+//$to = ' astamlex@mail.ru, melkarina@yandex.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
+$to = ' gonchar.a.v@mail.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
 
 $subject = 'Заказ картины | Astamart.ru';
 $message = '
@@ -70,10 +71,29 @@ $message = '
                                         <td align="left" valign="middle"  width="30%" style="font-size:16px;">
                                             <img src="http://astamart.ru/uploader/uploads/'.$order["img"].'" width="100%" height="auto" alt="">
                                             <a href="http://astamart.ru/uploader/uploads/'.$order["img"].'" download="'.$order["img"].'" style="text-decoration: none;">
-                                        <span style="text-align: center; display: block;font-size: 14px;color: black;font-weight: bold;background: cyan;width: 80%;margin: 0 auto;border-radius: 15px;padding: 5px;">
-                                            Скачать картинку
+                                        <span style="text-align: center; display: block;font-size: 14px;color: black;font-weight: bold;background: #0077cc;width: 80%;border-radius: 5px;padding: 5px; margin-bottom: 20px; ">
+                                            Скачать кастомную картинку
                                         </span></a>
-                                        </td>
+                                        <a href="http://astamart.ru/uploader/uploads/'.$order["img"].'" style="text-decoration: none;">
+                                        <span style="text-align: center; display: block;font-size: 14px;color: black;font-weight: bold;background: #0077cc;width: 80%;margin: 0 auto;border-radius: 5px;padding: 5px;">
+                                            Проспотреть кастомную картинку
+                                        </span></a>
+                                        <br>
+                                        ';
+                                        if(isset($order["imgOriginalSize"])){
+	                                        $message.=  '
+	                                         <a href="http://astamart.ru/uploader/uploads/'.$order["imgOriginalSize"].'" download="'.$order["imgOriginalSize"].'" style="text-decoration: none;">
+	                                         <span style="text-align: center; display: block;font-size: 14px;color: black;font-weight: bold;background: #0077cc;width: 80%;margin: 0 auto;border-radius: 5px;padding: 5px; margin-bottom: 20px; ">
+                                            Скачать картинку загруженую пользователем
+                                        </span></a>
+                                         <a href="http://astamart.ru/uploader/uploads/'.$order["imgOriginalSize"].'" style="text-decoration: none;">
+	                                         <span style="text-align: center; display: block;font-size: 14px;color: black;font-weight: bold;background: #0077cc;width: 80%;margin: 0 auto;border-radius: 5px;padding: 5px;">
+                                            Просмотреть картинку загруженую пользователем
+                                        </span></a>
+	                                        ';
+                                        }
+
+							$message.=  '</td>
                                         <td align="left"  valign="top" width="40%" style="font-size:16px;padding-left: 0;">
                                             <ul style="list-style-type: none; text-align: left; display: block;padding-left: 20px;margin-top: 5px;">
                                                 <li>Размер изображения: <strong>'.$order["imgsize"].' см</strong></li>

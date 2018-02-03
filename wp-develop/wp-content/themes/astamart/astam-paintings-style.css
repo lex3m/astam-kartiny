@@ -9034,7 +9034,7 @@ a.uk-thumbnail:focus {
   overflow: hidden;
   /* 6 */
   touch-action: pan-y;
-  max-height: 600px;
+
 }
 /*
  * Sub-object item
@@ -10055,7 +10055,6 @@ h6 {
   width: 100%;
   z-index: 1;
   position: relative;
-  max-height: 600px;
 }
 .tm-home-slideshow .tm-home-slideshow-nav {
   position: absolute;
@@ -11087,6 +11086,11 @@ select:disabled {
   color: #ffffff;
   margin: 1.5em 0;
 }
+#git h3 {
+  font-size: 48px;
+  color: #ffffff;
+  margin: 1.5em 0;
+}
 #git .tm-git-wrap {
   max-width: 1200px;
   margin: 0 auto;
@@ -11094,7 +11098,7 @@ select:disabled {
 #git .tm-git-wrap .tm-git-text {
   width: 100%;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.4em;
 }
 #git .tm-git-wrap .tm-git-form {

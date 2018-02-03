@@ -1,6 +1,6 @@
 
 <div class="tm-home-slideshow uk-slidenav-position">
-	<img src="<?php echo get_template_directory_uri() . '/images/astam-img/bg-top-slider2.png'; ?>" alt="" class="tm-home-slideshow-bg">
+	<?php dynamic_sidebar( 'bg-slider-img' );?>
 	<div class="tm-home-slideshow-wrap uk-slidenav-position" data-uk-slideshow="{autoplay:true, autoplayInterval:4000}">
 		<div class="tm-home-slideshow-box">
 			<ul class="uk-slideshow">

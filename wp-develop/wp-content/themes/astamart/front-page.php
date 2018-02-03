@@ -14,7 +14,7 @@
 <!-- Home Slideshow End -->
 
 <!-- Home Slideshow Start -->
-<?php include('inc/front-page/action.php'); ?>
+<?php //include('inc/front-page/action.php'); ?>
 <!-- Home Slideshow End -->
 
 <!-- Constructor Start -->
