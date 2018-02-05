@@ -98,10 +98,71 @@ $(function(){
         rect.position(topLeft.position());
         var width = topRight.getX() - topLeft.getX();
         var height = bottomLeft.getY() - topLeft.getY();
+
+        var rwBefore = rect.width();
+        var rhBefore = rect.height()
+
+        var Const = 20*globalKoef; 
         if(width && height) {
             rect.width(width);
-            rect.height(height);
+            rect.height(height); 
         }
+        var rw = Math.round(rect.width()/globalKoef);
+        var rh = Math.round(rect.height()/globalKoef);
+            if(rw > 80 || rw < 10) {
+                rect.width(rwBefore);
+                switch (activeAnchor.getName()) {
+                    case 'topLeft':
+                    topLeft.setX(topRight.getX() - rwBefore);
+                    bottomLeft.setX(bottomRight.getX() - rwBefore);
+                    rect.position(topLeft.position());
+                    break;
+                    case 'topRight':
+                    topRight.setX(topLeft.getX() + rwBefore);
+                    bottomRight.setX(bottomLeft.getX() + rwBefore);
+                    rect.position(topLeft.position());
+                    break;
+                    case 'bottomRight':
+                    bottomRight.setX(bottomLeft.getX() + rwBefore);
+                    topRight.setX(topLeft.getX() + rwBefore);
+                    rect.position(topLeft.position());
+                    break;
+                    case 'bottomLeft':
+                    bottomLeft.setX(bottomRight.getX() - rwBefore);
+                    topLeft.setX(topRight.getX() - rwBefore);
+                    rect.position(topLeft.position());
+                    break;
+                }
+
+            } 
+            if(rh > 60 || rh < 10) {
+                // rect.height(20*globalKoef);
+                rect.height(rhBefore);
+                switch (activeAnchor.getName()) {
+                    case 'topLeft':
+                    topLeft.setY(bottomLeft.getY() - rhBefore);
+                    topRight.setY(bottomLeft.getY() - rhBefore);
+                    rect.position(topLeft.position());
+                    break;
+                    case 'topRight':
+                    topRight.setY(bottomLeft.getY() - rhBefore);
+                    topLeft.setY(bottomLeft.getY() - rhBefore);
+                    rect.position(topLeft.position());
+                    break;
+                    case 'bottomRight':
+                    bottomRight.setY(topLeft.getY() + rhBefore);
+                    bottomLeft.setY(topLeft.getY() + rhBefore);
+                    rect.position(topLeft.position());
+                    break;
+                    case 'bottomLeft':
+                    bottomLeft.setY(topLeft.getY() + rhBefore);
+                    bottomRight.setY(topLeft.getY() + rhBefore);
+                    rect.position(topLeft.position());
+                    break;
+                }
+            } /* else {
+                rect.height(height);
+            }  */
     }
 
     function addAnchor(group, x, y, name) {
@@ -151,6 +212,7 @@ $(function(){
         });
         anchor.on('dragend', function(e) {
             group.setDraggable(true);
+            this.setDraggable(true);
             layer.draw();
             saveStage();
             // console.log('4');
@@ -182,8 +244,21 @@ $(function(){
         // add hover styling
         anchor.on('mouseover', function() {
             var layer = this.getLayer();
-            document.body.style.cursor = 'nesw-resize';
             this.setStrokeWidth(4);
+            switch (this.getName()) {
+                case 'topLeft':
+                document.body.style.cursor = 'nwse-resize';
+                break;
+                case 'topRight':
+                document.body.style.cursor = 'nesw-resize';
+                break;
+                case 'bottomLeft':
+                document.body.style.cursor = 'nesw-resize';
+                break;
+                case 'bottomRight':
+                document.body.style.cursor = 'nwse-resize';
+                break;
+            }
             layer.draw();
         });
         anchor.on('mouseout', function() {
@@ -215,19 +290,24 @@ $(function(){
     });
     var tooltip = new Konva.Text({
         text: "",
-        fontFamily: "Calibri",
+        fontFamily: "Roboto",
         fontSize: 12,
+        fontWeight: 900,
+        lineHeight: 1.2,
         padding: 5,
         visible: true,
-        fill: "#253c7f",
+        fill: "white",
         opacity: 0.75,
-        textFill: "white"
+        textFill: "red"
     });
      var back = new Konva.Rect({
         x: 0,
         y: 0,
-        width: 160,
-        height: 23,
+        /* width: tooltip.getWidth(), */
+        height: 35,
+        cornerRadius: 5
+        /*  fill: "green",
+         stroke: 'black' */ 
         /* opacity: 0.5, */
     }); 
     tooltipLayer.add(back);
@@ -249,30 +329,9 @@ $(function(){
     
     shadowedBg.add(transpBg);
     stage.add(shadowedBg);
-    
-
-    /* var too = new Konva.Text({
-            text: "",
-            fontFamily: "Calibri",
-            fontSize: 12,
-            padding: 5,
-            visible: true,
-            fill: "#253c7f",
-            opacity: 0.75,
-            textFill: "white"
-        });
-        var bac = new Konva.Rect({
-            x: 0,
-            y: 0,
-            width: 100,
-            height: 23,
-            fill: 'white'
-        });  */
 
     var sel, active, current;
     function rectDraw() {
-        // console.log(stage);
-        // var layer1 = stage.find('.mainLayer')[0];
          var droppableRect = new Konva.Rect({
             x: 0,
             y: 0,
@@ -287,15 +346,6 @@ $(function(){
             layer.draw();
         });
 
-        droppableRect.on('mousemove', function(e) {
-            back.show();
-            tooltip.hide();
-            back.hide();
-            tooltipLayer.draw();
-
-            // layerProc();
-        }); 
-
         droppableRect.on('mouseout', function(e) {
             var layer = this.getLayer();
             document.body.style.cursor = 'default';
@@ -304,6 +354,36 @@ $(function(){
             back.hide();
             tooltipLayer.draw();
         });
+        droppableRect.on('mouseover mousemove', function(e) {
+            var mousePos = stage.getPointerPosition();
+            tooltip.position({
+                x : mousePos.x + 5,
+                y : mousePos.y + 5
+            });
+            tooltip.text("ширина: " + Math.round(e.target.attrs.width/globalKoef) + "см\nвысота: " + Math.round(e.target.attrs.height/globalKoef) + "см");
+            tooltip.show();
+            back.position({
+                x : mousePos.x + 5,
+                y : mousePos.y + 5
+            });
+            back.fill('#426ec7');
+            back.width(tooltip.getWidth());
+            back.show();
+
+            tooltipLayer.moveToTop(); 
+            tooltipLayer.draw(); 
+        });
+         droppableRect.on('mousedown', function(e) {  
+              back.scale({
+                x: 0,
+                y: 0
+            }); 
+             tooltip.scale({
+                x: 0,
+                y: 0
+            });  
+             //layer.draw();  
+        }); 
         droppableRect.on('mousedown', function(e) {
             selectionRectRemove();
             sel = e.target.parent;
@@ -312,31 +392,20 @@ $(function(){
             //make active icon for deletion
             $('.tm-canv-icon.close').css('display', 'none');
             $('.tm-canv-icon.tm-del').css('display', 'block');
-            // update tooltip
-            var mousePos = stage.getPointerPosition();
-            tooltip.position({
-                x : mousePos.x + 5,
-                y : mousePos.y + 5
-            });
-            tooltip.text("ширина: " + Math.round(e.target.attrs.width/globalKoef) + "см, высота: " + Math.round(e.target.attrs.height/globalKoef) + "см");
-            tooltip.show();
-            back.position({
-                x : mousePos.x + 5,
-                y : mousePos.y + 5
-            });
-            back.fill('white');
-            back.show();
 
-            tooltipLayer.moveToTop(); 
-            tooltipLayer.draw(); 
             shadowedBg.moveToBottom();
             shadowedBg.draw();
         });
         droppableRect.on('mouseup', function(e) {
             // selectionRectRemove();
-            back.hide();
-            tooltip.hide();
-            tooltipLayer.draw();
+            back.scale({
+                x: 1,
+                y: 1
+            }); 
+             tooltip.scale({
+                x: 1,
+                y: 1
+            }) 
             saveStage();
             layerProc();
         });
