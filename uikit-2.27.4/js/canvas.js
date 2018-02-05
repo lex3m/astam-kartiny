@@ -109,7 +109,7 @@ $(function(){
         }
         var rw = Math.round(rect.width()/globalKoef);
         var rh = Math.round(rect.height()/globalKoef);
-            if(rw > 80 || rw < 10) {
+            if(rw > 100 && rh > 100 || rw < 10) {
                 rect.width(rwBefore);
                 switch (activeAnchor.getName()) {
                     case 'topLeft':
@@ -135,7 +135,7 @@ $(function(){
                 }
 
             } 
-            if(rh > 60 || rh < 10) {
+            if(rh > 100 && rw > 100 || rh < 10) {
                 // rect.height(20*globalKoef);
                 rect.height(rhBefore);
                 switch (activeAnchor.getName()) {
