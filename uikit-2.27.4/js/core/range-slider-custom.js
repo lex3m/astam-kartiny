@@ -1,5 +1,17 @@
  var globalW = 40; 
  var globalKoef = globalW/5; 
+ var posterDimentions = {
+     width: 800,
+     height: 480,
+     width_cm: function() {
+        return Math.round(this.width/globalKoef)
+     },
+     height_cm: function() { 
+        return Math.round(this.height/globalKoef)
+     }
+ };
+
+
 
 (function () {
 
@@ -36,6 +48,8 @@
 
         // Callback function
         onInit: function () {
+            $('.js-poster-width').text(posterDimentions.width_cm());
+            $('.js-poster-height').text(posterDimentions.height_cm());
         },
 
         // Callback function
@@ -48,6 +62,10 @@
             //console.log('onSlide', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
             var digit = value/20;
             globalKoef = globalW/digit;
+
+             $('.js-poster-width').text(posterDimentions.width_cm());
+             $('.js-poster-height').text(posterDimentions.height_cm());
+
             var ar = [];
             for(var i = 1; i < 21; i++) {
                 ar.push(Math.round(digit*i));
@@ -65,6 +83,11 @@
         // Callback function
         onSlideEnd: function (value, percent, position) {
             //console.warn('onSlideEnd', 'value: ' + value, 'percent: ' + percent, 'position: ' + position);
+        },
+
+        adjustBlocksKoef: function() {
+            /* console.log("globalKoef: " + globalKoef); */
+            /* document.getElementById('canvas') */
         }
     });
     

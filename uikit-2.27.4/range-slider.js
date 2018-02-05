@@ -266,6 +266,7 @@ var RangeSlider = function () {
     this.onSlide = this.options.onSlide;
     this.onSlideStart = this.options.onSlideStart;
     this.onSlideEnd = this.options.onSlideEnd;
+    this.adjustBlocksKoef = this.options.adjustBlocksKoef;
     this.onSlideEventsCount = -1;
     this.isInteractsNow = false;
     this.needTriggerEvents = false;

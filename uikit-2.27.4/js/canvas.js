@@ -102,7 +102,7 @@ $(function(){
         var rwBefore = rect.width();
         var rhBefore = rect.height()
 
-        var Const = 20*globalKoef; 
+        /* var Const = 20*globalKoef;  */
         if(width && height) {
             rect.width(width);
             rect.height(height); 
@@ -212,7 +212,6 @@ $(function(){
         });
         anchor.on('dragend', function(e) {
             group.setDraggable(true);
-            this.setDraggable(true);
             layer.draw();
             saveStage();
             // console.log('4');
@@ -269,6 +268,10 @@ $(function(){
         });
         group.add(anchor);
     }
+
+    /* function adjustBlocksKoef() {
+        console.log("globalKoef: " + globalKoef);
+    } */
 
     var stage = new Konva.Stage({
         container: 'canvas',
@@ -506,6 +509,7 @@ $(function(){
         forTotal = false;
         $('.js-pic-data').empty();
         $('#canvas').width(800); $('#canvas').height(480);
+        showPosterDimentions(800, 480);
     });
     //function for disable/enable slider and selects
     function toggleMesurement(arg) {
@@ -601,6 +605,13 @@ $(function(){
         if(dataURL) $('.tm-ready').attr('src', dataURL);
     });
 
+    function showPosterDimentions(w, h) {
+        posterDimentions.width = w;
+        posterDimentions.height = h;
+        $('.js-poster-width').text(posterDimentions.width_cm());
+        $('.js-poster-height').text(posterDimentions.height_cm());
+    }
+
     var bg, imageObj = new Image();
         imageObj.crossOrigin = "Anonymous"; 
 
@@ -618,8 +629,9 @@ $(function(){
                 h = 480;
                 w = imgw*480/imgh;
             }
-            console.log( imgw, imgh);
-            console.log( w, h);
+            // console.log( imgw, imgh);
+            // console.log( w, h);
+            showPosterDimentions(w, h);
             $('#canvas').width(w); $('#canvas').height(h);
             bg = new Konva.Image({
                 x: 0,
